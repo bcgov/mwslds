@@ -1,0 +1,8 @@
+{
+  "name": "minishift-react",
+  "version": "1.0.0",
+  "description": "test for react in minishift",
+  "main": "index.js",
+  "author": "Stephen Tredger",
+  "license": "MIT"
+}
