@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+// bcgov bootstrap styles
+import 'bootstrap-theme/dist/css/bootstrap-theme.min.css'
+
+import './App.css'
+
+import Header from './Header'
+import Table from './Table'
+import Form from './Form'
+
+const navitems = [
+  { name: 'link1', href: '#' },
+  { name: 'link2', href: '#' },
+]
+
+export default function App() {
+  return (
+    <div className="App">
+      <Header title="React with bcgov Bootstrap!" items={navitems} />
+      <div className="row">
+        <div className="col-lg-12">
+          <Table />
+        </div>
       </div>
-    );
-  }
+      <div className="row">
+        <div className="col-lg-12">
+          <Form />
+        </div>
+      </div>
+    </div>
+  )
 }
-
-export default App;
