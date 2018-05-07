@@ -1,8 +1,7 @@
 import React from 'react'
 
-// import 'bootstrap-theme/dist/js/bootstrap.bundle'
-import 'bootstrap-theme/dist/css/bootstrap-theme.min.css'
 import { Form, Text } from 'react-form'
+import './bcgov_bootstrap'
 
 
 const validate = value => ({

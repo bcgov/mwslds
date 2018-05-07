@@ -3,8 +3,7 @@ import React from 'react'
 import bclogo from 'bootstrap-theme/dist/images/17_gov3_bc_logo.svg'
 import bclogoSmall from 'bootstrap-theme/dist/images/01_gov3_bc_symbol.svg'
 
-// import 'bootstrap-theme/dist/js/bootstrap.bundle'
-import 'bootstrap-theme/dist/css/bootstrap-theme.min.css'
+import './bcgov_bootstrap'
 
 export default function Header(props) {
   return (

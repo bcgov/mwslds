@@ -1,17 +1,13 @@
 import React from 'react'
 
-// bcgov bootstrap styles
-import 'bootstrap-theme/dist/css/bootstrap-theme.min.css'
+import './bcgov_bootstrap'
 
 import './App.css'
 
 import Header from './Header'
-import Table from './Table'
-import Form from './Form'
+import BaseTable from './BaseTable'
 
 const navitems = [
-  { name: 'link1', href: '#' },
-  { name: 'link2', href: '#' },
 ]
 
 export default function App() {
@@ -20,12 +16,7 @@ export default function App() {
       <Header title="React with bcgov Bootstrap!" items={navitems} />
       <div className="row">
         <div className="col-lg-12">
-          <Table />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-12">
-          <Form />
+          <BaseTable dataValue="inspectors" />
         </div>
       </div>
     </div>
