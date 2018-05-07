@@ -5,7 +5,10 @@ import './bcgov_bootstrap'
 import './App.css'
 
 import Header from './Header'
-import BaseTable from './BaseTable'
+import MinesTable from './MinesTable'
+import InspectorsTable from './InspectorsTable'
+import MineStatusesTable from './MineStatusesTable'
+import MineNoticesTable from './MineNoticesTable'
 
 const navitems = [
 ]
@@ -16,7 +19,7 @@ export default function App() {
       <Header title="React with bcgov Bootstrap!" items={navitems} />
       <div className="row">
         <div className="col-lg-12">
-          <BaseTable dataValue="inspectors" />
+          <MineNoticesTable />
         </div>
       </div>
     </div>

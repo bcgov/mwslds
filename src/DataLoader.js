@@ -4,7 +4,7 @@ const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
 const TOKEN = '31b6899c-a718-424e-ac3f-2c7c2731b3fd'
 
-export default function withData(Wrapped, route) {
+export default function withData(Wrapped, route, payloadParam) {
   return class extends React.Component {
     constructor(props) {
       super(props)
@@ -47,7 +47,11 @@ export default function withData(Wrapped, route) {
 
       fetch(url, options)
         .then(resp => resp.json())
-        .then((data) => {
+        .then((parsed) => {
+          let data = parsed
+          if (payloadParam) {
+            data = parsed[payloadParam]
+          }
           this.setState({
             data,
             loading: false,

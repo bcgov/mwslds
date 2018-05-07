@@ -2,8 +2,9 @@ import React from 'react'
 
 import { startCase } from 'lodash'
 
-import './bcgov_bootstrap'
 import withData from './DataLoader'
+
+import './bcgov_bootstrap'
 
 function getHeaderCols(row) {
   return Object.keys(row).map(key => startCase(key))
@@ -16,7 +17,15 @@ function getHeader(row) {
 }
 
 function getBodyCols(row) {
-  return <tr>{Object.values(row).map(val => <td>{val}</td>)}</tr>
+  const data = Object.values(row).map((val) => {
+    let parsed = val
+    if (val instanceof Object) {
+      // this check is pretty hacky it assumes all objects have a code... which they might?
+      parsed = val.code
+    }
+    return <td>{parsed}</td>
+  })
+  return <tr>{data}</tr>
 }
 
 function getBody(data) {
@@ -26,7 +35,7 @@ function getBody(data) {
 function BaseTable(props) {
   let header
   let body
-  const data = props.data && props.data[props.dataValue]
+  const { data } = props
 
   if (props.loading) {
     header = <th>Loading ...</th>
@@ -53,4 +62,8 @@ function BaseTable(props) {
   )
 }
 
-export default withData(BaseTable, 'inspectors?regionCode=1')
+export default BaseTable
+
+export function tableWithData(route, payloadValue) {
+  return withData(BaseTable, route, payloadValue)
+}
