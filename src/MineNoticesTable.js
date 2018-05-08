@@ -1,6 +1,7 @@
+import withToken from './Token'
 import { tableWithData } from './BaseTable'
 
 const route = 'minenotices?nowStatus=PENDING_APPROVAL'
 const payloadValue = 'minesNotices'
 
-export default tableWithData(route, payloadValue)
+export default withToken(tableWithData(route, payloadValue))

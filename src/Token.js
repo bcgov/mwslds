@@ -1,5 +1,7 @@
 import React from 'react'
 
+import token from './Secret'
+
 export default function withToken(Wrapped) {
   return class extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ export default function withToken(Wrapped) {
 
     getToken() {
       this.setState({
-        token: 'token-goes-here!',
+        token,
       })
     }
 

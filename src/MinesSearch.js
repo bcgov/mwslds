@@ -2,8 +2,8 @@ import React from 'react'
 
 import DataTable from './DataTable'
 
-const BASE_ROUTE = 'mines'
-const PAYLOAD_VALUE = 'mines'
+const MINES_BASE_ROUTE = 'mines'
+const MINES_PAYLOAD_VALUE = 'mines'
 
 class DangerousOccurrencesSearch extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class DangerousOccurrencesSearch extends React.Component {
 
   onSubmit() {
     this.setState({
-      route: this.getRoute()
+      route: this.getRoute(),
     })
   }
 
@@ -32,7 +32,7 @@ class DangerousOccurrencesSearch extends React.Component {
     if (!this.state.value) {
       return null
     }
-    return `${BASE_ROUTE}?regionCode=${this.state.value}`
+    return `${MINES_BASE_ROUTE}?regionCode=${this.state.value}`
   }
 
   render() {
@@ -42,7 +42,7 @@ class DangerousOccurrencesSearch extends React.Component {
           RegionCode
           <input id="regionCodeInput" type="text" className="form-control" value={this.state.value} onChange={this.onChange} />
         </label>
-        <DataTable route={this.getRoute()} payloadValue="mines" />
+        <DataTable route={this.state.route} payloadValue={MINES_PAYLOAD_VALUE} />
       </div>
     )
   }
