@@ -5,10 +5,11 @@ import './bcgov_bootstrap'
 import './App.css'
 
 import Header from './Header'
-import MinesTable from './MinesTable'
-import InspectorsTable from './InspectorsTable'
-import MineStatusesTable from './MineStatusesTable'
-import MineNoticesTable from './MineNoticesTable'
+import MinesSearch from './MinesSearch'
+// import DangerousOccurrencesSearch from './DangerousOccurrencesSearch'
+// import InspectorsTable from './InspectorsTable'
+// import MineStatusesTable from './MineStatusesTable'
+// import MineNoticesTable from './MineNoticesTable'
 
 const navitems = [
 ]
@@ -18,9 +19,12 @@ export default function App() {
     <div className="App">
       <Header title="React with bcgov Bootstrap!" items={navitems} />
       <div className="row">
-        <div className="col-lg-12">
-          <MineNoticesTable />
+        <div className="col-lg-6 scroll">
+          <MinesSearch />
         </div>
+        {/* <div className="col-lg-6 scroll">
+          <DangerousOccurrencesSearch />
+        </div> */}
       </div>
     </div>
   )

@@ -40,8 +40,8 @@ function BaseTable(props) {
   if (props.loading) {
     header = <th>Loading ...</th>
     body = <tr />
-  } else if (data) {
-    header = getHeader(data[0])
+  } else if (data && data.length) {
+    header = getHeader(data[0] || {})
     body = getBody(data)
   } else {
     header = <th>No Data</th>
