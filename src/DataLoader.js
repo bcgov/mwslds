@@ -2,8 +2,6 @@ import React from 'react'
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
-const TOKEN = '31b6899c-a718-424e-ac3f-2c7c2731b3fd'
-
 export default function withData(Wrapped, route, payloadParam) {
   return class extends React.Component {
     constructor(props) {
@@ -20,22 +18,28 @@ export default function withData(Wrapped, route, payloadParam) {
       this.loadData()
     }
 
+    componentDidUpdate(prevProps) {
+      if (this.props.token !== prevProps.token) {
+        this.loadData()
+      }
+    }
+
     getUrl() {
       return `${BASE_URL}/${route}`
     }
 
     loadData() {
-      const token = this.props.token || TOKEN
+      const { token } = this.props
+
+      if (!token) {
+        return
+      }
 
       this.setState(() => ({
         loading: true,
         error: null,
         data: null,
       }))
-
-      if (!token) {
-        // load the token
-      }
 
       const options = {
         headers: new Headers({

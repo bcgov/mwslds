@@ -2,11 +2,12 @@ import React from 'react'
 
 import BaseTable from './BaseTable'
 import withData from './DataLoader'
+import withToken from './Token'
 
 export default function DataTable(props) {
   if (!props.route) {
     return <BaseTable />
   }
-  const Table = withData(BaseTable, props.route, props.payloadValue)
+  const Table = withToken(withData(BaseTable, props.route, props.payloadValue))
   return <Table />
 }
