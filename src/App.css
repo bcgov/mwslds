@@ -2,3 +2,7 @@
 .scroll {
   overflow: scroll;
 }
+
+.shift-left {
+  margin-right: 30px;
+}

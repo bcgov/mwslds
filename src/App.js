@@ -13,22 +13,14 @@ import MinesSearch from './MinesSearch'
 // import MineNoticesTable from './MineNoticesTable'
 
 const navitems = [
-  {
-    name: 'link1',
-    href: '#',
-  },
-  {
-    name: 'link2',
-    href: '#',
-  },
 ]
 
 export default function App() {
   return (
     <div className="App">
-      <Header title="React with bcgov Bootstrap!" items={navitems} />
-      <div className="template container gov-container">
-          <MinesSearch />
+      <Header title="Mine Seeker" items={navitems} />
+      <div className="template gov-container shift-left">
+        <MinesSearch />
       </div>
       <Footer />
     </div>

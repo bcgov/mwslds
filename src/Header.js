@@ -1,9 +1,16 @@
+/* globals $ */
+
 import React from 'react'
 
 import bclogo from 'Gov-2.0-Bootstrap-Skeleton/dist/images/gov3_bc_logo.png'
 import mobileOpen from 'Gov-2.0-Bootstrap-Skeleton/dist/images/menu-open-mobile.png'
 
 import './bcgov_bootstrap'
+
+function focusMenu() {
+  // TODO get rid of this jquery nastiness
+  $('.menu-button').focus()
+}
 
 export default function Header(props) {
   const { items, title } = props
@@ -32,7 +39,7 @@ export default function Header(props) {
                     <a href="#main-content-anchor" aria-label="Skip to main content">Skip to main content</a>
                   </li>
                   <li aria-label="Keyboard Tab Skip">
-                    <a href="#main-content-anchor" onClick="$('.menu-button').focus();" aria-label="Skip to navigation">Skip to navigation</a>
+                    <a href="#main-content-anchor" onClick={focusMenu} aria-label="Skip to navigation">Skip to navigation</a>
                   </li>
                   <li aria-label="Keyboard Tab Skip">
                     <a href="http://gov.bc.ca/webaccessibility/" aria-label="Accessibility Statement">Accessibility Statement</a>
