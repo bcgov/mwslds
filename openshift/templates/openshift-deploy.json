@@ -1,0 +1,65 @@
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "react-deploy-template"
+  },
+  "objects": [
+    {
+      "kind": "DeploymentConfig",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "react-deploy"
+      },
+      "spec": {
+        "template": {
+          "metadata": {
+            "labels": {
+              "name": "react-deploy"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "react-bitcoin-demo",
+                "image": "react-bitcoin-demo:latest",
+                "ports": [
+                  {
+                    "containerPort": "3000",
+                    "protocol": "TCP"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "replicas": 1,
+        "selector": {
+          "name": "react-deploy"
+        },
+        "triggers": [
+          {
+            "type": "ConfigChange"
+          },
+          {
+            "type": "ImageChange",
+            "imageChangeParams": {
+              "automatic": true,
+              "containerNames": [
+                "react-bitcoin-demo"
+              ],
+              "from": {
+                "kind": "ImageStreamTag",
+                "namespace": "react-demo",
+                "name": "react-bitcoin-demo:latest"
+              }
+            }
+          }
+        ],
+        "strategy": {
+          "type": "Rolling"
+        }
+      }
+    }
+  ]
+}

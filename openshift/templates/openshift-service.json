@@ -1,0 +1,44 @@
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata": {
+
+  },
+  "objects": [
+    {
+      "kind": "Service",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "react-service",
+        "annotations": {
+          "description": "Exposes and load balances the application pods"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "web",
+            "port": 3000,
+            "targetPort": 3000
+          }
+        ],
+        "selector": {
+          "name": "react-deploy"
+        }
+      }
+    },
+    {
+      "kind": "Route",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "react-route"
+      },
+      "spec": {
+        "to": {
+          "kind": "Service",
+          "name": "react-service"
+        }
+      }
+    }
+  ]
+}
