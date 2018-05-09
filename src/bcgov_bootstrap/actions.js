@@ -3,4 +3,4 @@
 import './jquery_wrapper'
 
 // this guy requires jQuery to be globally avaliable so we import the wrapper before
-import 'bootstrap-theme/dist/js/bootstrap.bundle'
+import 'Gov-2.0-Bootstrap-Skeleton/dist/bcgov-bootstrap'

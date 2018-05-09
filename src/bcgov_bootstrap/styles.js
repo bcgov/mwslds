@@ -1,1 +1,2 @@
-import 'bootstrap-theme/dist/css/bootstrap-theme.min.css'
+
+import 'Gov-2.0-Bootstrap-Skeleton/dist/bcgov-bootstrap.css'
