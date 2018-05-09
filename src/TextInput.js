@@ -4,12 +4,11 @@ import { startCase } from 'lodash'
 
 import './bcgov_bootstrap'
 
-export default function FormInput(props) {
-  const { name, prefix, type, value, onChange } = props
+export default function TextInput(props) {
+  const { name, value, onChange, prefix, disabled } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
-  const inputType = type || 'text'
 
   return (
     <div className="form-group">
@@ -19,10 +18,11 @@ export default function FormInput(props) {
       <div className="col-lg-8">
         <input
           id={inputId}
-          type={inputType}
           className="form-control"
           value={value}
           onChange={onChange}
+          type="text"
+          disabled={disabled}
         />
       </div>
     </div>
