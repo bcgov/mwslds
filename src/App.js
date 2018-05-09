@@ -5,6 +5,7 @@ import './bcgov_bootstrap'
 import './App.css'
 
 import Header from './Header'
+import Footer from './Footer'
 import MinesSearch from './MinesSearch'
 // import DangerousOccurrencesSearch from './DangerousOccurrencesSearch'
 // import InspectorsTable from './InspectorsTable'
@@ -26,11 +27,10 @@ export default function App() {
   return (
     <div className="App">
       <Header title="React with bcgov Bootstrap!" items={navitems} />
-      <div className="row">
-        <div className="container col-lg-10">
+      <div className="template container gov-container">
           <MinesSearch />
-        </div>
       </div>
+      <Footer />
     </div>
   )
 }
