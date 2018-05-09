@@ -1,7 +1,10 @@
-import withToken from './Token'
-import { tableWithData } from './BaseTable'
+import React from 'react'
+
+import DataTable from './DataTable'
 
 const route = 'minenotices?nowStatus=PENDING_APPROVAL'
 const payloadValue = 'minesNotices'
 
-export default withToken(tableWithData(route, payloadValue))
+export default function () {
+  return <DataTable route={route} payloadValue={payloadValue} />
+}

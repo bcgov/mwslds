@@ -2,7 +2,7 @@ import React from 'react'
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
-export default function withData(Wrapped, route, payloadParam) {
+export default function withData(Wrapped) {
   return class extends React.Component {
     constructor(props) {
       super(props)
@@ -19,13 +19,14 @@ export default function withData(Wrapped, route, payloadParam) {
     }
 
     componentDidUpdate(prevProps) {
-      if (this.props.token !== prevProps.token) {
+      if (this.props.token !== prevProps.token ||
+          this.props.route !== prevProps.route) {
         this.loadData()
       }
     }
 
     getUrl() {
-      return `${BASE_URL}/${route}`
+      return `${BASE_URL}/${this.props.route}`
     }
 
     loadData() {
@@ -50,11 +51,17 @@ export default function withData(Wrapped, route, payloadParam) {
       const url = this.getUrl()
 
       fetch(url, options)
-        .then(resp => resp.json())
+        .then((resp) => {
+          if (!resp.ok) {
+            throw Error(resp.statusText)
+          }
+          return resp.json()
+        })
         .then((parsed) => {
           let data = parsed
-          if (payloadParam) {
-            data = parsed[payloadParam]
+          const { payloadValue } = this.props
+          if (payloadValue) {
+            data = parsed[payloadValue]
           }
           this.setState({
             data,

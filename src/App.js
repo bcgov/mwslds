@@ -7,7 +7,7 @@ import './App.css'
 import Header from './Header'
 import MinesSearch from './MinesSearch'
 // import DangerousOccurrencesSearch from './DangerousOccurrencesSearch'
-import InspectorsTable from './InspectorsTable'
+// import InspectorsTable from './InspectorsTable'
 // import MineStatusesTable from './MineStatusesTable'
 // import MineNoticesTable from './MineNoticesTable'
 
@@ -19,11 +19,8 @@ export default function App() {
     <div className="App">
       <Header title="React with bcgov Bootstrap!" items={navitems} />
       <div className="row">
-        <div className="col-lg-6 scroll">
+        <div className="container col-lg-8 scroll">
           <MinesSearch />
-        </div>
-        <div className="col-lg-6 scroll">
-          <InspectorsTable />
         </div>
       </div>
     </div>

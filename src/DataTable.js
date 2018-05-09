@@ -4,10 +4,20 @@ import BaseTable from './BaseTable'
 import withData from './DataLoader'
 import withToken from './Token'
 
-export default function DataTable(props) {
-  if (!props.route) {
-    return <BaseTable />
+const WrappedTable = withToken(withData(BaseTable))
+
+export default class DataTable extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.route === nextProps.route) {
+      return false
+    }
+    return true
   }
-  const Table = withToken(withData(BaseTable, props.route, props.payloadValue))
-  return <Table />
+
+  render() {
+    if (!this.props.route) {
+      return <BaseTable />
+    }
+    return <WrappedTable {...this.props} />
+  }
 }
