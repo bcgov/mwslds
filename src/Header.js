@@ -1,42 +1,72 @@
 import React from 'react'
 
-import bclogo from 'bootstrap-theme/dist/images/17_gov3_bc_logo.svg'
-import bclogoSmall from 'bootstrap-theme/dist/images/01_gov3_bc_symbol.svg'
+import bclogo from 'Gov-2.0-Bootstrap-Skeleton/dist/images/gov3_bc_logo.png'
+import mobileOpen from 'Gov-2.0-Bootstrap-Skeleton/dist/images/menu-open-mobile.png'
 
 import './bcgov_bootstrap'
 
 export default function Header(props) {
+  const { items, title } = props
+
+  let itemElements = null
+  if (items) {
+    itemElements = items.map(link => (
+      <a key={link.name} className="nav-item nav-link" href={link.href}>{link.name}</a>
+    ))
+  }
+
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div id="header">
+      <div id="header-main" className="navbar navbar-default navbar-fixed-top">
         <div className="container">
-          <a className="navbar-brand" href="https://www2.gov.bc.ca">
-            <img className="img-fluid d-none d-md-block" src={bclogo} width="152" height="55" alt="B.C. Government Logo" />
-            <img className="img-fluid d-md-none" src={bclogoSmall} width="61" height="43" alt="B.C. Government Logo" />
-          </a>
-          <div className="navbar-brand">
-            {props.title}
-          </div>
-          <button
-            className="navbar-toggler collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup" // TODO: dont use an id here
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="navbar-collapse collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              {props.items && props.items.map(link => (
-                <a key={link.name} className="nav-item nav-link" href={link.href}>{link.name}</a>
-              ))}
+          <div id="header-main-row" className="row">
+            <div className="col-sm-3 col-md-2 col-lg-2 header-main-left">
+              <div id="logo">
+                <a href="https://www2.gov.bc.ca">
+                  <img src={bclogo} alt="B.C. Government Logo" />
+                </a>
+              </div>
+              <div id="access">
+                <ul>
+                  <li aria-label="Keyboard Tab Skip">
+                    <a href="#main-content-anchor" aria-label="Skip to main content">Skip to main content</a>
+                  </li>
+                  <li aria-label="Keyboard Tab Skip">
+                    <a href="#main-content-anchor" onClick="$('.menu-button').focus();" aria-label="Skip to navigation">Skip to navigation</a>
+                  </li>
+                  <li aria-label="Keyboard Tab Skip">
+                    <a href="http://gov.bc.ca/webaccessibility/" aria-label="Accessibility Statement">Accessibility Statement</a>
+                  </li>
+                </ul>
+              </div>
+              <button type="button" className="navbar-toggle gov-button-custom collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-label="Burger Navigation">
+                <img src={mobileOpen} alt="Open Menu" />
+              </button>
+            </div>
+            <div className="col-sm-8 col-md-8 col-lg-6 hidden-xs">
+              <div className="bcgov-title">
+                <h1>
+                  {title}
+                </h1>
+              </div>
+            </div>
+            <div id="navbar" className="collapse navbar-collapse">
+              <ul className="nav navbar-nav">
+                {itemElements && itemElements.map(ele => (
+                  <li>{ele}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
+        <div className="navigationRibbon">
+          <div className="level2Navigation">
+            <div className="container">
+              {itemElements}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

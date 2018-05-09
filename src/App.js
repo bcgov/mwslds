@@ -12,6 +12,14 @@ import MinesSearch from './MinesSearch'
 // import MineNoticesTable from './MineNoticesTable'
 
 const navitems = [
+  {
+    name: 'link1',
+    href: '#',
+  },
+  {
+    name: 'link2',
+    href: '#',
+  },
 ]
 
 export default function App() {
