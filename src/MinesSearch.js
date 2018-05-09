@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './MinesSearch.css'
+
 import DataTable from './DataTable'
 
 const MINES_BASE_ROUTE = 'mines'
@@ -21,6 +23,7 @@ class MinesSearch extends React.Component {
       'regionCode',
       'mineTypeCode',
       'mineStatusCode',
+      'limit',
     ]
 
     this.state = {
@@ -31,6 +34,7 @@ class MinesSearch extends React.Component {
       regionCode: '',
       mineTypeCode: '',
       mineStatusCode: '',
+      limit: '',
       route: null,
     }
   }
@@ -68,9 +72,10 @@ class MinesSearch extends React.Component {
     }
 
     const lastIdx = params.length - 1
-    const query = params.map((param, idx) => (
-      idx === lastIdx ? param : `${param}&`
-    ))
+    const query = params.reduce((partialQuery, param, idx) => {
+      const sep = idx === lastIdx ? '' : '&'
+      return `${partialQuery}${param}${sep}`
+    }, '')
 
     return `${MINES_BASE_ROUTE}?${query}`
   }
@@ -79,44 +84,65 @@ class MinesSearch extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-6">
 
             <form className="form-horizontal" onSubmit={this.onSubmit}>
 
               <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="mineIdInput">Mine Id</label>
-                <div className="col-lg-10">
-                  <input id="mineIdInput" type="text" className="form-control" value={this.state.id} onChange={this.onInputChange('mineId')} />
+                <label className="col-lg-12 control-label" htmlFor="mineIdInput">Mine Id</label>
+                <div className="col-lg-12">
+                  <input id="mineIdInput" type="text" className="form-control" value={this.state.mineId} onChange={this.onInputChange('mineId')} />
                 </div>
               </div>
 
               <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="mineNameInput">Mine Name</label>
-                <div className="col-lg-10">
-                  <input id="mineNameInput" type="text" className="form-control" value={this.state.name} onChange={this.onInputChange('mineName')} />
+                <label className="col-lg-12 control-label" htmlFor="mineNameInput">Mine Name</label>
+                <div className="col-lg-12">
+                  <input id="mineNameInput" type="text" className="form-control" value={this.state.mineName} onChange={this.onInputChange('mineName')} />
                 </div>
               </div>
 
               <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="mineLocationNameInput">Mine Location Name</label>
-                <div className="col-lg-10">
-                  <input id="mineLocationNameInput" type="text" className="form-control" value={this.state.value} onChange={this.onInputChange('mineLocationName')} />
+                <label className="col-lg-12 control-label" htmlFor="mineLocationNameInput">Mine Location Name</label>
+                <div className="col-lg-12">
+                  <input id="mineLocationNameInput" type="text" className="form-control" value={this.state.mineLocationName} onChange={this.onInputChange('mineLocationName')} />
                 </div>
               </div>
 
               <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="minePermiteeCompanyCodeInput">Permitee Company Code</label>
-                <div className="col-lg-10">
-                  <input id="minePermiteeCompanyCodeInput" type="text" className="form-control" value={this.state.value} onChange={this.onInputChange('permiteeCompanyCode')} />
+                <label className="col-lg-12 control-label" htmlFor="minePermiteeCompanyCodeInput">Permitee Company Code</label>
+                <div className="col-lg-12">
+                  <input id="minePermiteeCompanyCodeInput" type="text" className="form-control" value={this.state.permiteeCompanyCode} onChange={this.onInputChange('permiteeCompanyCode')} />
                 </div>
               </div>
 
               <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="mineRegionCodeInput">Mine Region Code</label>
-                <div className="col-lg-10">
-                  <input id="mineRegionCodeInput" type="text" className="form-control" value={this.state.value} onChange={this.onInputChange('regionCode')} />
+                <label className="col-lg-12 control-label" htmlFor="mineRegionCodeInput">Mine Region Code</label>
+                <div className="col-lg-12">
+                  <input id="mineRegionCodeInput" type="text" className="form-control" value={this.state.regionCode} onChange={this.onInputChange('regionCode')} />
                 </div>
               </div>
+
+              <div className="form-group">
+                <label className="col-lg-12 control-label" htmlFor="mineTypeCodeInput">Mine Type Code</label>
+                <div className="col-lg-12">
+                  <input id="mineTypeCodeInput" type="text" className="form-control" value={this.state.mineTypeCode} onChange={this.onInputChange('mineTypeCode')} />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="col-lg-12 control-label" htmlFor="mineStatusCodeInput">Mine Status Code</label>
+                <div className="col-lg-12">
+                  <input id="mineStatusCodeInput" type="text" className="form-control" value={this.state.mineStatusCode} onChange={this.onInputChange('mineStatusCode')} />
+                </div>
+              </div>
+
+              {/* <div className="form-group">
+                <label className="col-lg-12 control-label" htmlFor="limitInput">Limit</label>
+                <div className="col-lg-12">
+                  <input id="limitInput" type="text" className="form-control" value={this.state.limit} onChange={this.onInputChange('limit')} />
+                </div>
+              </div> */}
 
               <div className="form-group">
                 <div className="col-lg-10">
@@ -126,9 +152,9 @@ class MinesSearch extends React.Component {
 
             </form>
           </div>
-        </div>
-        <div className="row">
-          <DataTable route={this.state.route} payloadValue={MINES_PAYLOAD_VALUE} />
+          <div className="col-lg-6 scroll one-screen">
+            <DataTable route={this.state.route} payloadValue={MINES_PAYLOAD_VALUE} />
+          </div>
         </div>
       </div>
     )

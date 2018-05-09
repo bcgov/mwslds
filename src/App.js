@@ -19,7 +19,7 @@ export default function App() {
     <div className="App">
       <Header title="React with bcgov Bootstrap!" items={navitems} />
       <div className="row">
-        <div className="container col-lg-8 scroll">
+        <div className="container col-lg-10">
           <MinesSearch />
         </div>
       </div>
