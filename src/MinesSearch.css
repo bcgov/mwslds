@@ -5,3 +5,7 @@
 .one-screen {
   height: 700px;
 }
+
+.form-spacing label {
+  padding-right: 10px;
+}

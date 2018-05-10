@@ -25,17 +25,17 @@ class MinesSearch extends React.Component {
     this.onSubmit = this.onSubmit.bind(this)
 
     this.queryableParams = [
-      { name: 'mineId' },
-      { name: 'mineName' },
-      { name: 'mineLocationName' },
-      { name: 'permiteeCompanyCode' },
-      { name: 'regionCode' },
-      { name: 'mineTypeCode' },
-      { name: 'mineStatusCode' },
-      { name: 'underInvestigation', type: 'checkbox' },
-      { name: 'major', type: 'checkbox' },
-      { name: 'withIssues', type: 'checkbox' },
-      { name: 'limit' },
+      { name: 'mineId', inputGroup: 1 },
+      { name: 'mineName', inputGroup: 1 },
+      { name: 'mineLocationName', inputGroup: 1 },
+      { name: 'permiteeCompanyCode', inputGroup: 2 },
+      { name: 'regionCode', inputGroup: 2 },
+      { name: 'mineTypeCode', inputGroup: 2 },
+      { name: 'mineStatusCode', inputGroup: 2 },
+      { name: 'underInvestigation', type: 'checkbox', inputGroup: 3 },
+      { name: 'major', type: 'checkbox', inputGroup: 3 },
+      { name: 'withIssues', type: 'checkbox', inputGroup: 3 },
+      { name: 'limit', inputGroup: 2 },
     ]
 
     const state = { route: null }
@@ -91,22 +91,30 @@ class MinesSearch extends React.Component {
   }
 
   renderInputs() {
-    return this.queryableParams.map((param) => {
-      const { name, type } = param
+    const inputs = []
 
+    this.queryableParams.forEach((param) => {
+      const { name, type, inputGroup } = param
+
+      if (!inputs[inputGroup]) {
+        inputs[inputGroup] = []
+      }
+
+      let input
       switch (type) {
         case 'checkbox':
-          return (
+          input = (
             <CheckboxInput
               key={name}
               name={name}
-              value={this.state[name]}
+              value={!!this.state[name]}
               onChange={this.onCheckboxChange(name)}
               prefix={this.props.prefix}
             />
           )
+          break
         default:
-          return (
+          input = (
             <TextInput
               key={name}
               name={name}
@@ -116,7 +124,14 @@ class MinesSearch extends React.Component {
             />
           )
       }
+      inputs[inputGroup].push(input)
     })
+
+    return inputs.map((inputList, idx) => (
+      <div key={idx} className="form-spacing">
+        {inputList}
+      </div>
+    ))
   }
 
   render() {
@@ -127,17 +142,17 @@ class MinesSearch extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-lg-4">
-            <form className="form-horizontal" onSubmit={this.onSubmit}>
+          <div className="container">
+            <form onSubmit={this.onSubmit}>
               {this.renderInputs()}
               <div className="form-group">
-                <div className="col-lg-offset-4 col-lg-8">
-                  <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
-                </div>
+                <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
               </div>
             </form>
           </div>
-          <div className="col-lg-8 scroll one-screen">
+        </div>
+        <div className="row">
+          <div className="col-lg-12">
             <DataTable route={this.state.route} payloadValue={MINES_PAYLOAD_VALUE} />
           </div>
         </div>

@@ -7,7 +7,7 @@ import '../style'
 
 const propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
@@ -31,20 +31,17 @@ function CheckboxInput(props) {
   const inputId = `${prefix || ''}${name}`
 
   return (
-    <div className="form-group">
-      <label className="col-lg-4 control-label" htmlFor={inputId}>
-        {title}
-      </label>
-      <div className="col-lg-8">
-        <input
-          id={inputId}
-          value={value}
-          onChange={onChange}
-          type="checkbox"
-          disabled={disabled}
-        />
-      </div>
-    </div>
+    <label className="control-label" htmlFor={inputId}>
+      <input
+        id={inputId}
+        value={value}
+        onChange={onChange}
+        type="checkbox"
+        disabled={disabled}
+        style={{ marginRight: '3px' }}
+      />
+      {title}
+    </label>
   )
 }
 

@@ -31,21 +31,17 @@ function TextInput(props) {
   const inputId = `${prefix || ''}${name}`
 
   return (
-    <div className="form-group">
-      <label className="col-lg-4 control-label" htmlFor={inputId}>
-        {title}
-      </label>
-      <div className="col-lg-8">
-        <input
-          id={inputId}
-          className="form-control"
-          value={value}
-          onChange={onChange}
-          type="text"
-          disabled={disabled}
-        />
-      </div>
-    </div>
+    <label className="control-label" htmlFor={inputId}>
+      {title}
+      <input
+        id={inputId}
+        className="form-control"
+        value={value}
+        onChange={onChange}
+        type="text"
+        disabled={disabled}
+      />
+    </label>
   )
 }
 
