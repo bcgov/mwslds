@@ -7,7 +7,11 @@ import './bcgov_bootstrap'
 const genericLinks = [
   {
     name: 'Home',
-    href: 'https://www2.gov.bc.ca/gov/content/home',
+    href: '#',
+  },
+  {
+    name: 'About',
+    href: '#',
   },
   {
     name: 'Disclaimer',
