@@ -66,7 +66,7 @@ function BaseTable(props) {
   }
 
   return (
-    <table className="table table-striped table-hover table-bordered" style={{ marginTop: 0 }}>
+    <table className="table table-striped table-hover table-bordered">
       <thead className="thead">
         <tr>
           {header}
