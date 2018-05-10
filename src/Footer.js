@@ -1,15 +1,29 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
+// TODO: import images like this from the bcgov_bootstrap wrapper
 import backToTop from 'Gov-2.0-Bootstrap-Skeleton/dist/images/back-to-top.png'
 
 import './bcgov_bootstrap'
 
-const genericLinks = [
+const propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    href: PropTypes.string,
+  })),
+}
+
+const defaultProps = {
+  items: [],
+}
+
+const requiredLinks = [
   {
     name: 'Home',
     href: '#',
   },
   {
+    // TODO: handle this better... even though the bcgov one is broken they say its required
     name: 'About',
     href: '#',
   },
@@ -35,10 +49,10 @@ const genericLinks = [
   },
 ]
 
-export default function Footer(props) {
+function Footer(props) {
   const { items } = props
 
-  const allItems = genericLinks.concat(items || [])
+  const allItems = requiredLinks.concat(items || [])
 
   const itemElements = allItems.map(link => (
     <li key={link.name}><a className="nav-item nav-link" href={link.href}>{link.name}</a></li>
@@ -61,3 +75,8 @@ export default function Footer(props) {
     </div>
   )
 }
+
+Footer.propTypes = propTypes
+Footer.defaultProps = defaultProps
+
+export default Footer

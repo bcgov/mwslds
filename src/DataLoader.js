@@ -1,9 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
-export default function withData(Wrapped) {
-  return class extends React.Component {
+const propTypes = {
+  token: PropTypes.string,
+  route: PropTypes.string,
+  payloadValue: PropTypes.string,
+}
+
+const defaultProps = {
+  token: null,
+  route: null,
+  payloadValue: null,
+}
+
+function withData(Wrapped) {
+  class WithDataHOC extends React.Component {
     constructor(props) {
       super(props)
 
@@ -80,4 +93,11 @@ export default function withData(Wrapped) {
       return <Wrapped {...this.props} {...this.state} />
     }
   }
+
+  WithDataHOC.propTypes = propTypes
+  WithDataHOC.defaultProps = defaultProps
+
+  return WithDataHOC
 }
+
+export default withData

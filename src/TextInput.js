@@ -1,11 +1,31 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { startCase } from 'lodash'
 
 import './bcgov_bootstrap'
 
-export default function TextInput(props) {
-  const { name, value, onChange, prefix, disabled } = props
+const propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  prefix: PropTypes.string,
+  disabled: PropTypes.bool,
+}
+
+const defaultProps = {
+  prefix: null,
+  disabled: null,
+}
+
+function TextInput(props) {
+  const {
+    name,
+    value,
+    onChange,
+    prefix,
+    disabled,
+  } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
@@ -28,3 +48,8 @@ export default function TextInput(props) {
     </div>
   )
 }
+
+TextInput.propTypes = propTypes
+TextInput.defaultProps = defaultProps
+
+export default TextInput

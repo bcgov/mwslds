@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './MinesSearch.css'
 
@@ -8,6 +9,14 @@ import CheckboxInput from './CheckboxInput'
 
 const MINES_BASE_ROUTE = 'mines'
 const MINES_PAYLOAD_VALUE = 'mines'
+
+const propTypes = {
+  prefix: PropTypes.string,
+}
+
+const defaultProps = {
+  prefix: null,
+}
 
 class MinesSearch extends React.Component {
   constructor(props) {
@@ -136,5 +145,8 @@ class MinesSearch extends React.Component {
     )
   }
 }
+
+MinesSearch.propTypes = propTypes
+MinesSearch.defaultProps = defaultProps
 
 export default MinesSearch

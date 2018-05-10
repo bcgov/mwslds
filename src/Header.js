@@ -1,6 +1,5 @@
-/* globals $ */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import bclogo from 'Gov-2.0-Bootstrap-Skeleton/dist/images/gov3_bc_logo.png'
 import mobileOpen from 'Gov-2.0-Bootstrap-Skeleton/dist/images/menu-open-mobile.png'
@@ -8,19 +7,30 @@ import mobileOpen from 'Gov-2.0-Bootstrap-Skeleton/dist/images/menu-open-mobile.
 import './bcgov_bootstrap'
 
 function focusMenu() {
+  /* globals $ */
   // TODO get rid of this jquery nastiness
   $('.menu-button').focus()
 }
 
-export default function Header(props) {
+const propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    href: PropTypes.string,
+  })),
+  title: PropTypes.string,
+}
+
+const defaultProps = {
+  items: [],
+  title: '',
+}
+
+function Header(props) {
   const { items, title } = props
 
-  let itemElements = null
-  if (items) {
-    itemElements = items.map(link => (
-      <a key={link.name} className="nav-item nav-link" href={link.href}>{link.name}</a>
-    ))
-  }
+  const itemElements = items.map(link => (
+    <a key={link.name} className="nav-item nav-link" href={link.href}>{link.name}</a>
+  ))
 
   return (
     <div id="header">
@@ -77,3 +87,8 @@ export default function Header(props) {
     </div>
   )
 }
+
+Header.propTypes = propTypes
+Header.defaultProps = defaultProps
+
+export default Header

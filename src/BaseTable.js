@@ -1,8 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { startCase } from 'lodash'
 
 import './bcgov_bootstrap'
+
+const propTypes = {
+  loading: PropTypes.bool,
+  data: PropTypes.array,
+  error: PropTypes.object,
+}
+
+const defaultProps = {
+  loading: null,
+  data: null,
+  error: null,
+}
 
 function getHeaderCols(row) {
   return Object.keys(row).map(key => startCase(key))
@@ -19,8 +32,8 @@ function getBodyCols(row) {
     const val = row[key]
     let parsed = val
     if (val instanceof Object) {
-      // this check is pretty hacky it assumes all objects have a code... which they might?
-      parsed = val.code
+      // this is pretty hacky it assumes all objects have either a code or an id
+      parsed = val.code || val.id || ''
     }
     return <td key={key}>{parsed}</td>
   })
@@ -65,5 +78,8 @@ function BaseTable(props) {
     </table>
   )
 }
+
+BaseTable.propTypes = propTypes
+BaseTable.defaultProps = defaultProps
 
 export default BaseTable
