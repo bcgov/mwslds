@@ -2,8 +2,6 @@ import React from 'react'
 
 import { startCase } from 'lodash'
 
-import withData from './DataLoader'
-
 import './bcgov_bootstrap'
 
 function getHeaderCols(row) {
@@ -17,15 +15,18 @@ function getHeader(row) {
 }
 
 function getBodyCols(row) {
-  const data = Object.values(row).map((val) => {
+  const data = Object.keys(row).map((key) => {
+    const val = row[key]
     let parsed = val
     if (val instanceof Object) {
       // this check is pretty hacky it assumes all objects have a code... which they might?
       parsed = val.code
     }
-    return <td>{parsed}</td>
+    return <td key={key}>{parsed}</td>
   })
-  return <tr>{data}</tr>
+  // try to use the id as a key... if it has one
+  const key = row.id || null
+  return <tr key={key}>{data}</tr>
 }
 
 function getBody(data) {
@@ -66,7 +67,3 @@ function BaseTable(props) {
 }
 
 export default BaseTable
-
-export function tableWithData(route, payloadValue) {
-  return withData(BaseTable, route, payloadValue)
-}
