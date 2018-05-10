@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import './MinesSearch.css'
 
-import DataTable from './DataTable'
-import TextInput from './TextInput'
-import CheckboxInput from './CheckboxInput'
+import DataTable from './table/DataTable'
+import TextInput from './input/TextInput'
+import CheckboxInput from './input/CheckboxInput'
 
 const MINES_BASE_ROUTE = 'mines'
 const MINES_PAYLOAD_VALUE = 'mines'

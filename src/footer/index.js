@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // TODO: import images like this from the bcgov_bootstrap wrapper
 import backToTop from 'Gov-2.0-Bootstrap-Skeleton/dist/images/back-to-top.png'
 
-import './bcgov_bootstrap'
+import '../style'
 
 const propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({

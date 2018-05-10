@@ -4,8 +4,8 @@ import './bcgov_bootstrap'
 
 import './App.css'
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from './header'
+import Footer from './footer'
 import MinesSearch from './MinesSearch'
 // import DangerousOccurrencesSearch from './DangerousOccurrencesSearch'
 // import InspectorsTable from './InspectorsTable'

@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import BaseTable from './BaseTable'
-import withData from './DataLoader'
-import withToken from './Token'
-
+import withData from '../datafetching/DataLoader'
+import withToken from '../datafetching/Token'
 
 const propTypes = {
   route: PropTypes.string,

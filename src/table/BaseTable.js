@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { startCase } from 'lodash'
 
-import './bcgov_bootstrap'
+import '../style'
 
 const propTypes = {
   loading: PropTypes.bool,

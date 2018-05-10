@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { startCase } from 'lodash'
 
-import './bcgov_bootstrap'
+import '../style'
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -18,7 +18,7 @@ const defaultProps = {
   disabled: null,
 }
 
-function CheckboxInput(props) {
+function TextInput(props) {
   const {
     name,
     value,
@@ -38,9 +38,10 @@ function CheckboxInput(props) {
       <div className="col-lg-8">
         <input
           id={inputId}
+          className="form-control"
           value={value}
           onChange={onChange}
-          type="checkbox"
+          type="text"
           disabled={disabled}
         />
       </div>
@@ -48,7 +49,7 @@ function CheckboxInput(props) {
   )
 }
 
-CheckboxInput.propTypes = propTypes
-CheckboxInput.defaultProps = defaultProps
+TextInput.propTypes = propTypes
+TextInput.defaultProps = defaultProps
 
-export default CheckboxInput
+export default TextInput
