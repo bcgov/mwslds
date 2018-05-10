@@ -4,6 +4,7 @@ import './MinesSearch.css'
 
 import DataTable from './DataTable'
 import TextInput from './TextInput'
+import CheckboxInput from './CheckboxInput'
 
 const MINES_BASE_ROUTE = 'mines'
 const MINES_PAYLOAD_VALUE = 'mines'
@@ -14,45 +15,18 @@ class MinesSearch extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this)
 
-    // match these up with the api query params to make it easier to generate
-    // the query when we are searching
     this.queryableParams = [
-      {
-        name: 'mineId',
-      },
-      {
-        name: 'mineName',
-      },
-      {
-        name: 'mineLocationName',
-      },
-      {
-        name: 'permiteeCompanyCode',
-      },
-      {
-        name: 'regionCode',
-      },
-      {
-        name: 'mineTypeCode',
-      },
-      {
-        name: 'mineStatusCode',
-      },
-      {
-        name: 'underInvestigation',
-        type: 'boolean',
-      },
-      {
-        name: 'major',
-        type: 'boolean',
-      },
-      {
-        name: 'withIssues',
-        type: 'boolean',
-      },
-      {
-        name: 'limit',
-      },
+      { name: 'mineId' },
+      { name: 'mineName' },
+      { name: 'mineLocationName' },
+      { name: 'permiteeCompanyCode' },
+      { name: 'regionCode' },
+      { name: 'mineTypeCode' },
+      { name: 'mineStatusCode' },
+      { name: 'underInvestigation', type: 'checkbox' },
+      { name: 'major', type: 'checkbox' },
+      { name: 'withIssues', type: 'checkbox' },
+      { name: 'limit' },
     ]
 
     const state = { route: null }
@@ -61,11 +35,11 @@ class MinesSearch extends React.Component {
   }
 
   onInputChange(param) {
-    return (evt) => {
-      this.setState({
-        [param]: evt.target.value,
-      })
-    }
+    return evt => this.updateState(param, evt.target.value)
+  }
+
+  onCheckboxChange(param) {
+    return evt => this.updateState(param, evt.target.checked)
   }
 
   onSubmit(evt) {
@@ -78,9 +52,9 @@ class MinesSearch extends React.Component {
   getValidParams() {
     const params = []
     this.queryableParams.forEach((param) => {
-      const val = this.state[param]
+      const val = this.state[param.name]
       if (val) {
-        params.push(`${param}=${val}`)
+        params.push(`${param.name}=${val}`)
       }
     })
     return params
@@ -101,23 +75,46 @@ class MinesSearch extends React.Component {
     return `${MINES_BASE_ROUTE}?${query}`
   }
 
+  updateState(param, value) {
+    this.setState({
+      [param]: value,
+    })
+  }
+
   renderInputs() {
     return this.queryableParams.map((param) => {
       const { name, type } = param
-      return (
-        <TextInput
-          key={name}
-          name={name}
-          value={this.state[name]}
-          onChange={this.onInputChange(name)}
-          type={type}
-          prefix={this.props.prefix}
-        />
-      )
+
+      switch (type) {
+        case 'checkbox':
+          return (
+            <CheckboxInput
+              key={name}
+              name={name}
+              value={this.state[name]}
+              onChange={this.onCheckboxChange(name)}
+              prefix={this.props.prefix}
+            />
+          )
+        default:
+          return (
+            <TextInput
+              key={name}
+              name={name}
+              value={this.state[name]}
+              onChange={this.onInputChange(name)}
+              prefix={this.props.prefix}
+            />
+          )
+      }
     })
   }
 
   render() {
+    const disabled = !this.queryableParams.reduce((anyValid, param) => (
+      anyValid || !!this.state[param.name]
+    ), false)
+
     return (
       <div>
         <div className="row">
@@ -126,7 +123,7 @@ class MinesSearch extends React.Component {
               {this.renderInputs()}
               <div className="form-group">
                 <div className="col-lg-offset-4 col-lg-8">
-                  <button type="submit" className="btn btn-primary">Query</button>
+                  <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
                 </div>
               </div>
             </form>
