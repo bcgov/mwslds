@@ -22,6 +22,10 @@ const defaultProps = {
   multi: null,
 }
 
+function onChangeWrapper(wrapped) {
+  return evt => wrapped(evt.target.value)
+}
+
 function Select(props) {
   const {
     name,
@@ -42,7 +46,7 @@ function Select(props) {
       <select
         className="form-control"
         value={value}
-        onChange={onChange}
+        onChange={onChangeWrapper(onChange)}
         disabled={disabled}
         multiple={multi}
       >
