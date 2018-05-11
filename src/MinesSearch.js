@@ -6,6 +6,7 @@ import './MinesSearch.css'
 import DataTable from './table/DataTable'
 import TextInput from './input/TextInput'
 import CheckboxInput from './input/CheckboxInput'
+import DataSelect from './input/DataSelect'
 
 const MINES_BASE_ROUTE = 'mines'
 const MINES_PAYLOAD_VALUE = 'mines'
@@ -28,14 +29,32 @@ class MinesSearch extends React.Component {
       { name: 'mineId', inputGroup: 1 },
       { name: 'mineName', inputGroup: 1 },
       { name: 'mineLocationName', inputGroup: 1 },
-      { name: 'permiteeCompanyCode', inputGroup: 2 },
-      { name: 'regionCode', inputGroup: 2 },
-      { name: 'mineTypeCode', inputGroup: 2 },
-      { name: 'mineStatusCode', inputGroup: 2 },
+      { name: 'permiteeCompanyCode', inputGroup: 1 },
+      {
+        name: 'regionCode',
+        type: 'data-select',
+        route: 'regions',
+        payloadValue: 'regions',
+        inputGroup: 2,
+      },
+      {
+        name: 'mineTypeCode',
+        type: 'data-select',
+        route: 'minetypes',
+        payloadValue: 'mineTypes',
+        inputGroup: 2,
+      },
+      {
+        name: 'mineStatusCode',
+        type: 'data-select',
+        route: 'minestatuses',
+        payloadValue: 'mineStatuses',
+        inputGroup: 2,
+      },
       { name: 'underInvestigation', type: 'checkbox', inputGroup: 3 },
       { name: 'major', type: 'checkbox', inputGroup: 3 },
       { name: 'withIssues', type: 'checkbox', inputGroup: 3 },
-      { name: 'limit', inputGroup: 2 },
+      { name: 'limit', inputGroup: 1 },
     ]
 
     const state = { route: null }
@@ -109,6 +128,19 @@ class MinesSearch extends React.Component {
               name={name}
               value={!!this.state[name]}
               onChange={this.onCheckboxChange(name)}
+              prefix={this.props.prefix}
+            />
+          )
+          break
+        case 'data-select':
+          input = (
+            <DataSelect
+              key={name}
+              name={name}
+              route={param.route}
+              payloadValue={param.payloadValue}
+              value={this.state[name]}
+              onChange={this.onInputChange(name)}
               prefix={this.props.prefix}
             />
           )

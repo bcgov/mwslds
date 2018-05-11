@@ -51,6 +51,7 @@ function BaseTable(props) {
   let body
   const { data, loading, error } = props
 
+  // TODO: move this stuff into the DataTable component
   if (loading) {
     header = <th>Loading ...</th>
     body = <tr />
