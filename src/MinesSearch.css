@@ -7,5 +7,21 @@
 }
 
 .form-spacing label {
-  padding-right: 10px;
+  padding-right: 5px;
+}
+
+.form-line {
+  width: 100%;
+}
+
+.form-line label {
+  width: 100%;
+}
+
+.form-main {
+  margin-bottom: 20px;
+}
+
+.form-inline {
+  display: flex;
 }

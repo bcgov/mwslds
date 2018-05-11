@@ -22,6 +22,7 @@ class MinesSearch extends React.Component {
     super(props)
 
     this.onSubmit = this.onSubmit.bind(this)
+    this.onShowAdvancedToggle = this.onShowAdvancedToggle.bind(this)
 
     this.queryableParams = [
       {
@@ -85,13 +86,13 @@ class MinesSearch extends React.Component {
       },
       {
         name: 'limit',
-        inputGroup: 1,
+        inputGroup: 4,
       },
     ]
 
     const state = {
       route: null,
-      showAdvanced: true,
+      showAdvanced: false,
     }
 
     this.queryableParams.forEach((param) => { state[param.name] = '' })
@@ -107,6 +108,12 @@ class MinesSearch extends React.Component {
     this.setState({
       route: this.getRoute(),
     })
+  }
+
+  onShowAdvancedToggle() {
+    this.setState(prevState => ({
+      showAdvanced: !prevState.showAdvanced,
+    }))
   }
 
   getValidParams() {
@@ -150,7 +157,7 @@ class MinesSearch extends React.Component {
     } = this.queryableParams.find(param => param.main)
 
     return (
-      <div key={name} className="form-spacing">
+      <div key={name} className="form-main form-line input-group">
         <Input
           name={name}
           type={type}
@@ -159,7 +166,13 @@ class MinesSearch extends React.Component {
           route={route}
           payloadValue={payloadValue}
           prefix={this.props.prefix}
-        />
+        >
+          <span className="form-inline">
+            <button className="btn btn-default" type="button" onClick={this.onShowAdvancedToggle}>
+              {this.state.showAdvanced ? 'Hide' : 'Show'} Advanced
+            </button>
+          </span>
+        </Input>
       </div>
     )
   }
@@ -202,7 +215,7 @@ class MinesSearch extends React.Component {
     })
 
     return inputs.map((inputList, idx) => (
-      <div key={idx} className="form-spacing">
+      <div key={idx} className="form-spacing input-group">
         {inputList}
       </div>
     ))
@@ -217,13 +230,15 @@ class MinesSearch extends React.Component {
       <div>
         <div className="row">
           <div className="container">
-            <form onSubmit={this.onSubmit}>
-              {this.renderMainInput()}
-              {this.renderSubInputs()}
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
-              </div>
-            </form>
+            <div className="col-lg-12">
+              <form onSubmit={this.onSubmit}>
+                {this.renderMainInput()}
+                {this.state.showAdvanced && this.renderSubInputs()}
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <div className="row">

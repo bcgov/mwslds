@@ -11,11 +11,13 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
+  children: PropTypes.element,
 }
 
 const defaultProps = {
   prefix: null,
   disabled: null,
+  children: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -45,6 +47,7 @@ function TextInput(props) {
         type="text"
         disabled={disabled}
       />
+      {props.children}
     </label>
   )
 }
