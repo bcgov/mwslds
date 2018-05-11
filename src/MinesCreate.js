@@ -20,7 +20,7 @@ const defaultProps = {
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
-const ROUTE = '/mines'
+const ROUTE = 'mines'
 
 class MinesCreate extends React.Component {
   constructor(props) {
