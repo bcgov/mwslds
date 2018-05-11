@@ -1,16 +1,12 @@
 import React from 'react'
 
-import './bcgov_bootstrap'
+import './style'
 
 import './App.css'
 
 import Header from './header'
 import Footer from './footer'
 import MinesSearch from './MinesSearch'
-// import DangerousOccurrencesSearch from './DangerousOccurrencesSearch'
-// import InspectorsTable from './InspectorsTable'
-// import MineStatusesTable from './MineStatusesTable'
-// import MineNoticesTable from './MineNoticesTable'
 
 const navitems = [
 ]
@@ -19,7 +15,7 @@ export default function App() {
   return (
     <div className="App">
       <Header title="Mine Seeker" items={navitems} />
-      <div className="template gov-container shift-left">
+      <div id="main" className="template gov-container">
         <MinesSearch />
       </div>
       <Footer />

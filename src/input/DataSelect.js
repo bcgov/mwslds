@@ -30,6 +30,7 @@ function DataSelect(props) {
   } else if (error) {
     return <Select data={['Error Fetching Data']} {...otherProps} disabled />
   }
+  // expect prop type warning hnyaa, data[0] object instead of string
   const parsedData = [''].concat(data.map(val => val.code))
   return <Select data={parsedData} {...otherProps} />
 }

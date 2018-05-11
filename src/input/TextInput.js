@@ -18,6 +18,10 @@ const defaultProps = {
   disabled: null,
 }
 
+function onChangeWrapper(wrapped) {
+  return evt => wrapped(evt.target.value)
+}
+
 function TextInput(props) {
   const {
     name,
@@ -37,7 +41,7 @@ function TextInput(props) {
         id={inputId}
         className="form-control"
         value={value}
-        onChange={onChange}
+        onChange={onChangeWrapper(onChange)}
         type="text"
         disabled={disabled}
       />

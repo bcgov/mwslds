@@ -18,6 +18,10 @@ const defaultProps = {
   disabled: null,
 }
 
+function onChangeWrapper(wrapped) {
+  return evt => wrapped(evt.target.checked)
+}
+
 function CheckboxInput(props) {
   const {
     name,
@@ -35,7 +39,7 @@ function CheckboxInput(props) {
       <input
         id={inputId}
         value={value}
-        onChange={onChange}
+        onChange={onChangeWrapper(onChange)}
         type="checkbox"
         disabled={disabled}
         style={{ marginRight: '3px' }}
