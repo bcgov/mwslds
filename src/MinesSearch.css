@@ -14,14 +14,18 @@
   width: 100%;
 }
 
-.form-line label {
-  width: 100%;
-}
-
 .form-main {
   margin-bottom: 20px;
 }
 
 .form-inline {
   display: flex;
+}
+
+.form-flex-group {
+  display: flex;
+}
+
+.form-flex-group label {
+  flex: auto;
 }

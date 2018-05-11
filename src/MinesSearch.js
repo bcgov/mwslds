@@ -166,6 +166,7 @@ class MinesSearch extends React.Component {
           route={route}
           payloadValue={payloadValue}
           prefix={this.props.prefix}
+          width="100%"
         >
           <span className="form-inline">
             <button className="btn btn-default" type="button" onClick={this.onShowAdvancedToggle}>
@@ -235,7 +236,9 @@ class MinesSearch extends React.Component {
                 {this.renderMainInput()}
                 {this.state.showAdvanced && this.renderSubInputs()}
                 <div className="form-group">
-                  <button type="submit" className="btn btn-primary" disabled={disabled}>Query</button>
+                  <button type="submit" className="btn btn-primary" disabled={disabled}>
+                    Query
+                  </button>
                 </div>
               </form>
             </div>

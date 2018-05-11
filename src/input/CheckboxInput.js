@@ -11,11 +11,13 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
+  width: PropTypes.string,
 }
 
 const defaultProps = {
   prefix: null,
   disabled: null,
+  width: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -29,13 +31,14 @@ function CheckboxInput(props) {
     onChange,
     prefix,
     disabled,
+    width,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
 
   return (
-    <label className="control-label" htmlFor={inputId}>
+    <label className="control-label" htmlFor={inputId} style={{ width }}>
       <input
         id={inputId}
         value={value}

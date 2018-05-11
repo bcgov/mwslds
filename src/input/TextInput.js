@@ -12,12 +12,14 @@ const propTypes = {
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.element,
+  width: PropTypes.string,
 }
 
 const defaultProps = {
   prefix: null,
   disabled: null,
   children: null,
+  width: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -31,13 +33,14 @@ function TextInput(props) {
     onChange,
     prefix,
     disabled,
+    width,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
 
   return (
-    <label className="control-label" htmlFor={inputId}>
+    <label className="control-label" htmlFor={inputId} style={{ width }}>
       {title}
       <input
         id={inputId}
