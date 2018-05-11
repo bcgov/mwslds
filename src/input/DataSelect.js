@@ -28,7 +28,7 @@ function DataSelect(props) {
   if (loading) {
     return <Select data={['', 'loading...']} {...otherProps} />
   } else if (error) {
-    return <Select data={['failed to fetch data']} {...otherProps} disabled />
+    return <Select data={['Error Fetching Data']} {...otherProps} disabled />
   }
   const parsedData = [''].concat(data.map(val => val.code))
   return <Select data={parsedData} {...otherProps} />
