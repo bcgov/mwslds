@@ -40,12 +40,12 @@ class MinesSearch extends React.Component {
         width: 33,
       },
       {
-        name: 'permiteeCompanyCode',
+        name: 'permitteeCompanyCode',
         inputGroup: 1,
         width: 33,
       },
       // {
-      //   name: 'permiteeCompanyCode',
+      //   name: 'permitteeCompanyCode',
       //   type: 'data-select',
       //   route: 'companies',
       //   payloadValue: 'companies',

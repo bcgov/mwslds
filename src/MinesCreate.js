@@ -11,11 +11,13 @@ import Input from './input'
 const propTypes = {
   token: PropTypes.string,
   prefix: PropTypes.string,
+  data: PropTypes.object,
 }
 
 const defaultProps = {
   token: null,
   prefix: null,
+  data: null,
 }
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
@@ -56,8 +58,10 @@ class MinesCreate extends React.Component {
       },
       {
         name: 'permitteeCompanyCode',
+        type: 'data-select',
+        route: 'companies',
+        payloadValue: 'companies',
         inputGroup: 2,
-        width: 33,
       },
       {
         name: 'regionCode',
@@ -100,8 +104,18 @@ class MinesCreate extends React.Component {
       },
     ]
 
-    const state = {}
-    this.inputParams.forEach((param) => { state[param.name] = '' })
+    const state = {
+      isUpdate: !!props.data,
+    }
+
+    this.inputParams.forEach((param) => {
+      const { name } = param
+      let value = ''
+      if (props.data) {
+        value = props.data[name] || ''
+      }
+      state[name] = value
+    })
 
     this.state = state
   }
@@ -121,9 +135,10 @@ class MinesCreate extends React.Component {
 
     const url = this.getUrl()
     const data = this.getData()
+    const method = this.state.isUpdate ? 'PUT' : 'POST'
 
     const options = {
-      method: 'POST',
+      method,
       headers: new Headers({
         Authorization: `Bearer ${token}`,
         'content-type': 'application/json',
@@ -144,6 +159,10 @@ class MinesCreate extends React.Component {
 
   getData() {
     const data = {}
+    if (this.state.isUpdate) {
+      data.enteredBy = this.props.data.enteredBy
+      data.enteredDate = this.props.data.enteredDate
+    }
     this.inputParams.forEach((param) => {
       const { name } = param
       const val = this.state[name]
@@ -155,7 +174,8 @@ class MinesCreate extends React.Component {
   }
 
   getUrl() {
-    return `${BASE_URL}/${ROUTE}`
+    const updateRoute = this.state.isUpdate ? `/${this.props.data.id}` : ''
+    return `${BASE_URL}/${ROUTE}${updateRoute}`
   }
 
   validate() {
@@ -213,7 +233,7 @@ class MinesCreate extends React.Component {
           {this.renderInputs()}
           <div className="form-group">
             <button type="submit" className="btn btn-primary" disabled={disabled}>
-              Create
+              {this.state.isUpdate ? 'Update' : 'Create'}
             </button>
           </div>
         </form>
