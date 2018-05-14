@@ -120,7 +120,7 @@ class MinesCreate extends React.Component {
     }
 
     const url = this.getUrl()
-    const data = this.getPostData()
+    const data = this.getData()
 
     const options = {
       method: 'POST',
@@ -142,12 +142,13 @@ class MinesCreate extends React.Component {
     })
   }
 
-  getPostData() {
+  getData() {
     const data = {}
     this.inputParams.forEach((param) => {
-      const val = this.state[param.name]
+      const { name } = param
+      const val = this.state[name]
       if (val) {
-        data[param.name] = val
+        data[name] = val
       }
     })
     return data
@@ -208,7 +209,7 @@ class MinesCreate extends React.Component {
 
     return (
       <div className="container">
-        <form className="" onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           {this.renderInputs()}
           <div className="form-group">
             <button type="submit" className="btn btn-primary" disabled={disabled}>
