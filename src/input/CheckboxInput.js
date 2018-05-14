@@ -41,7 +41,7 @@ function CheckboxInput(props) {
     <label className="control-label" htmlFor={inputId} style={{ width }}>
       <input
         id={inputId}
-        value={value}
+        checked={value}
         onChange={onChangeWrapper(onChange)}
         type="checkbox"
         disabled={disabled}
