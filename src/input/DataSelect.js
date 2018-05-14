@@ -9,12 +9,14 @@ const propTypes = {
   data: PropTypes.arrayOf(PropTypes.string),
   loading: PropTypes.bool,
   error: PropTypes.object,
+  value: PropTypes.string,
 }
 
 const defaultProps = {
   data: null,
   loading: null,
   error: null,
+  value: null,
 }
 
 function DataSelect(props) {
@@ -26,7 +28,7 @@ function DataSelect(props) {
   } = props
 
   if (loading) {
-    return <Select data={['', 'loading...']} {...otherProps} />
+    return <Select data={[props.value || '', 'loading...']} {...otherProps} />
   } else if (error) {
     return <Select data={['Error Fetching Data']} {...otherProps} disabled />
   }
