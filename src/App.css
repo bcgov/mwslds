@@ -6,3 +6,7 @@
 .shift-left {
   margin-right: 30px;
 }
+
+.App {
+  height: inherit;
+}
