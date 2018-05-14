@@ -13,6 +13,7 @@ const propTypes = {
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
   multi: PropTypes.bool,
+  width: PropTypes.string,
 }
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   prefix: null,
   disabled: null,
   multi: null,
+  width: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -35,13 +37,14 @@ function Select(props) {
     prefix,
     disabled,
     multi,
+    width,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
 
   return (
-    <label className="control-label" htmlFor={inputId}>
+    <label className="control-label" htmlFor={inputId} style={{ width }}>
       {title}
       <select
         className="form-control"

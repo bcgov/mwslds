@@ -28,6 +28,7 @@ class MinesSearch extends React.Component {
       {
         name: 'mineId',
         inputGroup: 1,
+        width: 33,
       },
       {
         name: 'mineName',
@@ -36,10 +37,12 @@ class MinesSearch extends React.Component {
       {
         name: 'mineLocationName',
         inputGroup: 1,
+        width: 33,
       },
       {
         name: 'permiteeCompanyCode',
         inputGroup: 1,
+        width: 33,
       },
       // {
       //   name: 'permiteeCompanyCode',
@@ -54,6 +57,7 @@ class MinesSearch extends React.Component {
         route: 'regions',
         payloadValue: 'regions',
         inputGroup: 2,
+        width: 20,
       },
       {
         name: 'mineTypeCode',
@@ -61,6 +65,7 @@ class MinesSearch extends React.Component {
         route: 'minetypes',
         payloadValue: 'mineTypes',
         inputGroup: 2,
+        width: 20,
       },
       {
         name: 'mineStatusCode',
@@ -68,6 +73,7 @@ class MinesSearch extends React.Component {
         route: 'minestatuses',
         payloadValue: 'mineStatuses',
         inputGroup: 2,
+        width: 20,
       },
       {
         name: 'underInvestigation',
@@ -87,6 +93,7 @@ class MinesSearch extends React.Component {
       {
         name: 'limit',
         inputGroup: 4,
+        width: 5,
       },
     ]
 
@@ -189,6 +196,7 @@ class MinesSearch extends React.Component {
         main,
         route,
         payloadValue,
+        width,
       } = param
 
       if (main) {
@@ -209,6 +217,7 @@ class MinesSearch extends React.Component {
           route={route}
           payloadValue={payloadValue}
           prefix={this.props.prefix}
+          width={width && `${width}%`}
         />
       )
 
@@ -216,7 +225,7 @@ class MinesSearch extends React.Component {
     })
 
     return inputs.map((inputList, idx) => (
-      <div key={idx} className="form-spacing input-group">
+      <div key={idx} className="input-group form-line form-spacing">
         {inputList}
       </div>
     ))
@@ -231,17 +240,15 @@ class MinesSearch extends React.Component {
       <div>
         <div className="row">
           <div className="container">
-            <div className="col-lg-12">
-              <form onSubmit={this.onSubmit}>
-                {this.renderMainInput()}
-                {this.state.showAdvanced && this.renderSubInputs()}
-                <div className="form-group">
-                  <button type="submit" className="btn btn-primary" disabled={disabled}>
-                    Query
-                  </button>
-                </div>
-              </form>
-            </div>
+            <form onSubmit={this.onSubmit}>
+              {this.renderMainInput()}
+              {this.state.showAdvanced && this.renderSubInputs()}
+              <div className="form-group">
+                <button type="submit" className="btn btn-primary" disabled={disabled}>
+                  Query
+                </button>
+              </div>
+            </form>
           </div>
         </div>
         <div className="row">

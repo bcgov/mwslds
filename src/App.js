@@ -18,8 +18,8 @@ export default function App() {
     <div className="App">
       <Header title="Mine Seeker" items={navitems} />
       <div id="main" className="template gov-container">
-        <MinesCreate columns={4} />
-        {/* <MinesSearch /> */}
+        <MinesCreate />
+        <MinesSearch />
       </div>
       <Footer />
     </div>

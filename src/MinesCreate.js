@@ -10,12 +10,12 @@ import Input from './input'
 
 const propTypes = {
   token: PropTypes.string,
-  columns: PropTypes.number,
+  prefix: PropTypes.string,
 }
 
 const defaultProps = {
   token: null,
-  columns: 1,
+  prefix: null,
 }
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
@@ -29,22 +29,79 @@ class MinesCreate extends React.Component {
     this.onSubmit = this.onSubmit.bind(this)
 
     this.inputParams = [
-      'alias',
-      'district',
-      'major',
-      'mineLocationName',
-      'mineManager',
-      'mineName',
-      'mineStatusCode',
-      'mineTypeCode',
-      'permitteeCompanyCode',
-      'regionCode',
-      'underInvestigation',
-      'withIssues',
+      {
+        name: 'mineName',
+        inputGroup: 1,
+        width: 33,
+      },
+      {
+        name: 'alias',
+        inputGroup: 1,
+        width: 33,
+      },
+      {
+        name: 'mineLocationName',
+        inputGroup: 1,
+        width: 33,
+      },
+      {
+        name: 'district',
+        inputGroup: 2,
+        width: 33,
+      },
+      {
+        name: 'mineManager',
+        inputGroup: 2,
+        width: 33,
+      },
+      {
+        name: 'permitteeCompanyCode',
+        inputGroup: 2,
+        width: 33,
+      },
+      {
+        name: 'regionCode',
+        type: 'data-select',
+        route: 'regions',
+        payloadValue: 'regions',
+        inputGroup: 3,
+        width: 20,
+      },
+      {
+        name: 'mineTypeCode',
+        type: 'data-select',
+        route: 'minetypes',
+        payloadValue: 'mineTypes',
+        inputGroup: 3,
+        width: 20,
+      },
+      {
+        name: 'mineStatusCode',
+        type: 'data-select',
+        route: 'minestatuses',
+        payloadValue: 'mineStatuses',
+        inputGroup: 3,
+        width: 20,
+      },
+      {
+        name: 'major',
+        type: 'checkbox',
+        inputGroup: 4,
+      },
+      {
+        name: 'underInvestigation',
+        type: 'checkbox',
+        inputGroup: 4,
+      },
+      {
+        name: 'withIssues',
+        type: 'checkbox',
+        inputGroup: 4,
+      },
     ]
 
     const state = {}
-    this.inputParams.forEach((param) => { state[param] = '' })
+    this.inputParams.forEach((param) => { state[param.name] = '' })
 
     this.state = state
   }
@@ -76,6 +133,9 @@ class MinesCreate extends React.Component {
     }
 
     fetch(url, options).then((resp) => {
+      if (!resp.ok) {
+        throw Error(resp.statusText)
+      }
       console.log(resp)
     }).catch((error) => {
       console.log(error)
@@ -85,9 +145,9 @@ class MinesCreate extends React.Component {
   getPostData() {
     const data = {}
     this.inputParams.forEach((param) => {
-      const val = this.state[param]
+      const val = this.state[param.name]
       if (val) {
-        data[param] = val
+        data[param.name] = val
       }
     })
     return data
@@ -110,25 +170,34 @@ class MinesCreate extends React.Component {
   renderInputs() {
     const inputGroups = []
 
-    this.inputParams.forEach((param, idx) => {
-      const group = Math.floor(idx / this.props.columns)
-      const inputs = inputGroups[group] || []
-      const width = Math.floor(100 / this.props.columns)
+    this.inputParams.forEach((param) => {
+      const {
+        name,
+        type,
+        route,
+        payloadValue,
+        inputGroup,
+        width,
+      } = param
+      const inputs = inputGroups[inputGroup] || []
       inputs.push((
         <Input
-          key={param}
-          name={param}
-          value={this.state[param]}
-          onChange={this.onInputChange(param)}
+          key={name}
+          name={name}
+          type={type}
+          route={route}
+          payloadValue={payloadValue}
+          value={this.state[name]}
+          onChange={this.onInputChange(name)}
           prefix={this.props.prefix}
-          width={`${width}%`}
+          width={width && `${width}%`}
         />
       ))
-      inputGroups[group] = inputs
+      inputGroups[inputGroup] = inputs
     })
 
     return inputGroups.map((group, idx) => (
-      <div key={idx} className="form-group form-spacing">
+      <div key={idx} className="input-group form-line form-spacing">
         {group}
       </div>
     ))
