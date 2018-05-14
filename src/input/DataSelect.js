@@ -10,6 +10,7 @@ const propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.object,
   value: PropTypes.string,
+  route: PropTypes.string,
 }
 
 const defaultProps = {
@@ -17,24 +18,36 @@ const defaultProps = {
   loading: null,
   error: null,
   value: null,
+  route: null,
 }
 
-function DataSelect(props) {
-  const {
-    loading,
-    data,
-    error,
-    ...otherProps
-  } = props
-
-  if (loading) {
-    return <Select data={[props.value || '', 'loading...']} {...otherProps} />
-  } else if (error) {
-    return <Select data={['Error Fetching Data']} {...otherProps} disabled />
+class DataSelect extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.route === nextProps.route &&
+      this.props.data === nextProps.data &&
+      this.props.value === nextProps.value) {
+      return false
+    }
+    return true
   }
-  // expect prop type warning hnyaa, data[0] object instead of string
-  const parsedData = [''].concat(data.map(val => val.code))
-  return <Select data={parsedData} {...otherProps} />
+
+  render() {
+    const {
+      loading,
+      data,
+      error,
+      ...otherProps
+    } = this.props
+
+    if (loading) {
+      return <Select data={[this.props.value || '', 'loading...']} {...otherProps} />
+    } else if (error) {
+      return <Select data={['Error Fetching Data']} {...otherProps} disabled />
+    }
+    // expect prop type warning hnyaa, data[0] object instead of string
+    const parsedData = [''].concat(data.map(val => val.code))
+    return <Select data={parsedData} {...otherProps} />
+  }
 }
 
 DataSelect.propTypes = propTypes

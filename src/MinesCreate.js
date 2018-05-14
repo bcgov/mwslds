@@ -61,7 +61,8 @@ class MinesCreate extends React.Component {
         type: 'data-select',
         route: 'companies',
         payloadValue: 'companies',
-        inputGroup: 2,
+        inputGroup: 3,
+        width: 20,
       },
       {
         name: 'regionCode',
