@@ -115,7 +115,7 @@ class MinesCreate extends React.Component {
     ]
 
     const state = {
-      isUpdate: !!props.data,
+      isUpdate: !!(props.data && props.data.id),
     }
 
     this.inputParams.forEach((param) => {
