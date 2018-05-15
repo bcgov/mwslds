@@ -43,19 +43,13 @@ function getBody(data) {
 }
 
 function BaseTable(props) {
+  const { data } = props
   let header
   let body
-  const { data, loading, error } = props
 
-  if (loading) {
-    header = <th>Loading ...</th>
-    body = <tr />
-  } else if (data && data.length) {
+  if (data && data.length) {
     header = getHeader(data[0] || {})
     body = getBody(data)
-  } else if (error) {
-    header = <th>Error Fetching Data</th>
-    body = <tr><td>{error.message}</td></tr>
   } else {
     header = <th>No Data</th>
     body = <tr />
