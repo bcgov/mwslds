@@ -6,15 +6,11 @@ import { startCase } from 'lodash'
 import '../style'
 
 const propTypes = {
-  loading: PropTypes.bool,
   data: PropTypes.array,
-  error: PropTypes.object,
 }
 
 const defaultProps = {
-  loading: null,
   data: null,
-  error: null,
 }
 
 function getHeaderCols(row) {
@@ -51,7 +47,6 @@ function BaseTable(props) {
   let body
   const { data, loading, error } = props
 
-  // TODO: move this stuff into the DataTable component
   if (loading) {
     header = <th>Loading ...</th>
     body = <tr />

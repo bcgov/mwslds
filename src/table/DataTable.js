@@ -7,32 +7,39 @@ import withDataTransform from '../datafetching/DataTransform'
 import withToken from '../datafetching/Token'
 
 const propTypes = {
-  route: PropTypes.string,
+  loading: PropTypes.bool,
+  data: PropTypes.array,
+  error: PropTypes.object,
 }
 
 const defaultProps = {
-  route: null,
+  loading: null,
+  data: null,
+  error: null,
 }
 
-const WrappedTable = withToken(withData(withDataTransform(BaseTable)))
+function DataTable(props) {
+  const {
+    loading,
+    data,
+    error,
+    ...otherProps
+  } = props
+  let parsedData
 
-class DataTable extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    if (this.props.route === nextProps.route) {
-      return false
-    }
-    return true
+  if (loading) {
+    parsedData = [{ 'loading...': '' }]
+  } else if (error) {
+    parsedData = [{ 'errorFetchingData...': error.message }]
+  } else {
+    parsedData = data
   }
 
-  render() {
-    if (!this.props.route) {
-      return <BaseTable />
-    }
-    return <WrappedTable {...this.props} />
-  }
+  return <BaseTable data={parsedData} {...otherProps} />
 }
+
 
 DataTable.propTypes = propTypes
 DataTable.defaultProps = defaultProps
 
-export default DataTable
+export default withToken(withData(withDataTransform(DataTable)))

@@ -20,8 +20,8 @@ function withData(Wrapped) {
 
       this.state = {
         data: null,
-        loading: true,
         error: null,
+        loading: false,
       }
     }
 
@@ -41,9 +41,9 @@ function withData(Wrapped) {
     }
 
     loadData() {
-      const { token } = this.props
+      const { token, route } = this.props
 
-      if (!token) {
+      if (!token || !route) {
         return
       }
 
