@@ -24,6 +24,15 @@ const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
 const ROUTE = 'mines'
 
+function selectTransform(param) {
+  return (data) => {
+    if (data) {
+      return data[param].map(val => val.code)
+    }
+    return null
+  }
+}
+
 class MinesCreate extends React.Component {
   constructor(props) {
     super(props)
@@ -60,7 +69,7 @@ class MinesCreate extends React.Component {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
-        payloadValue: 'companies',
+        transform: selectTransform('companies'),
         inputGroup: 3,
         width: 20,
       },
@@ -68,7 +77,7 @@ class MinesCreate extends React.Component {
         name: 'regionCode',
         type: 'data-select',
         route: 'regions',
-        payloadValue: 'regions',
+        transform: selectTransform('regions'),
         inputGroup: 3,
         width: 20,
       },
@@ -76,7 +85,7 @@ class MinesCreate extends React.Component {
         name: 'mineTypeCode',
         type: 'data-select',
         route: 'minetypes',
-        payloadValue: 'mineTypes',
+        transform: selectTransform('mineTypes'),
         inputGroup: 3,
         width: 20,
       },
@@ -84,7 +93,7 @@ class MinesCreate extends React.Component {
         name: 'mineStatusCode',
         type: 'data-select',
         route: 'minestatuses',
-        payloadValue: 'mineStatuses',
+        transform: selectTransform('mineStatuses'),
         inputGroup: 3,
         width: 20,
       },
@@ -197,7 +206,7 @@ class MinesCreate extends React.Component {
         name,
         type,
         route,
-        payloadValue,
+        transform,
         inputGroup,
         width,
       } = param
@@ -208,7 +217,7 @@ class MinesCreate extends React.Component {
           name={name}
           type={type}
           route={route}
-          payloadValue={payloadValue}
+          transform={transform}
           value={this.state[name]}
           onChange={this.onInputChange(name)}
           prefix={this.props.prefix}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Select from './Select'
 import withData from '../datafetching/DataLoader'
+import withDataTransform from '../datafetching/DataTransform'
 import withToken from '../datafetching/Token'
 
 const propTypes = {
@@ -23,9 +24,9 @@ const defaultProps = {
 
 class DataSelect extends React.Component {
   shouldComponentUpdate(nextProps) {
-    if (this.props.route === nextProps.route &&
-      this.props.data === nextProps.data &&
-      this.props.value === nextProps.value) {
+    if (this.props.data === nextProps.data &&
+      this.props.value === nextProps.value &&
+      this.props.loading === nextProps.loading) {
       return false
     }
     return true
@@ -42,10 +43,9 @@ class DataSelect extends React.Component {
     if (loading) {
       return <Select data={[this.props.value || '', 'loading...']} {...otherProps} />
     } else if (error) {
-      return <Select data={['Error Fetching Data']} {...otherProps} disabled />
+      return <Select data={[this.props.value || 'Error Fetching Data']} {...otherProps} disabled />
     }
-    // expect prop type warning hnyaa, data[0] object instead of string
-    const parsedData = [''].concat(data.map(val => val.code))
+    const parsedData = [''].concat(data)
     return <Select data={parsedData} {...otherProps} />
   }
 }
@@ -53,4 +53,4 @@ class DataSelect extends React.Component {
 DataSelect.propTypes = propTypes
 DataSelect.defaultProps = defaultProps
 
-export default withToken(withData(DataSelect))
+export default withToken(withData(withDataTransform(DataSelect)))

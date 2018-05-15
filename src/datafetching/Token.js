@@ -3,7 +3,7 @@ import React from 'react'
 import token from './Secret'
 
 export default function withToken(Wrapped) {
-  return class extends React.Component {
+  return class WithTokenHOC extends React.Component {
     constructor(props) {
       super(props)
       this.state = {

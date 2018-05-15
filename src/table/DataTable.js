@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import BaseTable from './BaseTable'
 import withData from '../datafetching/DataLoader'
+import withDataTransform from '../datafetching/DataTransform'
 import withToken from '../datafetching/Token'
 
 const propTypes = {
@@ -13,7 +14,7 @@ const defaultProps = {
   route: null,
 }
 
-const WrappedTable = withToken(withData(BaseTable))
+const WrappedTable = withToken(withData(withDataTransform(BaseTable)))
 
 class DataTable extends React.Component {
   shouldComponentUpdate(nextProps) {

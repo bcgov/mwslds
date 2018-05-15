@@ -7,7 +7,6 @@ import DataTable from './table/DataTable'
 import Input from './input'
 
 const MINES_BASE_ROUTE = 'mines'
-const MINES_PAYLOAD_VALUE = 'mines'
 
 const propTypes = {
   prefix: PropTypes.string,
@@ -15,6 +14,22 @@ const propTypes = {
 
 const defaultProps = {
   prefix: null,
+}
+
+function selectTransform(param) {
+  return (data) => {
+    if (data) {
+      return data[param].map(val => val.code)
+    }
+    return null
+  }
+}
+
+function minesTransform(data) {
+  if (data) {
+    return data.mines
+  }
+  return null
 }
 
 class MinesSearch extends React.Component {
@@ -39,16 +54,11 @@ class MinesSearch extends React.Component {
         inputGroup: 1,
         width: 33,
       },
-      // {
-      //   name: 'permitteeCompanyCode',
-      //   inputGroup: 1,
-      //   width: 33,
-      // },
       {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
-        payloadValue: 'companies',
+        transform: selectTransform('companies'),
         inputGroup: 2,
         width: 20,
       },
@@ -56,7 +66,7 @@ class MinesSearch extends React.Component {
         name: 'regionCode',
         type: 'data-select',
         route: 'regions',
-        payloadValue: 'regions',
+        transform: selectTransform('regions'),
         inputGroup: 2,
         width: 20,
       },
@@ -64,7 +74,7 @@ class MinesSearch extends React.Component {
         name: 'mineTypeCode',
         type: 'data-select',
         route: 'minetypes',
-        payloadValue: 'mineTypes',
+        transform: selectTransform('mineTypes'),
         inputGroup: 2,
         width: 20,
       },
@@ -72,7 +82,7 @@ class MinesSearch extends React.Component {
         name: 'mineStatusCode',
         type: 'data-select',
         route: 'minestatuses',
-        payloadValue: 'mineStatuses',
+        transform: selectTransform('mineStatuses'),
         inputGroup: 2,
         width: 20,
       },
@@ -161,7 +171,7 @@ class MinesSearch extends React.Component {
       name,
       type,
       route,
-      payloadValue,
+      transform,
     } = this.queryableParams.find(param => param.main)
 
     return (
@@ -172,7 +182,7 @@ class MinesSearch extends React.Component {
           value={this.state[name]}
           onChange={this.onInputChange(name)}
           route={route}
-          payloadValue={payloadValue}
+          transform={transform}
           prefix={this.props.prefix}
           width="100%"
         >
@@ -196,7 +206,7 @@ class MinesSearch extends React.Component {
         inputGroup,
         main,
         route,
-        payloadValue,
+        transform,
         width,
       } = param
 
@@ -216,7 +226,7 @@ class MinesSearch extends React.Component {
           value={this.state[name]}
           onChange={this.onInputChange(name)}
           route={route}
-          payloadValue={payloadValue}
+          transform={transform}
           prefix={this.props.prefix}
           width={width && `${width}%`}
         />
@@ -254,7 +264,7 @@ class MinesSearch extends React.Component {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <DataTable route={this.state.route} payloadValue={MINES_PAYLOAD_VALUE} />
+            <DataTable route={this.state.route} transform={minesTransform} />
           </div>
         </div>
       </div>

@@ -6,13 +6,11 @@ const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 const propTypes = {
   token: PropTypes.string,
   route: PropTypes.string,
-  payloadValue: PropTypes.string,
 }
 
 const defaultProps = {
   token: null,
   route: null,
-  payloadValue: null,
 }
 
 function withData(Wrapped) {
@@ -71,13 +69,8 @@ function withData(Wrapped) {
           return resp.json()
         })
         .then((parsed) => {
-          let data = parsed
-          const { payloadValue } = this.props
-          if (payloadValue) {
-            data = parsed[payloadValue]
-          }
           this.setState({
-            data,
+            data: parsed,
             loading: false,
           })
         })
