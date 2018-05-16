@@ -26,6 +26,7 @@ function withData(Wrapped) {
     }
 
     componentDidMount() {
+      this.mounted = true
       this.loadData()
     }
 
@@ -34,6 +35,10 @@ function withData(Wrapped) {
           this.props.route !== prevProps.route) {
         this.loadData()
       }
+    }
+
+    componentWillUnmount() {
+      this.mounted = false
     }
 
     getUrl() {
@@ -63,22 +68,30 @@ function withData(Wrapped) {
 
       fetch(url, options)
         .then((resp) => {
+          if (!this.mounted) {
+            return null
+          }
+
           if (!resp.ok) {
             throw Error(resp.statusText)
           }
           return resp.json()
         })
         .then((parsed) => {
-          this.setState({
-            data: parsed,
-            loading: false,
-          })
+          if (this.mounted) {
+            this.setState({
+              data: parsed,
+              loading: false,
+            })
+          }
         })
         .catch((error) => {
-          this.setState({
-            error,
-            loading: false,
-          })
+          if (this.mounted) {
+            this.setState({
+              error,
+              loading: false,
+            })
+          }
         })
     }
 

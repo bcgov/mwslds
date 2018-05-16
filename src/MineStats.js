@@ -67,6 +67,8 @@ class MineStats extends React.Component {
   }
 
   componentDidMount() {
+    this.mounted = true
+
     const { token } = this.props
     const options = {
       headers: new Headers({
@@ -79,19 +81,31 @@ class MineStats extends React.Component {
 
       fetch(url, options)
         .then((resp) => {
+          if (!this.mounted) {
+            return null
+          }
+
           if (!resp.ok) {
             throw Error(resp.statusText)
           }
           return resp.json()
         })
         .then((parsed) => {
-          const count = bar.transform(parsed)
-          this.updateCount(bar.name, count)
+          if (this.mounted) {
+            const count = bar.transform(parsed)
+            this.updateCount(bar.name, count)
+          }
         })
         .catch((error) => {
-          console.log(error)
+          if (this.mounted) {
+            console.log(error)
+          }
         })
     })
+  }
+
+  componentWillUnmount() {
+    this.mounted = false
   }
 
   addData(newData) {
