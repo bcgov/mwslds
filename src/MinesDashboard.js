@@ -7,22 +7,25 @@ import DataTable from './table/DataTable'
 import MineStats from './MineStats'
 
 
-const propTypes = {}
-const defaultProps = {}
+const propTypes = {
+  tableRoute: PropTypes.string,
+}
 
-const lastTenRoute = 'mines?limit=10'
+const defaultProps = {
+  tableRoute: 'mines?limit=10',
+}
 
 function minesTransform(data) {
   return data && data.mines
 }
 
-function MinesDashboard() {
+function MinesDashboard(props) {
   return (
     <div>
       <div className="container">
         <MineStats />
       </div>
-      <DataTable route={lastTenRoute} transform={minesTransform} />
+      <DataTable route={props.tableRoute} transform={minesTransform} />
     </div>
   )
 }

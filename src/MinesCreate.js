@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import './style'
 import './MinesSearch.css'
 
+import withData from './datafetching/DataLoader'
 import withToken from './datafetching/Token'
 
 import Input from './input'
@@ -34,6 +35,20 @@ function selectTransform(param) {
 }
 
 class MinesCreate extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { data } = nextProps
+    if (data && data.id && !prevState.isUpdate) {
+      // only update the state if we have data passed in and we are not yet
+      // doing an update (aka. the values have not already been seen)
+      const toUpdate = {
+        isUpdate: true,
+      }
+      Object.assign(toUpdate, data)
+      return toUpdate
+    }
+    return null
+  }
+
   constructor(props) {
     super(props)
 
@@ -115,17 +130,9 @@ class MinesCreate extends React.Component {
     ]
 
     const state = {
-      isUpdate: !!(props.data && props.data.id),
+      isUpdate: false,
     }
-
-    this.inputParams.forEach((param) => {
-      const { name } = param
-      let value = ''
-      if (props.data) {
-        value = props.data[name] || ''
-      }
-      state[name] = value
-    })
+    this.inputParams.forEach((param) => { state[param.name] = '' })
 
     this.state = state
   }
@@ -255,4 +262,4 @@ class MinesCreate extends React.Component {
 MinesCreate.propTypes = propTypes
 MinesCreate.defaultProps = defaultProps
 
-export default withToken(MinesCreate)
+export default withToken(withData(MinesCreate))
