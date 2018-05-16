@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// import { withRouter } from 'react-router-dom'
+
 import './style'
 
 import DataTable from './table/DataTable'
@@ -19,15 +21,33 @@ function minesTransform(data) {
   return data && data.mines
 }
 
-function MinesDashboard(props) {
-  return (
-    <div>
-      <div className="container">
-        <MineStats />
+class MinesDashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.onRowClick = this.onRowClick.bind(this)
+  }
+
+  onRowClick(row) {
+    const { id } = row
+    const { history } = this.props
+    const route = `/mine/${id}`
+    history.push(route)
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <MineStats />
+        </div>
+        <DataTable
+          route={this.props.tableRoute}
+          transform={minesTransform}
+          onRowClick={this.onRowClick}
+        />
       </div>
-      <DataTable route={props.tableRoute} transform={minesTransform} />
-    </div>
-  )
+    )
+  }
 }
 
 MinesDashboard.propTypes = propTypes

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import './style'
 import './App.css'
@@ -8,7 +8,9 @@ import Header from './header'
 import Footer from './footer'
 import MinesDashboard from './MinesDashboard'
 import MinesSearch from './MinesSearch'
-import MinesView from './MinesView'
+import MinesViewRoute from './MinesViewRoute'
+
+const notFound = () => <h2 className="container">There is nothing here!</h2>
 
 export default function App() {
   return (
@@ -20,10 +22,13 @@ export default function App() {
           <Link to="/search">Search</Link>
         </Header>
         <div id="main" className="template gov-container">
-          <Route exact path="/" component={MinesDashboard} />
-          <Route path="/mine" component={MinesView} />
-          <Route path="/mine/:mineId" component={MinesView} />
-          <Route path="/search" component={MinesSearch} />
+          <Switch>
+            <Route exact path="/" component={MinesDashboard} />
+            <Route path="/mine/:mineId" component={MinesViewRoute} />
+            <Route path="/mine" component={MinesViewRoute} />
+            <Route path="/search" component={MinesSearch} />
+            <Route component={notFound} />
+          </Switch>
         </div>
         <Footer />
       </div>

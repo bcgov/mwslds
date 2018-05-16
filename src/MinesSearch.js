@@ -37,6 +37,7 @@ class MinesSearch extends React.Component {
     super(props)
 
     this.onSubmit = this.onSubmit.bind(this)
+    this.onRowClick = this.onRowClick.bind(this)
     this.onShowAdvancedToggle = this.onShowAdvancedToggle.bind(this)
 
     this.queryableParams = [
@@ -132,6 +133,13 @@ class MinesSearch extends React.Component {
     this.setState(prevState => ({
       showAdvanced: !prevState.showAdvanced,
     }))
+  }
+
+  onRowClick(row) {
+    const { id } = row
+    const { history } = this.props
+    const route = `/mine/${id}`
+    history.push(route)
   }
 
   getValidParams() {
@@ -264,7 +272,11 @@ class MinesSearch extends React.Component {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <DataTable route={this.state.route} transform={minesTransform} />
+            <DataTable
+              route={this.state.route}
+              transform={minesTransform}
+              onRowClick={this.onRowClick}
+            />
           </div>
         </div>
       </div>
