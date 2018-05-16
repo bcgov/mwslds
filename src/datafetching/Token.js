@@ -1,13 +1,15 @@
 import React from 'react'
 
-import token from './Secret'
+import currToken from './Secret'
+
+const token = currToken
 
 export default function withToken(Wrapped) {
   return class WithTokenHOC extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        token: null,
+        token,
       }
     }
 
