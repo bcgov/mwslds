@@ -99,7 +99,7 @@ class MineStats extends React.Component {
   }
 
   updateCount(name, count) {
-    // we have to create a new copy of the object to re render the chart
+    // we have to create a new copy of the data object to re render the chart
     const data = cloneDeep(this.state.data)
     const param = data.find(bar => bar.name === name)
     param.count = count
@@ -114,7 +114,7 @@ class MineStats extends React.Component {
       <BarChart width={width} height={height} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
-        <Bar dataKey="count" fill={fill} />
+        <Bar dataKey="count" fill={fill} label />
       </BarChart>
     )
   }

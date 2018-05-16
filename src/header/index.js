@@ -13,24 +13,17 @@ function focusMenu() {
 }
 
 const propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    href: PropTypes.string,
-  })),
   title: PropTypes.string,
+  children: PropTypes.arrayOf(PropTypes.element),
 }
 
 const defaultProps = {
-  items: [],
   title: '',
+  children: [],
 }
 
 function Header(props) {
-  const { items, title } = props
-
-  const itemElements = items.map(link => (
-    <a key={link.name} className="nav-item nav-link" href={link.href}>{link.name}</a>
-  ))
+  const { title, children } = props
 
   return (
     <div id="header">
@@ -69,8 +62,8 @@ function Header(props) {
             </div>
             <div id="navbar" className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
-                {itemElements && itemElements.map(ele => (
-                  <li>{ele}</li>
+                {children && children.map((ele, idx) => (
+                  <li key={idx}>{ele}</li>
                 ))}
               </ul>
             </div>
@@ -79,7 +72,7 @@ function Header(props) {
         <div className="navigationRibbon">
           <div className="level2Navigation">
             <div className="container">
-              {itemElements}
+              {children}
             </div>
           </div>
         </div>
