@@ -43,7 +43,14 @@ class MinesView extends React.Component {
       const toUpdate = {
         isUpdate: true,
       }
-      Object.assign(toUpdate, data)
+
+      Object.keys(data).forEach((key) => {
+        const val = data[key]
+        // dont change values to undefined or null, react doesnt like those as values
+        if (val !== null && val !== undefined) {
+          toUpdate[key] = val
+        }
+      })
       return toUpdate
     }
     return null
@@ -57,35 +64,47 @@ class MinesView extends React.Component {
     this.inputParams = [
       {
         name: 'mineName',
-        inputGroup: 1,
-        width: 33,
+        inputGroup: 0,
+        width: 80,
       },
       {
         name: 'alias',
         inputGroup: 1,
-        width: 33,
+        width: 40,
       },
       {
         name: 'mineLocationName',
         inputGroup: 1,
-        width: 33,
+        width: 40,
       },
       {
         name: 'district',
         inputGroup: 2,
-        width: 33,
+        width: 40,
       },
       {
         name: 'mineManager',
         inputGroup: 2,
-        width: 33,
+        width: 40,
+      },
+      {
+        name: 'enteredBy',
+        inputGroup: 3,
+        width: 40,
+        disabled: true,
+      },
+      {
+        name: 'enteredDate',
+        inputGroup: 3,
+        width: 40,
+        disabled: true,
       },
       {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
         transform: selectTransform('companies'),
-        inputGroup: 3,
+        inputGroup: 4,
         width: 20,
       },
       {
@@ -93,7 +112,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'regions',
         transform: selectTransform('regions'),
-        inputGroup: 3,
+        inputGroup: 4,
         width: 20,
       },
       {
@@ -101,7 +120,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'minetypes',
         transform: selectTransform('mineTypes'),
-        inputGroup: 3,
+        inputGroup: 4,
         width: 20,
       },
       {
@@ -109,23 +128,23 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'minestatuses',
         transform: selectTransform('mineStatuses'),
-        inputGroup: 3,
+        inputGroup: 4,
         width: 20,
       },
       {
         name: 'major',
         type: 'checkbox',
-        inputGroup: 4,
+        inputGroup: 5,
       },
       {
         name: 'underInvestigation',
         type: 'checkbox',
-        inputGroup: 4,
+        inputGroup: 5,
       },
       {
         name: 'withIssues',
         type: 'checkbox',
-        inputGroup: 4,
+        inputGroup: 5,
       },
     ]
 
@@ -164,14 +183,19 @@ class MinesView extends React.Component {
       mode: 'cors',
     }
 
-    fetch(url, options).then((resp) => {
-      if (!resp.ok) {
-        throw Error(resp.statusText)
-      }
-      console.log(resp)
-    }).catch((error) => {
-      console.log(error)
-    })
+    fetch(url, options)
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(resp.statusText)
+        }
+        return resp.json()
+      })
+      .then((parsed) => {
+        console.log(parsed)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   getData() {
@@ -216,6 +240,7 @@ class MinesView extends React.Component {
         transform,
         inputGroup,
         width,
+        disabled,
       } = param
       const inputs = inputGroups[inputGroup] || []
       inputs.push((
@@ -229,6 +254,7 @@ class MinesView extends React.Component {
           onChange={this.onInputChange(name)}
           prefix={this.props.prefix}
           width={width && `${width}%`}
+          disabled={disabled}
         />
       ))
       inputGroups[inputGroup] = inputs
