@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "Gov-2.0-Bootstrap-Skeleton": "https://github.com/stredger/Gov-2.0-Bootstrap-Skeleton.git",
-    "bootstrap-theme": "https://github.com/bcgov/bootstrap-theme",
     "jquery": "1.12",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
