@@ -24,8 +24,7 @@ const defaultProps = {
 
 class DataSelect extends React.Component {
   shouldComponentUpdate(nextProps) {
-    if (this.props.data === nextProps.data &&
-      this.props.value === nextProps.value &&
+    if (this.props.value === nextProps.value &&
       this.props.loading === nextProps.loading) {
       return false
     }
