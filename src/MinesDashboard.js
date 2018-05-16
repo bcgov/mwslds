@@ -11,6 +11,7 @@ import MineStats from './MineStats'
 
 const propTypes = {
   tableRoute: PropTypes.string,
+  history: PropTypes.object.isRequired,
 }
 
 const defaultProps = {

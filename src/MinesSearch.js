@@ -10,6 +10,7 @@ const MINES_BASE_ROUTE = 'mines'
 
 const propTypes = {
   prefix: PropTypes.string,
+  history: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
