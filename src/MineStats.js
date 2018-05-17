@@ -68,8 +68,26 @@ class MineStats extends React.Component {
 
   componentDidMount() {
     this.mounted = true
+    this.loadData()
+  }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.token !== prevProps.token) {
+      this.loadData()
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false
+  }
+
+  loadData() {
     const { token } = this.props
+
+    if (!token) {
+      return
+    }
+
     const options = {
       headers: new Headers({
         Authorization: `Bearer ${token}`,
@@ -98,14 +116,11 @@ class MineStats extends React.Component {
         })
         .catch((error) => {
           if (this.mounted) {
+            // TODO: display some error in the main app
             console.log(error)
           }
         })
     })
-  }
-
-  componentWillUnmount() {
-    this.mounted = false
   }
 
   addData(newData) {

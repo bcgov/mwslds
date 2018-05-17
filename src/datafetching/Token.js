@@ -5,55 +5,81 @@ import currToken from './Secret'
 
 const tokenRoute = 'https://i1api.nrs.gov.bc.ca/oauth2/v1/oauth/token?disableDeveloperFilter=true&grant_type=client_credentials&scope=MWSL_COMMONMINES_API.*'
 
-let token = currToken
+const TokenSingleton = {
+  token: currToken,
 
-export function loadToken(username, password) {
-  const auth = base64.encode(`${username}:${password}`)
+  pendingPromises: [],
 
-  const options = {
-    headers: new Headers({
-      Authorization: `Basic ${auth}`,
-    }),
-    mode: 'cors',
-  }
+  loadToken(username, password) {
+    const auth = base64.encode(`${username}:${password}`)
 
-  fetch(tokenRoute, options)
-    .then((resp) => {
-      if (!resp.ok) {
-        throw Error(resp.statusText)
+    const options = {
+      headers: new Headers({
+        Authorization: `Basic ${auth}`,
+      }),
+      mode: 'cors',
+    }
+
+    return fetch(tokenRoute, options)
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(resp.statusText)
+        }
+        return resp.json()
+      })
+      .then((parsed) => {
+        this.token = parsed.access_token
+        this.resolvePending(this.token)
+        return this.token
+      })
+      .catch((error) => {
+        this.rejectPending(error)
+        return error
+      })
+  },
+
+  resolvePending(token) {
+    const promises = this.pendingPromises
+    this.pendingPromises = []
+    promises.forEach(promise => promise.resolve(token))
+  },
+
+  rejectPending(error) {
+    const promises = this.pendingPromises
+    this.pendingPromises = []
+    promises.forEach(promise => promise.reject(error))
+  },
+
+  getToken() {
+    if (!this.token) {
+      const promise = (resolve, reject) => {
+        this.pendingPromises.push({ resolve, reject })
+        if (this.pendingPromises.length === 1) {
+          this.loadToken()
+        }
       }
-      return resp.json()
-    })
-    .then((parsed) => {
-      token = parsed.access_token
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      return new Promise(promise)
+    }
+    return Promise.resolve(this.token)
+  },
 }
+TokenSingleton.getToken()
 
 export default function withToken(Wrapped) {
   return class WithTokenHOC extends React.Component {
     constructor(props) {
       super(props)
 
-      if (!token) {
-        loadToken()
-      }
-
-      this.state = {
-        token,
-      }
+      this.setToken()
     }
 
-    componentDidMount() {
-      this.getToken()
-    }
-
-    getToken() {
-      this.setState({
-        token,
-      })
+    setToken() {
+      TokenSingleton.getToken()
+        .then((token) => {
+          this.setState({
+            token,
+          })
+        })
     }
 
     render() {
