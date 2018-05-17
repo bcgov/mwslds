@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 import { startCase } from 'lodash'
 
@@ -14,6 +15,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   multi: PropTypes.bool,
   width: PropTypes.string,
+  error: PropTypes.string,
 }
 
 const defaultProps = {
@@ -22,6 +24,7 @@ const defaultProps = {
   disabled: null,
   multi: null,
   width: null,
+  error: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -38,13 +41,15 @@ function Select(props) {
     disabled,
     multi,
     width,
+    error,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
+  const labelClasses = classnames('control-label', error && 'has-error')
 
   return (
-    <label className="control-label" htmlFor={inputId} style={{ width }}>
+    <label className={labelClasses} htmlFor={inputId} style={{ width }}>
       {title}
       <select
         className="form-control"

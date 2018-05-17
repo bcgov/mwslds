@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 import { startCase } from 'lodash'
 
@@ -12,12 +13,14 @@ const propTypes = {
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
   width: PropTypes.string,
+  error: PropTypes.string,
 }
 
 const defaultProps = {
   prefix: null,
   disabled: null,
   width: null,
+  error: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -32,13 +35,15 @@ function CheckboxInput(props) {
     prefix,
     disabled,
     width,
+    error,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
+  const labelClasses = classnames('control-label', error && 'has-error')
 
   return (
-    <label className="control-label" htmlFor={inputId} style={{ width }}>
+    <label className={labelClasses} htmlFor={inputId} style={{ width }}>
       <input
         id={inputId}
         checked={value}

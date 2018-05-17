@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 
 import './style'
 import './MinesSearch.css'
@@ -13,6 +14,7 @@ const propTypes = {
   token: PropTypes.string,
   prefix: PropTypes.string,
   data: PropTypes.object,
+  history: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
@@ -31,6 +33,13 @@ function selectTransform(param) {
       return data[param].map(val => val.code)
     }
     return null
+  }
+}
+
+function isRequired(val) {
+  return {
+    valid: !!val || val === 0,
+    msg: 'required',
   }
 }
 
@@ -64,6 +73,7 @@ class MinesView extends React.Component {
     this.inputParams = [
       {
         name: 'mineName',
+        validator: isRequired,
         inputGroup: 0,
         width: 80,
       },
@@ -103,6 +113,7 @@ class MinesView extends React.Component {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
+        validator: isRequired,
         transform: selectTransform('companies'),
         inputGroup: 4,
         width: 20,
@@ -111,6 +122,7 @@ class MinesView extends React.Component {
         name: 'regionCode',
         type: 'data-select',
         route: 'regions',
+        validator: isRequired,
         transform: selectTransform('regions'),
         inputGroup: 4,
         width: 20,
@@ -119,6 +131,7 @@ class MinesView extends React.Component {
         name: 'mineTypeCode',
         type: 'data-select',
         route: 'minetypes',
+        validator: isRequired,
         transform: selectTransform('mineTypes'),
         inputGroup: 4,
         width: 20,
@@ -127,6 +140,7 @@ class MinesView extends React.Component {
         name: 'mineStatusCode',
         type: 'data-select',
         route: 'minestatuses',
+        validator: isRequired,
         transform: selectTransform('mineStatuses'),
         inputGroup: 4,
         width: 20,
@@ -150,6 +164,8 @@ class MinesView extends React.Component {
 
     const state = {
       isUpdate: false,
+      // errors holds a map of input name -> error string
+      errors: {},
     }
     this.inputParams.forEach((param) => { state[param.name] = '' })
 
@@ -165,7 +181,12 @@ class MinesView extends React.Component {
 
     const { token } = this.props
 
-    if (!this.validate() || !token) {
+    if (!token) {
+      // TODO: display some sort of error here
+      return
+    }
+
+    if (!this.isValid()) {
       return
     }
 
@@ -191,18 +212,27 @@ class MinesView extends React.Component {
         return resp.json()
       })
       .then((parsed) => {
-        console.log(parsed)
+        if (parsed.code && parsed.code === '0') {
+          const { description } = parsed
+          // TODO: Display success banner with description
+          const mineId = description.split(' ')[1]
+          this.props.history.push(`/mine/${mineId}`)
+        } else {
+          throw Error(parsed)
+        }
       })
       .catch((error) => {
+        // TODO: Display error banner with description
         console.log(error)
       })
   }
 
   getData() {
     const data = {}
-    if (this.state.isUpdate) {
-      data.enteredBy = this.props.data.enteredBy
-      data.enteredDate = this.props.data.enteredDate
+    if (!this.state.isUpdate) {
+      data.enteredBy = 'MWSL'
+      const now = new Date()
+      data.enteredDate = `${now.getFullYear()}/${now.getMonth()}/${now.getDay()}`
     }
     this.inputParams.forEach((param) => {
       const { name } = param
@@ -220,7 +250,30 @@ class MinesView extends React.Component {
   }
 
   validate() {
-    return true
+    const errors = {}
+    this.inputParams.forEach((param) => {
+      const { name, validator } = param
+      if (!validator) {
+        // no validator so the param is valid
+        return
+      }
+
+      const val = this.state[name]
+      const { valid, msg } = validator(val)
+      if (!valid) {
+        errors[name] = msg
+      }
+    })
+
+    this.setState({
+      errors,
+    })
+
+    return errors
+  }
+
+  isValid() {
+    return isEmpty(this.validate())
   }
 
   updateState(param, value) {
@@ -231,6 +284,7 @@ class MinesView extends React.Component {
 
   renderInputs() {
     const inputGroups = []
+    const { errors } = this.state
 
     this.inputParams.forEach((param) => {
       const {
@@ -242,6 +296,7 @@ class MinesView extends React.Component {
         width,
         disabled,
       } = param
+      const error = errors[name]
       const inputs = inputGroups[inputGroup] || []
       inputs.push((
         <Input
@@ -255,6 +310,7 @@ class MinesView extends React.Component {
           prefix={this.props.prefix}
           width={width && `${width}%`}
           disabled={disabled}
+          error={error}
         />
       ))
       inputGroups[inputGroup] = inputs
@@ -268,14 +324,12 @@ class MinesView extends React.Component {
   }
 
   render() {
-    const disabled = !this.validate()
-
     return (
       <div className="container">
         <form onSubmit={this.onSubmit}>
           {this.renderInputs()}
           <div className="form-group">
-            <button type="submit" className="btn btn-primary" disabled={disabled}>
+            <button type="submit" className="btn btn-primary">
               {this.state.isUpdate ? 'Update' : 'Create'}
             </button>
           </div>

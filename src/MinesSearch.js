@@ -193,7 +193,7 @@ class MinesSearch extends React.Component {
           route={route}
           transform={transform}
           prefix={this.props.prefix}
-          width="100%"
+          width="80%"
         >
           <span className="form-inline">
             <button className="btn btn-default" type="button" onClick={this.onShowAdvancedToggle}>

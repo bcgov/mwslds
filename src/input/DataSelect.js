@@ -39,13 +39,15 @@ class DataSelect extends React.Component {
       ...otherProps
     } = this.props
 
+    let displayData
     if (loading) {
-      return <Select data={[this.props.value || '', 'loading...']} {...otherProps} />
+      displayData = [this.props.value || 'loading...']
     } else if (error) {
-      return <Select data={[this.props.value || 'Error Fetching Data']} {...otherProps} disabled />
+      displayData = [this.props.value || 'Error Fetching Data']
+    } else {
+      displayData = [''].concat(data)
     }
-    const parsedData = [''].concat(data)
-    return <Select data={parsedData} {...otherProps} />
+    return <Select data={displayData} {...otherProps} disabled={loading || !!error} />
   }
 }
 
