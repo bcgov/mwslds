@@ -14,7 +14,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.element,
   width: PropTypes.string,
-  error: PropTypes.string,
+  validationError: PropTypes.string,
 }
 
 const defaultProps = {
@@ -22,7 +22,7 @@ const defaultProps = {
   disabled: null,
   children: null,
   width: null,
-  error: null,
+  validationError: null,
 }
 
 function onChangeWrapper(wrapped) {
@@ -37,12 +37,12 @@ function TextInput(props) {
     prefix,
     disabled,
     width,
-    error,
+    validationError,
   } = props
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
-  const labelClasses = classnames('control-label', error && 'has-error')
+  const labelClasses = classnames('control-label', validationError && 'has-error')
 
   return (
     <label className={labelClasses} htmlFor={inputId} style={{ width }}>

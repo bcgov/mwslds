@@ -12,6 +12,7 @@ const propTypes = {
   error: PropTypes.object,
   value: PropTypes.string,
   route: PropTypes.string,
+  validationError: PropTypes.string,
 }
 
 const defaultProps = {
@@ -20,12 +21,14 @@ const defaultProps = {
   error: null,
   value: null,
   route: null,
+  validationError: null,
 }
 
 class DataSelect extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.value === nextProps.value &&
-      this.props.loading === nextProps.loading) {
+      this.props.loading === nextProps.loading &&
+      this.props.validationError === nextProps.validationError) {
       return false
     }
     return true

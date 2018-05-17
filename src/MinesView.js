@@ -215,6 +215,8 @@ class MinesView extends React.Component {
         if (parsed.code && parsed.code === '0') {
           const { description } = parsed
           // TODO: Display success banner with description
+          console.log(description)
+
           const mineId = description.split(' ')[1]
           this.props.history.push(`/mine/${mineId}`)
         } else {
@@ -310,7 +312,7 @@ class MinesView extends React.Component {
           prefix={this.props.prefix}
           width={width && `${width}%`}
           disabled={disabled}
-          error={error}
+          validationError={error}
         />
       ))
       inputGroups[inputGroup] = inputs
