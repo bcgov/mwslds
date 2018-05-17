@@ -16,6 +16,13 @@ const defaultProps = {
 }
 
 class BaseTable extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.data === nextProps.data) {
+      return false
+    }
+    return true
+  }
+
   onRowClickWrapper(row) {
     const { onRowClick } = this.props
     if (!onRowClick) {
@@ -46,7 +53,7 @@ class BaseTable extends React.Component {
         // this is pretty hacky it assumes all objects have either a code or an id
         parsed = val.code || val.id || ''
       }
-      return <td key={key}>{parsed}</td>
+      return <td key={key}>{parsed && parsed.toString()}</td>
     })
     // try to use the id as a key... if it has one
     const key = row.id || null
