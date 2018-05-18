@@ -2,14 +2,14 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "react-build-template"
+    "name": "react-mwsl-build-template"
   },
   "objects": [
     {
       "kind": "ImageStream",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-bitcoin-demo",
+        "name": "react-mwsl-demo",
         "annotations": {
           "description": "Keeps track of changes in the application image"
         }
@@ -19,7 +19,7 @@
       "kind": "BuildConfig",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-build"
+        "name": "react-mwsl-build"
       },
       "spec": {
         "source": {
@@ -42,8 +42,7 @@
         "output": {
           "to": {
             "kind": "ImageStreamTag",
-            "namespace": "react-demo",
-            "name": "react-bitcoin-demo:latest"
+            "name": "react-mwsl-demo:latest"
           }
         },
         "triggers": [
@@ -77,7 +76,7 @@
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/stredger/bitcoin-price-index.git"
+      "value": "https://github.com/stredger/minishift-react.git"
     },
     {
       "name": "GITHUB_WEBHOOK_SECRET",

@@ -2,27 +2,27 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "react-deploy-template"
+    "name": "react-mwsl-deploy-template"
   },
   "objects": [
     {
       "kind": "DeploymentConfig",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-deploy"
+        "name": "react-mwsl-deploy"
       },
       "spec": {
         "template": {
           "metadata": {
             "labels": {
-              "name": "react-deploy"
+              "name": "react-mwsl-deploy"
             }
           },
           "spec": {
             "containers": [
               {
-                "name": "react-bitcoin-demo",
-                "image": "react-bitcoin-demo:latest",
+                "name": "react-mwsl-demo",
+                "image": "react-mwsl-demo:latest",
                 "ports": [
                   {
                     "containerPort": "3000",
@@ -35,7 +35,7 @@
         },
         "replicas": 1,
         "selector": {
-          "name": "react-deploy"
+          "name": "react-mwsl-deploy"
         },
         "triggers": [
           {
@@ -46,12 +46,11 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "react-bitcoin-demo"
+                "react-mwsl-demo"
               ],
               "from": {
                 "kind": "ImageStreamTag",
-                "namespace": "react-demo",
-                "name": "react-bitcoin-demo:latest"
+                "name": "react-mwsl-demo:latest"
               }
             }
           }

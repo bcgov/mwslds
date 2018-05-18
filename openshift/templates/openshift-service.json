@@ -9,7 +9,7 @@
       "kind": "Service",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-service",
+        "name": "react-mwsl-service",
         "annotations": {
           "description": "Exposes and load balances the application pods"
         }
@@ -23,7 +23,7 @@
           }
         ],
         "selector": {
-          "name": "react-deploy"
+          "name": "react-mwsl-deploy"
         }
       }
     },
@@ -31,12 +31,12 @@
       "kind": "Route",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-route"
+        "name": "react-mwsl-route"
       },
       "spec": {
         "to": {
           "kind": "Service",
-          "name": "react-service"
+          "name": "react-mwsl-service"
         }
       }
     }
