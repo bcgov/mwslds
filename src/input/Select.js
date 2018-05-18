@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import 'react-select/dist/react-select.css'
 import 'react-virtualized/styles.css'
@@ -53,13 +52,13 @@ function Select(props) {
 
   const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
-  const labelClasses = classnames('control-label', validationError && 'has-error')
 
   return (
-    <label className={labelClasses} htmlFor={inputId} style={{ width }}>
+    <label className="control-label" htmlFor={inputId} style={{ width }}>
       {title}
       <VirtualSelect
         value={value}
+        className={validationError && 'has-error'}
         onChange={onChangeWrapper(onChange)}
         disabled={disabled}
         multiple={multi}
