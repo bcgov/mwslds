@@ -35,7 +35,7 @@ const defaultProps = {
 }
 
 function onChangeWrapper(wrapped) {
-  return selected => wrapped(selected.value)
+  return selected => wrapped(selected ? selected.value : '')
 }
 
 function Select(props) {
