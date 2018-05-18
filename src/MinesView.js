@@ -9,6 +9,8 @@ import withData from './datafetching/DataLoader'
 import withToken, { invalidTokenMessage } from './datafetching/Token'
 
 import Input from './input'
+import { selectTransform } from './input/Transforms'
+import { isRequired } from './input/Validators'
 
 const propTypes = {
   token: PropTypes.string,
@@ -28,22 +30,6 @@ const defaultProps = {
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
 const ROUTE = 'mines'
-
-function selectTransform(param) {
-  return (data) => {
-    if (data) {
-      return data[param].map(val => val.code)
-    }
-    return null
-  }
-}
-
-function isRequired(val) {
-  return {
-    valid: !!val || val === 0,
-    msg: 'required',
-  }
-}
 
 class MinesView extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -116,7 +102,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'companies',
         validator: isRequired,
-        transform: selectTransform('companies'),
+        transform: selectTransform('companies', 'code', 'code'),
         inputGroup: 4,
         width: 20,
       },
@@ -125,7 +111,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'regions',
         validator: isRequired,
-        transform: selectTransform('regions'),
+        transform: selectTransform('regions', 'code', 'code'),
         inputGroup: 4,
         width: 20,
       },
@@ -134,7 +120,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'minetypes',
         validator: isRequired,
-        transform: selectTransform('mineTypes'),
+        transform: selectTransform('mineTypes', 'code', 'name'),
         inputGroup: 4,
         width: 20,
       },
@@ -143,7 +129,7 @@ class MinesView extends React.Component {
         type: 'data-select',
         route: 'minestatuses',
         validator: isRequired,
-        transform: selectTransform('mineStatuses'),
+        transform: selectTransform('mineStatuses', 'code', 'name'),
         inputGroup: 4,
         width: 20,
       },

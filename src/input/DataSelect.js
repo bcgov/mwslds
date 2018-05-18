@@ -7,7 +7,7 @@ import withDataTransform from '../datafetching/DataTransform'
 import withToken from '../datafetching/Token'
 
 const propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string),
+  data: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
   error: PropTypes.object,
   value: PropTypes.string,
@@ -44,11 +44,11 @@ class DataSelect extends React.Component {
 
     let displayData
     if (loading) {
-      displayData = [this.props.value || 'loading...']
+      displayData = [{ value: 'loading', name: 'loading...' }]
     } else if (error) {
-      displayData = [this.props.value || 'Error Fetching Data']
+      displayData = [{ value: 'error', name: 'Error Fetching Data' }]
     } else {
-      displayData = [''].concat(data)
+      displayData = [{ value: '', name: '' }].concat(data)
     }
     return <Select data={displayData} {...otherProps} disabled={loading || !!error} />
   }

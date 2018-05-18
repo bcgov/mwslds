@@ -8,7 +8,7 @@ import '../style'
 
 const propTypes = {
   name: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(PropTypes.string),
+  data: PropTypes.arrayOf(PropTypes.object),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
@@ -60,7 +60,7 @@ function Select(props) {
       >
         {
           data.map(item => (
-            <option key={item}>{item}</option>
+            item && <option key={item.value} value={item.value}>{item.name}</option>
           ))
         }
       </select>

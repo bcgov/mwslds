@@ -5,6 +5,7 @@ import './MinesSearch.css'
 
 import DataTable from './table/DataTable'
 import Input from './input'
+import { selectTransform, minesTransform } from './input/Transforms'
 
 const MINES_BASE_ROUTE = 'mines'
 
@@ -15,22 +16,6 @@ const propTypes = {
 
 const defaultProps = {
   prefix: null,
-}
-
-function selectTransform(param) {
-  return (data) => {
-    if (data) {
-      return data[param].map(val => val.code)
-    }
-    return null
-  }
-}
-
-function minesTransform(data) {
-  if (data) {
-    return data.mines
-  }
-  return null
 }
 
 class MinesSearch extends React.Component {
@@ -60,7 +45,7 @@ class MinesSearch extends React.Component {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
-        transform: selectTransform('companies'),
+        transform: selectTransform('companies', 'code', 'code'),
         inputGroup: 2,
         width: 20,
       },
@@ -68,7 +53,7 @@ class MinesSearch extends React.Component {
         name: 'regionCode',
         type: 'data-select',
         route: 'regions',
-        transform: selectTransform('regions'),
+        transform: selectTransform('regions', 'code', 'code'),
         inputGroup: 2,
         width: 20,
       },
@@ -76,7 +61,7 @@ class MinesSearch extends React.Component {
         name: 'mineTypeCode',
         type: 'data-select',
         route: 'minetypes',
-        transform: selectTransform('mineTypes'),
+        transform: selectTransform('mineTypes', 'code', 'name'),
         inputGroup: 2,
         width: 20,
       },
@@ -84,7 +69,7 @@ class MinesSearch extends React.Component {
         name: 'mineStatusCode',
         type: 'data-select',
         route: 'minestatuses',
-        transform: selectTransform('mineStatuses'),
+        transform: selectTransform('mineStatuses', 'code', 'name'),
         inputGroup: 2,
         width: 20,
       },
