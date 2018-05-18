@@ -14,7 +14,7 @@ const propTypes = {
 const defaultProps = {
   width: 900,
   height: 400,
-  fill: '#005edd',
+  fill: '#337ab7',
   token: null,
 }
 
