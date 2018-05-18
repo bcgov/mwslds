@@ -2,7 +2,7 @@
 export function selectTransform(param, value, name) {
   return (data) => {
     if (data) {
-      return data[param].map(val => ({ value: val[value], name: val[name] }))
+      return data[param].map(val => ({ value: val[value], label: val[name] }))
     }
     return null
   }

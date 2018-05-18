@@ -2,9 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+import 'react-select/dist/react-select.css'
+import 'react-virtualized/styles.css'
+import 'react-virtualized-select/styles.css'
+
+import VirtualSelect from 'react-virtualized-select'
+
 import { startCase } from 'lodash'
 
 import '../style'
+import './Select.css'
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -28,7 +35,7 @@ const defaultProps = {
 }
 
 function onChangeWrapper(wrapped) {
-  return evt => wrapped(evt.target.value)
+  return selected => wrapped(selected.value)
 }
 
 function Select(props) {
@@ -51,19 +58,13 @@ function Select(props) {
   return (
     <label className={labelClasses} htmlFor={inputId} style={{ width }}>
       {title}
-      <select
-        className="form-control"
+      <VirtualSelect
         value={value}
         onChange={onChangeWrapper(onChange)}
         disabled={disabled}
         multiple={multi}
-      >
-        {
-          data.map(item => (
-            item && <option key={item.value} value={item.value}>{item.name}</option>
-          ))
-        }
-      </select>
+        options={data}
+      />
     </label>
   )
 }

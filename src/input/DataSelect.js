@@ -44,11 +44,11 @@ class DataSelect extends React.Component {
 
     let displayData
     if (loading) {
-      displayData = [{ value: 'loading', name: 'loading...' }]
+      displayData = [{ value: 'loading', label: 'loading...' }]
     } else if (error) {
-      displayData = [{ value: 'error', name: 'Error Fetching Data' }]
+      displayData = [{ value: 'error', label: 'Error Fetching Data' }]
     } else {
-      displayData = [{ value: '', name: '' }].concat(data)
+      displayData = data ? [{ value: '', label: '' }].concat(data) : null
     }
     return <Select data={displayData} {...otherProps} disabled={loading || !!error} />
   }

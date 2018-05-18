@@ -1,0 +1,9 @@
+
+.Select-control {
+  border-radius: 0;
+}
+
+/* nasty */
+.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+  color: #555;
+}
