@@ -9,29 +9,72 @@ import Footer from './footer'
 import MinesDashboard from './MinesDashboard'
 import MinesSearch from './MinesSearch'
 import MinesViewRoute from './MinesViewRoute'
+import MessageDisplay from './message'
 
-const notFound = () => <h2 className="container">There is nothing here!</h2>
 
-export default function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Header title="Mine Seeker">
-          <Link to="/">Home</Link>
-          <Link to="/mine">Create</Link>
-          <Link to="/search">Search</Link>
-        </Header>
-        <div id="main" className="template gov-container">
-          <Switch>
-            <Route exact path="/" component={MinesDashboard} />
-            <Route path="/mine/:mineId" component={MinesViewRoute} />
-            <Route path="/mine" component={MinesViewRoute} />
-            <Route path="/search" component={MinesSearch} />
-            <Route component={notFound} />
-          </Switch>
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.updateMessage = this.updateMessage.bind(this)
+    this.onMessageDismiss = this.onMessageDismiss.bind(this)
+
+    this.dashboard = otherProps => (
+      <MinesDashboard {...otherProps} displayMessage={this.updateMessage} />
+    )
+    // specificView and view need to be separate functions. we dont actually
+    // want them to be the same component or state gets muddled between them
+    this.specificView = otherProps => (
+      <MinesViewRoute {...otherProps} displayMessage={this.updateMessage} />
+    )
+    this.view = otherProps => (
+      <MinesViewRoute {...otherProps} displayMessage={this.updateMessage} />
+    )
+    this.search = otherProps => (
+      <MinesSearch {...otherProps} displayMessage={this.updateMessage} />
+    )
+    this.notFound = () => (<h2 className="container">There is nothing here!</h2>)
+
+    this.state = {
+      message: null,
+    }
+  }
+
+  onMessageDismiss() {
+    this.updateMessage(null)
+  }
+
+  updateMessage(message) {
+    this.setState({ message })
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Header title="Mine Seeker">
+            <Link to="/">Home</Link>
+            <Link to="/mine">Create</Link>
+            <Link to="/search">Search</Link>
+          </Header>
+          <div id="main" className="template gov-container">
+            <div className="container">
+              {
+                this.state.message &&
+                <MessageDisplay {...this.state.message} onDismiss={this.onMessageDismiss} />
+              }
+            </div>
+            <Switch>
+              <Route exact path="/" component={this.dashboard} />
+              <Route path="/mine/:mineId" component={this.specificView} />
+              <Route path="/mine" component={this.view} />
+              <Route path="/search" component={this.search} />
+              <Route component={this.notFound} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
-  )
+      </Router>
+    )
+  }
 }

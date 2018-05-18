@@ -87,3 +87,10 @@ export default function withToken(Wrapped) {
     }
   }
 }
+
+export const invalidTokenMessage = {
+  type: 'danger',
+  title: 'Invalid Token',
+  message: 'The login token is invalid or has expired',
+  additional: 'Try logging in again to refresh the token',
+}

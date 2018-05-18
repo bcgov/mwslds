@@ -6,7 +6,7 @@ import './style'
 import './MinesSearch.css'
 
 import withData from './datafetching/DataLoader'
-import withToken from './datafetching/Token'
+import withToken, { invalidTokenMessage } from './datafetching/Token'
 
 import Input from './input'
 
@@ -15,12 +15,14 @@ const propTypes = {
   prefix: PropTypes.string,
   data: PropTypes.object,
   history: PropTypes.object.isRequired,
+  displayMessage: PropTypes.func,
 }
 
 const defaultProps = {
   token: null,
   prefix: null,
   data: null,
+  displayMessage: () => {},
 }
 
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
@@ -179,10 +181,10 @@ class MinesView extends React.Component {
   onSubmit(evt) {
     evt.preventDefault()
 
-    const { token } = this.props
+    const { token, displayMessage } = this.props
 
     if (!token) {
-      // TODO: display some sort of error here
+      displayMessage(invalidTokenMessage)
       return
     }
 
@@ -214,18 +216,23 @@ class MinesView extends React.Component {
       .then((parsed) => {
         if (parsed.code && parsed.code === '0') {
           const { description } = parsed
-          // TODO: Display success banner with description
-          console.log(description)
-
+          displayMessage({
+            type: 'success',
+            title: 'Success!',
+            message: description,
+          })
           const mineId = description.split(' ')[1]
           this.props.history.push(`/mine/${mineId}`)
         } else {
-          throw Error(parsed)
+          throw Error(parsed.description)
         }
       })
       .catch((error) => {
-        // TODO: Display error banner with description
-        console.log(error)
+        displayMessage({
+          type: 'danger',
+          title: 'Something went wrong.',
+          message: error.message,
+        })
       })
   }
 
