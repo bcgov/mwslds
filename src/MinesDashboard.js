@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// import { withRouter } from 'react-router-dom'
-
 import './style'
 
 import DataTable from './table/DataTable'
@@ -40,12 +38,12 @@ class MinesDashboard extends React.Component {
       <div>
         <div className="container">
           <MineStats />
+          <DataTable
+            route={this.props.tableRoute}
+            transform={minesTransform}
+            onRowClick={this.onRowClick}
+          />
         </div>
-        <DataTable
-          route={this.props.tableRoute}
-          transform={minesTransform}
-          onRowClick={this.onRowClick}
-        />
       </div>
     )
   }
