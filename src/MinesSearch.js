@@ -243,8 +243,8 @@ class MinesSearch extends React.Component {
 
     return (
       <div>
-        <div className="row">
-          <div className="container">
+        <div className="container">
+          <div className="row">
             <form onSubmit={this.onSubmit}>
               {this.renderMainInput()}
               {this.state.showAdvanced && this.renderSubInputs()}
@@ -255,14 +255,14 @@ class MinesSearch extends React.Component {
               </div>
             </form>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <DataTable
-              route={this.state.route}
-              transform={minesTransform}
-              onRowClick={this.onRowClick}
-            />
+          <div className="row">
+            <div className="col-lg-12">
+              <DataTable
+                route={this.state.route}
+                transform={minesTransform}
+                onRowClick={this.onRowClick}
+              />
+            </div>
           </div>
         </div>
       </div>
