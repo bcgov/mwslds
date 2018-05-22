@@ -16,7 +16,7 @@ const defaultProps = {
   onRowClick: null,
 }
 
-class BaseTable extends React.Component {
+class PaginatedTable extends React.Component {
   constructor(props) {
     super(props)
 
@@ -171,7 +171,7 @@ class BaseTable extends React.Component {
   }
 }
 
-BaseTable.propTypes = propTypes
-BaseTable.defaultProps = defaultProps
+PaginatedTable.propTypes = propTypes
+PaginatedTable.defaultProps = defaultProps
 
-export default BaseTable
+export default PaginatedTable
