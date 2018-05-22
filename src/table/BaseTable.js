@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 
 import { startCase } from 'lodash'
 
+import { Grid, ScrollSync } from 'react-virtualized'
+
 import '../style'
+import './BaseTable.css'
 
 const propTypes = {
   data: PropTypes.array,
@@ -16,6 +19,12 @@ const defaultProps = {
 }
 
 class BaseTable extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.renderBodyCell = this.renderBodyCell.bind(this)
+  }
+
   shouldComponentUpdate(nextProps) {
     if (this.props.data === nextProps.data) {
       return false
@@ -35,52 +44,79 @@ class BaseTable extends React.Component {
     return Object.keys(row).map(key => startCase(key))
   }
 
-  renderHeader(data) {
-    if (data && data.length) {
-      const row = data[0]
-      return this.getColumnNames(row).map(header => (
-        <th key={header}>{header}</th>
-      ))
+  renderHeaderCell(cols) {
+    return (opts) => {
+      const {
+        columnIndex,
+        key,
+        style,
+      } = opts
+      const value = cols[columnIndex]
+      return <div key={key} style={style}><strong>{value}</strong></div>
     }
-    return <th>No Data</th>
   }
 
-  renderRow(row) {
-    const data = Object.keys(row).map((key) => {
-      const val = row[key]
-      let parsed = val
-      if (val instanceof Object) {
-        // this is pretty hacky it assumes all objects have either a code or an id
-        parsed = val.code || val.id || ''
-      }
-      return <td key={key}>{parsed && parsed.toString()}</td>
-    })
-    // try to use the id as a key... if it has one
-    const key = row.id || null
-    return <tr key={key} onClick={this.onRowClickWrapper(row)}>{data}</tr>
+  renderBodyCell(opts) {
+    const {
+      columnIndex,
+      key,
+      rowIndex,
+      style,
+    } = opts
+    const { data } = this.props
+
+    const columnName = Object.keys(data[0])[columnIndex]
+    const value = data[rowIndex][columnName]
+
+    return (
+      <div key={key} style={style}>{value}</div>
+    )
   }
 
-  renderBody(data) {
-    if (data && data.length) {
-      return data.map(row => this.renderRow(row))
-    }
-    return <tr />
-  }
 
   render() {
     const { data } = this.props
 
+    if (!data) {
+      return <div>loading</div>
+    }
+
+    const columns = this.getColumnNames(data[0])
+
+    const height = 400
+    const width = 1000
+
     return (
-      <table className="table table-striped table-hover table-bordered">
-        <thead className="thead">
-          <tr>
-            {this.renderHeader(data)}
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderBody(data)}
-        </tbody>
-      </table>
+      <ScrollSync>
+        {({ onScroll, scrollLeft }) => (
+          <div className="table">
+            <div className="table-header">
+              <Grid
+                cellRenderer={this.renderHeaderCell(columns)}
+                columnCount={columns.length}
+                columnWidth={100}
+                height={50}
+                rowCount={1}
+                rowHeight={50}
+                width={width}
+                scrollLeft={scrollLeft}
+              />
+            </div>
+            <div className="table-body">
+              <Grid
+                cellRenderer={this.renderBodyCell}
+                columnCount={columns.length}
+                columnWidth={100}
+                height={height}
+                rowCount={data.length}
+                rowHeight={60}
+                width={width}
+                onScroll={onScroll}
+              />
+            </div>
+          </div>
+        )}
+      </ScrollSync>
     )
   }
 }
