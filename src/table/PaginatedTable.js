@@ -22,7 +22,7 @@ class PaginatedTable extends React.Component {
 
     this.state = {
       page: 1,
-      pageSize: 5,
+      pageSize: 10,
     }
   }
 
