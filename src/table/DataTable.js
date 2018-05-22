@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import BaseTable from './BaseTable'
+import PaginatedTable from './PaginatedTable'
 import withData from '../datafetching/DataLoader'
 import withDataTransform from '../datafetching/DataTransform'
 import withToken from '../datafetching/Token'
@@ -25,14 +25,17 @@ function DataTable(props) {
     error,
     ...otherProps
   } = props
+  let parsedData
 
   if (loading) {
-    return <div className="text-center">Loading...</div>
+    parsedData = [{ 'loading...': '' }]
   } else if (error) {
-    return <div className="text-center">Error Fetching Data</div>
+    parsedData = [{ 'errorFetchingData...': error.message }]
+  } else {
+    parsedData = data
   }
 
-  return <BaseTable data={data} {...otherProps} />
+  return <PaginatedTable data={parsedData} {...otherProps} />
 }
 
 

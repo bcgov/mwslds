@@ -6,7 +6,7 @@ import { startCase } from 'lodash'
 import { Grid, ScrollSync } from 'react-virtualized'
 
 import '../style'
-import './BaseTable.css'
+import './VirtualTable.css'
 
 const propTypes = {
   data: PropTypes.array,
@@ -20,7 +20,7 @@ const defaultProps = {
   placeholder: 'Nothing to display',
 }
 
-class BaseTable extends React.Component {
+class VirtualTable extends React.Component {
   constructor(props) {
     super(props)
 
@@ -137,7 +137,7 @@ class BaseTable extends React.Component {
   }
 }
 
-BaseTable.propTypes = propTypes
-BaseTable.defaultProps = defaultProps
+VirtualTable.propTypes = propTypes
+VirtualTable.defaultProps = defaultProps
 
-export default BaseTable
+export default VirtualTable
