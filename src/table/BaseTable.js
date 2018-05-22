@@ -24,7 +24,12 @@ class BaseTable extends React.Component {
   constructor(props) {
     super(props)
 
+    this.getColumnWidths = this.getColumnWidths.bind(this)
     this.renderBodyCell = this.renderBodyCell.bind(this)
+
+    this.columnWidthsHack = [
+      80, 380, 80, 180, 180, 180, 80, 180, 180, 180, 80, 80, 180, 80, 100, 80,
+    ]
   }
 
   shouldComponentUpdate(nextProps) {
@@ -44,6 +49,13 @@ class BaseTable extends React.Component {
 
   getColumnNames(row) {
     return Object.keys(row).map(key => startCase(key))
+  }
+
+  getColumnWidths({ index }) {
+    // TODO: This is a huge hack just for mines to make them display a little nicer
+    // should be removed and have a column width thing passed in
+    const val = this.columnWidthsHack[index] || 180
+    return val
   }
 
   renderHeaderCell(cols) {
@@ -88,6 +100,7 @@ class BaseTable extends React.Component {
 
     const height = 400
     const width = 1000
+    const rowHeight = 70
 
     return (
       <ScrollSync>
@@ -97,10 +110,10 @@ class BaseTable extends React.Component {
               <Grid
                 cellRenderer={this.renderHeaderCell(columns)}
                 columnCount={columns.length}
-                columnWidth={100}
-                height={50}
+                columnWidth={this.getColumnWidths}
+                height={rowHeight}
                 rowCount={1}
-                rowHeight={50}
+                rowHeight={rowHeight}
                 width={width}
                 scrollLeft={scrollLeft}
               />
@@ -109,10 +122,10 @@ class BaseTable extends React.Component {
               <Grid
                 cellRenderer={this.renderBodyCell}
                 columnCount={columns.length}
-                columnWidth={100}
+                columnWidth={this.getColumnWidths}
                 height={height}
                 rowCount={data.length}
-                rowHeight={60}
+                rowHeight={rowHeight}
                 width={width}
                 onScroll={onScroll}
               />
