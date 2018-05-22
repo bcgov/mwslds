@@ -1,4 +1,17 @@
 
 .table-header div {
   overflow: hidden !important;
+  text-align: center;
+}
+
+.table .ReactVirtualized__Grid {
+  border: 1px solid #ddd;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer div {
+  border-collapse: collapse;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 8px;
+  line-height: 1.428;
 }

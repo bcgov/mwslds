@@ -69,7 +69,7 @@ class BaseTable extends React.Component {
     const value = data[rowIndex][columnName]
 
     return (
-      <div key={key} style={style}>{value}</div>
+      <div key={key} onClick={this.onRowClickWrapper(data[rowIndex])} style={style}>{value}</div>
     )
   }
 
