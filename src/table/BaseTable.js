@@ -11,11 +11,13 @@ import './BaseTable.css'
 const propTypes = {
   data: PropTypes.array,
   onRowClick: PropTypes.func,
+  placeholder: PropTypes.string,
 }
 
 const defaultProps = {
   data: null,
   onRowClick: null,
+  placeholder: 'Nothing to display',
 }
 
 class BaseTable extends React.Component {
@@ -69,16 +71,18 @@ class BaseTable extends React.Component {
     const value = data[rowIndex][columnName]
 
     return (
-      <div key={key} onClick={this.onRowClickWrapper(data[rowIndex])} style={style}>{value}</div>
+      <div key={key} onClick={this.onRowClickWrapper(data[rowIndex])} style={style}>
+        {value && value.toString()}
+      </div>
     )
   }
 
 
   render() {
-    const { data } = this.props
+    const { data, placeholder } = this.props
 
     if (!data) {
-      return <div>loading</div>
+      return <div className="text-center">{placeholder}</div>
     }
 
     const columns = this.getColumnNames(data[0])

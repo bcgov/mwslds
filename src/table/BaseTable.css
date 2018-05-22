@@ -8,7 +8,7 @@
   border: 1px solid #ddd;
 }
 
-.ReactVirtualized__Grid__innerScrollContainer div {
+.table .ReactVirtualized__Grid__innerScrollContainer div {
   border-collapse: collapse;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
