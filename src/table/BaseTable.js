@@ -71,12 +71,11 @@ class BaseTable extends React.Component {
     const value = data[rowIndex][columnName]
 
     return (
-      <div key={key} onClick={this.onRowClickWrapper(data[rowIndex])} style={style}>
+      <div key={key} onClick={this.onRowClickWrapper(data[rowIndex])} style={style} role="presentation">
         {value && value.toString()}
       </div>
     )
   }
-
 
   render() {
     const { data, placeholder } = this.props
