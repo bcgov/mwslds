@@ -140,7 +140,7 @@ class MineStats extends React.Component {
     const { data } = this.state
 
     return (
-      <BarChart width={width} height={height} data={data}>
+      <BarChart width={width} height={height} data={data} style={{ margin: 'auto' }}>
         <XAxis dataKey="name" />
         <YAxis />
         <Bar dataKey="count" fill={fill} label />
