@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "perl -pi -e \"s:'.*':'$MWSL_AUTH_TOKEN':\" src/datafetching/Secret.js && react-scripts build",
+    "build": "perl -p -e \"s:'.*':'$MWSL_AUTH_TOKEN':\" src/datafetching/Secret.js.template > src/datafetching/Secret.js && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
