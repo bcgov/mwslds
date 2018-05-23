@@ -25,17 +25,14 @@ function DataTable(props) {
     error,
     ...otherProps
   } = props
-  let parsedData
 
   if (loading) {
-    parsedData = [{ 'loading...': '' }]
+    return <div className="text-center">Loading...</div>
   } else if (error) {
-    parsedData = [{ 'errorFetchingData...': error.message }]
-  } else {
-    parsedData = data
+    return <div className="text-center">Loading...</div>
   }
 
-  return <PaginatedTable data={parsedData} {...otherProps} />
+  return <PaginatedTable data={data} {...otherProps} />
 }
 
 

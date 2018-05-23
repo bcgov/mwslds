@@ -178,7 +178,7 @@ class MinesSearch extends React.Component {
           route={route}
           transform={transform}
           prefix={this.props.prefix}
-          width="80%"
+          width="89%"
         >
           <span className="form-inline">
             <button className="btn btn-default" type="button" onClick={this.onShowAdvancedToggle}>
@@ -256,13 +256,11 @@ class MinesSearch extends React.Component {
             </form>
           </div>
           <div className="row">
-            <div className="col-lg-12">
-              <DataTable
-                route={this.state.route}
-                transform={minesTransform}
-                onRowClick={this.onRowClick}
-              />
-            </div>
+            <DataTable
+              route={this.state.route}
+              transform={minesTransform}
+              onRowClick={this.onRowClick}
+            />
           </div>
         </div>
       </div>
