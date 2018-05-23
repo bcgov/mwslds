@@ -29,7 +29,7 @@ function DataTable(props) {
   if (loading) {
     return <div className="text-center">Loading...</div>
   } else if (error) {
-    return <div className="text-center">Loading...</div>
+    return <div className="text-center">Error Fetching Data</div>
   }
 
   return <BaseTable data={data} {...otherProps} />
