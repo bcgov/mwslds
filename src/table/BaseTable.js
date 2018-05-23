@@ -39,7 +39,7 @@ class BaseTable extends React.Component {
     const { data } = this.props
 
     if (!data) {
-      return <div>No Data</div>
+      return <div className="text-center">No Data</div>
     }
 
     const columns = this.getColumns()
@@ -55,6 +55,7 @@ class BaseTable extends React.Component {
     )
   }
 }
+
 BaseTable.propTypes = propTypes
 BaseTable.defaultProps = defaultProps
 
