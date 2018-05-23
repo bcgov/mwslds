@@ -22,7 +22,7 @@ class PaginatedTable extends React.Component {
 
     this.state = {
       page: 1,
-      pageSize: 10,
+      pageSize: 2,
     }
   }
 
@@ -136,9 +136,18 @@ class PaginatedTable extends React.Component {
       pageButtons.push(button)
     }
 
+    const prevDisabled = page === 1
+    const nextDisabled = page === pages
+
     return (
       <ul className="pagination">
+        <li className={classnames('paginate_button', prevDisabled && 'disabled')}>
+          <a onClick={prevDisabled ? undefined : this.onPageChangeWrapper(page-1)} role="button">prev</a>
+        </li>
         {pageButtons}
+        <li className={classnames('paginate_button', nextDisabled && 'disabled')}>
+          <a onClick={nextDisabled ? undefined : this.onPageChangeWrapper(page+1)} role="button">next</a>
+        </li>
       </ul>
     )
   }
