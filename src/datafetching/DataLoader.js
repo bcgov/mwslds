@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import cache from './SimpleCache'
+
 const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
 
 const propTypes = {
@@ -66,18 +68,26 @@ function withData(Wrapped) {
 
       const url = this.getUrl()
 
+      const cached = cache.get(url)
+      if (cached) {
+        if (this.mounted) {
+          this.setState({
+            data: cached,
+            loading: false,
+          })
+        }
+        return
+      }
+
       fetch(url, options)
         .then((resp) => {
-          if (!this.mounted) {
-            return null
-          }
-
           if (!resp.ok) {
             throw Error(resp.statusText)
           }
           return resp.json()
         })
         .then((parsed) => {
+          cache.put(url, parsed)
           if (this.mounted) {
             this.setState({
               data: parsed,

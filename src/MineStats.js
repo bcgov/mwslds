@@ -5,6 +5,8 @@ import { cloneDeep } from 'lodash'
 
 import withToken from './datafetching/Token'
 
+import cache from './datafetching/SimpleCache'
+
 const propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
@@ -97,12 +99,17 @@ class MineStats extends React.Component {
     this.bars.forEach((bar) => {
       const url = `${BASE_URL}/${bar.route}`
 
+      const cached = cache.get(url)
+      if (cached) {
+        if (this.mounted) {
+          const count = bar.transform(cached)
+          this.updateCount(bar.name, count)
+        }
+        return
+      }
+
       fetch(url, options)
         .then((resp) => {
-          if (!this.mounted) {
-            return null
-          }
-
           if (!resp.ok) {
             throw Error(resp.statusText)
           }
@@ -110,6 +117,7 @@ class MineStats extends React.Component {
         })
         .then((parsed) => {
           if (this.mounted) {
+            cache.put(url, parsed)
             const count = bar.transform(parsed)
             this.updateCount(bar.name, count)
           }
@@ -128,11 +136,15 @@ class MineStats extends React.Component {
   }
 
   updateCount(name, count) {
-    // we have to create a new copy of the data object to re render the chart
-    const data = cloneDeep(this.state.data)
-    const param = data.find(bar => bar.name === name)
-    param.count = count
-    this.setState({ data })
+    this.setState((state) => {
+      // we have to create a new copy of the data object to re render the chart.
+      // doing this makes us have to update in a callback as it can be called a bunch before
+      // the state update actually happens resulting in us cloneing the wrong data object
+      const data = cloneDeep(state.data)
+      const param = data.find(bar => bar.name === name)
+      param.count = count
+      return { data }
+    })
   }
 
   render() {
