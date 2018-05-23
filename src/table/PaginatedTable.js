@@ -125,7 +125,7 @@ class PaginatedTable extends React.Component {
     }
 
     const pageButtons = []
-    const pages = Math.floor(data.length / pageSize)
+    const pages = Math.ceil(data.length / pageSize)
     for (let idx = 1; idx <= pages; idx += 1) {
       const classes = classnames('paginate_button', idx === page ? 'active' : '')
       const button = (
