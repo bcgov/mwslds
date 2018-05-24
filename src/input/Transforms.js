@@ -1,21 +1,50 @@
 
-export function selectTransform(param, value, name) {
+import { pick } from 'lodash'
+
+export function payloadTransform(param) {
+  return data => (data && data[param])
+}
+
+export function reduceObjectTransform(obj, fields) {
+  return obj && pick(obj, fields)
+}
+
+export function reduceObjectArrayTransform(data, fields) {
+  if (!data) {
+    return null
+  }
+  return data.map(obj => reduceObjectTransform(obj, fields))
+}
+
+export function tableTransform(payloadName, displayFields) {
+  const getDataArray = payloadTransform(payloadName)
+  return data => reduceObjectArrayTransform(getDataArray(data), displayFields)
+}
+
+export function selectTransform(payloadName, valueName, displayName) {
+  const getDataArray = payloadTransform(payloadName)
+  const transformObj = val => ({ value: val[valueName], label: val[displayName] })
   return (data) => {
-    if (data) {
-      return data[param].map(val => ({ value: val[value], label: val[name] }))
+    const dataArray = getDataArray(data)
+    if (dataArray) {
+      return dataArray.map(transformObj)
     }
     return null
   }
 }
 
-export function minesTransform(data) {
+export function minesCountTransform(data) {
   if (data) {
-    return data.mines
+    return data.mines.length
   }
   return null
 }
 
 export default {
+  payloadTransform,
+  reduceObjectTransform,
+  reduceObjectArrayTransform,
   selectTransform,
-  minesTransform,
+  tableTransform,
+  minesCountTransform,
 }

@@ -8,9 +8,10 @@ import './MinesSearch.css'
 import withData from './datafetching/DataLoader'
 import withToken, { invalidTokenMessage } from './datafetching/Token'
 
+import { BASE_URL, MINES_ROUTE } from './datafetching/Routes'
+
 import Input from './input'
-import { selectTransform } from './input/Transforms'
-import { isRequired } from './input/Validators'
+import { updateFields } from './MineDefinition'
 
 const propTypes = {
   token: PropTypes.string,
@@ -26,10 +27,6 @@ const defaultProps = {
   data: null,
   displayMessage: () => {},
 }
-
-const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
-
-const ROUTE = 'mines'
 
 class MinesView extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -58,97 +55,7 @@ class MinesView extends React.Component {
 
     this.onSubmit = this.onSubmit.bind(this)
 
-    this.inputParams = [
-      {
-        name: 'mineName',
-        validator: isRequired,
-        inputGroup: 0,
-        width: 80,
-      },
-      {
-        name: 'alias',
-        inputGroup: 1,
-        width: 40,
-      },
-      {
-        name: 'mineLocationName',
-        inputGroup: 1,
-        width: 40,
-      },
-      {
-        name: 'district',
-        inputGroup: 2,
-        width: 40,
-      },
-      {
-        name: 'mineManager',
-        inputGroup: 2,
-        width: 40,
-      },
-      {
-        name: 'enteredBy',
-        inputGroup: 3,
-        width: 40,
-        disabled: true,
-      },
-      {
-        name: 'enteredDate',
-        inputGroup: 3,
-        width: 40,
-        disabled: true,
-      },
-      {
-        name: 'permitteeCompanyCode',
-        type: 'data-select',
-        route: 'companies',
-        validator: isRequired,
-        transform: selectTransform('companies', 'code', 'code'),
-        inputGroup: 4,
-        width: 20,
-      },
-      {
-        name: 'regionCode',
-        type: 'data-select',
-        route: 'regions',
-        validator: isRequired,
-        transform: selectTransform('regions', 'code', 'code'),
-        inputGroup: 4,
-        width: 20,
-      },
-      {
-        name: 'mineTypeCode',
-        type: 'data-select',
-        route: 'minetypes',
-        validator: isRequired,
-        transform: selectTransform('mineTypes', 'code', 'name'),
-        inputGroup: 4,
-        width: 20,
-      },
-      {
-        name: 'mineStatusCode',
-        type: 'data-select',
-        route: 'minestatuses',
-        validator: isRequired,
-        transform: selectTransform('mineStatuses', 'code', 'name'),
-        inputGroup: 4,
-        width: 20,
-      },
-      {
-        name: 'major',
-        type: 'checkbox',
-        inputGroup: 5,
-      },
-      {
-        name: 'underInvestigation',
-        type: 'checkbox',
-        inputGroup: 5,
-      },
-      {
-        name: 'withIssues',
-        type: 'checkbox',
-        inputGroup: 5,
-      },
-    ]
+    this.inputParams = updateFields
 
     const state = {
       isUpdate: false,
@@ -241,7 +148,7 @@ class MinesView extends React.Component {
 
   getUrl() {
     const updateRoute = this.state.isUpdate ? `/${this.props.data.id}` : ''
-    return `${BASE_URL}/${ROUTE}${updateRoute}`
+    return `${BASE_URL}/${MINES_ROUTE}${updateRoute}`
   }
 
   validate() {

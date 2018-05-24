@@ -19,6 +19,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   multi: PropTypes.bool,
   width: PropTypes.string,
   validationError: PropTypes.string,
@@ -28,6 +29,7 @@ const defaultProps = {
   data: [],
   prefix: null,
   disabled: null,
+  readOnly: null,
   multi: null,
   width: null,
   validationError: null,
@@ -48,6 +50,7 @@ function Select(props) {
     multi,
     width,
     validationError,
+    readOnly,
   } = props
 
   const title = startCase(name)
@@ -60,7 +63,7 @@ function Select(props) {
         value={value}
         className={validationError && 'has-error'}
         onChange={onChangeWrapper(onChange)}
-        disabled={disabled}
+        disabled={disabled || readOnly}
         multiple={multi}
         options={data}
       />

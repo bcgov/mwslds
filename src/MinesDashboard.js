@@ -5,7 +5,9 @@ import './style'
 
 import DataTable from './table/DataTable'
 import MineStats from './MineStats'
+import Details from './details'
 
+import { payloadTransform } from './input/Transforms'
 
 const propTypes = {
   tableRoute: PropTypes.string,
@@ -14,10 +16,6 @@ const propTypes = {
 
 const defaultProps = {
   tableRoute: 'mines?limit=10',
-}
-
-function minesTransform(data) {
-  return data && data.mines
 }
 
 class MinesDashboard extends React.Component {
@@ -40,8 +38,8 @@ class MinesDashboard extends React.Component {
           <MineStats />
           <DataTable
             route={this.props.tableRoute}
-            transform={minesTransform}
-            onRowClick={this.onRowClick}
+            transform={payloadTransform('mines')}
+            expandComponent={Details}
           />
         </div>
       </div>

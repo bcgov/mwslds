@@ -5,9 +5,11 @@ import './MinesSearch.css'
 
 import DataTable from './table/DataTable'
 import Input from './input'
-import { selectTransform, minesTransform } from './input/Transforms'
+import { selectTransform, payloadTransform } from './input/Transforms'
 
-const MINES_BASE_ROUTE = 'mines'
+import Details from './details'
+
+import { MINES_ROUTE } from './datafetching/Routes'
 
 const propTypes = {
   prefix: PropTypes.string,
@@ -151,7 +153,7 @@ class MinesSearch extends React.Component {
       return `${partialQuery}${param}${sep}`
     }, '')
 
-    return `${MINES_BASE_ROUTE}?${query}`
+    return `${MINES_ROUTE}?${query}`
   }
 
   updateState(param, value) {
@@ -258,8 +260,8 @@ class MinesSearch extends React.Component {
           <div className="row">
             <DataTable
               route={this.state.route}
-              transform={minesTransform}
-              onRowClick={this.onRowClick}
+              transform={payloadTransform('mines')}
+              expandComponent={Details}
             />
           </div>
         </div>
