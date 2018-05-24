@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Select from './Select'
 import withData from '../datafetching/DataLoader'
-import withDataTransform from '../datafetching/DataTransform'
+import withDataTransform from '../datatransform'
 import withToken from '../datafetching/Token'
 
 const propTypes = {

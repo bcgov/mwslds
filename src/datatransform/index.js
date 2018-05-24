@@ -24,3 +24,5 @@ export default function withDataTransform(Wrapped) {
 
   return WithDataTransformHOC
 }
+
+export * from './Transforms'

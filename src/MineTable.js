@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import DataTable from './table/DataTable'
 import Details from './details'
-import { minesTableTransform } from './datatransforms'
+import { minesTableTransform } from './datatransform'
 
 import { MINES_ROUTE } from './datafetching/Routes'
 

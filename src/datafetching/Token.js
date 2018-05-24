@@ -3,7 +3,7 @@ import base64 from 'base-64'
 
 import currToken from './Secret'
 
-const tokenRoute = 'https://i1api.nrs.gov.bc.ca/oauth2/v1/oauth/token?disableDeveloperFilter=true&grant_type=client_credentials&scope=MWSL_COMMONMINES_API.*'
+import TOKEN_ROUTE from './Routes'
 
 const TokenSingleton = {
   token: currToken,
@@ -20,7 +20,7 @@ const TokenSingleton = {
       mode: 'cors',
     }
 
-    return fetch(tokenRoute, options)
+    return fetch(TOKEN_ROUTE, options)
       .then((resp) => {
         if (!resp.ok) {
           throw Error(resp.statusText)
