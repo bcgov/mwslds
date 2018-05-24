@@ -54,7 +54,7 @@ class BaseTable extends React.Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data, expandComponent } = this.props
 
     if (!data) {
       return <div className="text-center">No Data</div>
@@ -66,14 +66,15 @@ class BaseTable extends React.Component {
       onRowClick: this.props.onRowClick,
     }
 
-    const expandable = this.props.expandComponent ? () => true : () => false
+    const expandable = expandComponent ? () => true : () => false
+    const expand = expandComponent ? this.expandRow : undefined
 
     return (
       <BootstrapTable
         data={data}
         options={options}
         expandableRow={expandable}
-        expandComponent={this.expandRow || undefined}
+        expandComponent={expand}
         pagination
       >
         {columns}
