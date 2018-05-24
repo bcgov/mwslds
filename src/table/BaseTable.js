@@ -10,15 +10,23 @@ const propTypes = {
   data: PropTypes.array,
   keyField: PropTypes.string,
   onRowClick: PropTypes.func,
+  expandComponent: PropTypes.func,
 }
 
 const defaultProps = {
   data: null,
   keyField: 'id',
   onRowClick: undefined,
+  expandComponent: undefined,
 }
 
 class BaseTable extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.expandRow = this.expandRow.bind(this)
+  }
+
   getColumns() {
     const { data, keyField } = this.props
 
@@ -35,6 +43,16 @@ class BaseTable extends React.Component {
     return columns
   }
 
+  expandRow(row) {
+    const Component = this.props.expandComponent
+    if (!Component) {
+      return null
+    }
+    const { id } = row
+    const route = `mines/${id}`
+    return <Component route={route} />
+  }
+
   render() {
     const { data } = this.props
 
@@ -48,8 +66,16 @@ class BaseTable extends React.Component {
       onRowClick: this.props.onRowClick,
     }
 
+    const expandable = this.props.expandComponent ? () => true : () => false
+
     return (
-      <BootstrapTable data={data} options={options} pagination>
+      <BootstrapTable
+        data={data}
+        options={options}
+        expandableRow={expandable}
+        expandComponent={this.expandRow || undefined}
+        pagination
+      >
         {columns}
       </BootstrapTable>
     )
