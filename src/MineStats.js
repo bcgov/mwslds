@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash'
 
 import withToken from './datafetching/Token'
 import cache from './cache'
-import { minesCountTransform } from './input/Transforms'
+import { minesCountTransform } from './datatransforms'
 
 import { BASE_URL } from './datafetching/Routes'
 

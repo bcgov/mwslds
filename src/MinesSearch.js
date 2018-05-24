@@ -5,7 +5,7 @@ import './MinesSearch.css'
 
 import MineTable from './MineTable'
 import Input from './input'
-import { selectTransform } from './input/Transforms'
+import { selectTransform } from './datatransforms'
 
 import { MINES_ROUTE } from './datafetching/Routes'
 
