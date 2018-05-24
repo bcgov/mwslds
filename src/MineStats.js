@@ -4,7 +4,7 @@ import { BarChart, Bar, XAxis, YAxis } from 'recharts'
 import { cloneDeep } from 'lodash'
 
 import withToken from './datafetching/Token'
-import cache from './datafetching/SimpleCache'
+import cache from './cache'
 import { minesCountTransform } from './input/Transforms'
 
 import { BASE_URL } from './datafetching/Routes'

@@ -1,17 +1,17 @@
 const cache = {
 
-  data: {},
+  store: {},
 
   put(route, data) {
-    this.data[route] = data
+    this.store[route] = data
   },
 
   evict(route) {
-    delete this.data[route]
+    delete this.store[route]
   },
 
   get(route) {
-    return this.data[route]
+    return this.store[route]
   },
 }
 

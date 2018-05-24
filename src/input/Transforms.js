@@ -40,6 +40,10 @@ export function minesCountTransform(data) {
   return null
 }
 
+export function minesTableTransform() {
+  return tableTransform('mines', ['id', 'mineName', 'alias', 'mineLocationName'])
+}
+
 export default {
   payloadTransform,
   reduceObjectTransform,
@@ -47,4 +51,5 @@ export default {
   selectTransform,
   tableTransform,
   minesCountTransform,
+  minesTableTransform,
 }
