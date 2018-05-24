@@ -36,7 +36,12 @@ class BaseTable extends React.Component {
     const row = data[0]
 
     const columns = Object.keys(row).map(name => (
-      <TableHeaderColumn key={name} isKey={name === keyField} dataField={name}>
+      <TableHeaderColumn
+        key={name}
+        isKey={name === keyField}
+        dataField={name}
+        dataSort
+      >
         {startCase(name)}
       </TableHeaderColumn>
     ))
@@ -64,6 +69,7 @@ class BaseTable extends React.Component {
 
     const options = {
       onRowClick: this.props.onRowClick,
+      paginationShowsTotal: true,
     }
 
     const expandable = expandComponent ? () => true : () => false
@@ -76,6 +82,7 @@ class BaseTable extends React.Component {
         expandableRow={expandable}
         expandComponent={expand}
         pagination
+        search
       >
         {columns}
       </BootstrapTable>
