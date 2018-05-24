@@ -1,11 +1,13 @@
 
+import { compress, decompress } from 'lz-string'
+
 const cache = {
 
   store: window.sessionStorage,
 
   put(key, data) {
     const json = JSON.stringify(data)
-    this.store.setItem(key, json)
+    this.store.setItem(key, compress(json))
   },
 
   evict(key) {
@@ -13,11 +15,11 @@ const cache = {
   },
 
   get(key) {
-    const jsonData = this.store.getItem(key)
-    if (!jsonData) {
+    const data = this.store.getItem(key)
+    if (!data) {
       return null
     }
-    return JSON.parse(jsonData)
+    return JSON.parse(decompress(data))
   },
 }
 
