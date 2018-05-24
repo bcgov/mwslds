@@ -4,8 +4,10 @@ import { BarChart, Bar, XAxis, YAxis } from 'recharts'
 import { cloneDeep } from 'lodash'
 
 import withToken from './datafetching/Token'
-
 import cache from './datafetching/SimpleCache'
+import { minesCountTransform } from './input/Transforms'
+
+import { BASE_URL } from './datafetching/Routes'
 
 const propTypes = {
   width: PropTypes.number,
@@ -18,15 +20,6 @@ const defaultProps = {
   height: 400,
   fill: '#337ab7',
   token: null,
-}
-
-const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
-
-function minesCountTransform(data) {
-  if (data) {
-    return data.mines.length
-  }
-  return null
 }
 
 class MineStats extends React.Component {

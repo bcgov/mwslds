@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import cache from './SimpleCache'
 
-const BASE_URL = 'https://i1api.nrs.gov.bc.ca/mwsl-commonmines-api/v1'
+import { BASE_URL } from './Routes'
 
 const propTypes = {
   token: PropTypes.string,
