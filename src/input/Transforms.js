@@ -40,8 +40,9 @@ export function minesCountTransform(data) {
   return null
 }
 
-export function minesTableTransform() {
-  return tableTransform('mines', ['id', 'mineName', 'alias', 'mineLocationName'])
+export function minesTableTransform(data) {
+  const transform = tableTransform('mines', ['id', 'mineName', 'alias', 'mineLocationName'])
+  return transform(data)
 }
 
 export default {

@@ -3,11 +3,8 @@ import PropTypes from 'prop-types'
 
 import './style'
 
-import DataTable from './table/DataTable'
 import MineStats from './MineStats'
-import Details from './details'
-
-import { payloadTransform } from './input/Transforms'
+import MineTable from './MineTable'
 
 const propTypes = {
   tableRoute: PropTypes.string,
@@ -36,11 +33,7 @@ class MinesDashboard extends React.Component {
       <div>
         <div className="container">
           <MineStats />
-          <DataTable
-            route={this.props.tableRoute}
-            transform={payloadTransform('mines')}
-            expandComponent={Details}
-          />
+          <MineTable route={this.props.tableRoute} />
         </div>
       </div>
     )

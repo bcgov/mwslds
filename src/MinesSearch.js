@@ -3,17 +3,14 @@ import PropTypes from 'prop-types'
 
 import './MinesSearch.css'
 
-import DataTable from './table/DataTable'
+import MineTable from './MineTable'
 import Input from './input'
-import { selectTransform, payloadTransform } from './input/Transforms'
-
-import Details from './details'
+import { selectTransform } from './input/Transforms'
 
 import { MINES_ROUTE } from './datafetching/Routes'
 
 const propTypes = {
   prefix: PropTypes.string,
-  history: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
@@ -25,7 +22,6 @@ class MinesSearch extends React.Component {
     super(props)
 
     this.onSubmit = this.onSubmit.bind(this)
-    this.onRowClick = this.onRowClick.bind(this)
     this.onShowAdvancedToggle = this.onShowAdvancedToggle.bind(this)
 
     this.queryableParams = [
@@ -121,13 +117,6 @@ class MinesSearch extends React.Component {
     this.setState(prevState => ({
       showAdvanced: !prevState.showAdvanced,
     }))
-  }
-
-  onRowClick(row) {
-    const { id } = row
-    const { history } = this.props
-    const route = `/mine/${id}`
-    history.push(route)
   }
 
   getValidParams() {
@@ -258,11 +247,7 @@ class MinesSearch extends React.Component {
             </form>
           </div>
           <div className="row">
-            <DataTable
-              route={this.state.route}
-              transform={payloadTransform('mines')}
-              expandComponent={Details}
-            />
+            <MineTable route={this.state.route} />
           </div>
         </div>
       </div>
