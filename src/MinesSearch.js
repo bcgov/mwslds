@@ -94,7 +94,7 @@ class MinesSearch extends React.Component {
     ]
 
     const state = {
-      route: null,
+      route: MINES_ROUTE,
       showAdvanced: false,
     }
 
