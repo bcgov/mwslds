@@ -12,6 +12,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   width: PropTypes.string,
   validationError: PropTypes.string,
 }
@@ -19,6 +20,7 @@ const propTypes = {
 const defaultProps = {
   prefix: null,
   disabled: null,
+  readOnly: null,
   width: null,
   validationError: null,
 }
@@ -36,6 +38,7 @@ function CheckboxInput(props) {
     disabled,
     width,
     validationError,
+    readOnly,
   } = props
 
   const title = startCase(name)
@@ -49,7 +52,7 @@ function CheckboxInput(props) {
         checked={value}
         onChange={onChangeWrapper(onChange)}
         type="checkbox"
-        disabled={disabled}
+        disabled={disabled || readOnly}
         style={{ marginRight: '3px' }}
       />
       {title}

@@ -12,6 +12,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   children: PropTypes.element,
   width: PropTypes.string,
   validationError: PropTypes.string,
@@ -20,6 +21,7 @@ const propTypes = {
 const defaultProps = {
   prefix: null,
   disabled: null,
+  readOnly: null,
   children: null,
   width: null,
   validationError: null,
@@ -36,6 +38,7 @@ function TextInput(props) {
     onChange,
     prefix,
     disabled,
+    readOnly,
     width,
     validationError,
   } = props
@@ -54,6 +57,7 @@ function TextInput(props) {
         onChange={onChangeWrapper(onChange)}
         type="text"
         disabled={disabled}
+        readOnly={readOnly}
       />
       {props.children}
     </label>
