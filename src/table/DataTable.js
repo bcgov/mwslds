@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import BaseTable from './BaseTable'
 import withData from '../datafetching/DataLoader'
 import withDataTransform from '../datatransform'
+import withDataFilter from '../datafilter'
 import withToken from '../datafetching/Token'
 
 const propTypes = {
@@ -39,4 +40,4 @@ function DataTable(props) {
 DataTable.propTypes = propTypes
 DataTable.defaultProps = defaultProps
 
-export default withToken(withData(withDataTransform(DataTable)))
+export default withToken(withData(withDataFilter(withDataTransform(DataTable))))

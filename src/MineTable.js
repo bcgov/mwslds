@@ -23,6 +23,12 @@ function MineTable(props) {
       route={route}
       transform={minesTableTransform}
       expandComponent={Details}
+      // ugly... issue is we want to filter after one part of transforming the data,
+      // but the transform happens after the filter. These functions happen before
+      // and after the filter and simply grab data.mines, then put the filter fesults
+      // back into data.mines.  ... there is probably a better way to do this
+      preFilter={data => data && data.mines}
+      postFilter={data => ({ mines: data })}
     />
   )
 }

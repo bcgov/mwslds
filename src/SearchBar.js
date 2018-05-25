@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
     this.onSearch = this.onSearch.bind(this)
     this.onShowAdvancedToggle = this.onShowAdvancedToggle.bind(this)
 
-    this.queryableParams = [
+    this.filterableParams = [
       {
         name: 'permitteeCompanyCode',
         type: 'data-select',
@@ -84,7 +84,7 @@ class SearchBar extends React.Component {
       showAdvanced: false,
     }
 
-    this.queryableParams.forEach((param) => { state[param.name] = '' })
+    this.filterableParams.forEach((param) => { state[param.name] = '' })
     this.state = state
   }
 
@@ -109,11 +109,11 @@ class SearchBar extends React.Component {
   }
 
   getValidParams() {
-    const params = []
-    this.queryableParams.forEach((param) => {
+    const params = {}
+    this.filterableParams.forEach((param) => {
       const val = this.state[param.name]
       if (val) {
-        params.push(`${param.name}=${val}`)
+        params[param.name] = val
       }
     })
     return params
@@ -149,7 +149,7 @@ class SearchBar extends React.Component {
   renderSubInputs() {
     const inputs = []
 
-    this.queryableParams.forEach((param) => {
+    this.filterableParams.forEach((param) => {
       const {
         name,
         type,

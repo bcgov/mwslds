@@ -13,6 +13,7 @@ const propTypes = {
   keyField: PropTypes.string,
   onRowClick: PropTypes.func,
   expandComponent: PropTypes.func,
+  updateFilter: PropTypes.func,
 }
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   keyField: 'id',
   onRowClick: undefined,
   expandComponent: undefined,
+  updateFilter: null,
 }
 
 class BaseTable extends React.Component {
@@ -34,8 +36,11 @@ class BaseTable extends React.Component {
   getColumns() {
     const { data, keyField } = this.props
 
-    if (!data) {
-      return null
+    if (!data || !data.length) {
+      // return the last set of columns we had or a single column
+      return this.lastColumns || (
+        <TableHeaderColumn isKey dataField="none">No Data</TableHeaderColumn>
+      )
     }
     const row = data[0]
 
@@ -44,6 +49,11 @@ class BaseTable extends React.Component {
         {startCase(name)}
       </TableHeaderColumn>
     ))
+
+    // remember the last set of columns we rendered so if we filter down to no data
+    // we can still display columns
+    this.lastColumns = columns
+
     return columns
   }
 
@@ -66,15 +76,11 @@ class BaseTable extends React.Component {
   }
 
   searchPanel(props) {
-    return <SearchBar onSearch={props.search} />
+    return <SearchBar onSearch={props.search} onFilter={this.props.updateFilter} />
   }
 
   render() {
     const { data, expandComponent } = this.props
-
-    if (!data) {
-      return <div className="text-center">No Data</div>
-    }
 
     const columns = this.getColumns()
 
