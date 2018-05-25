@@ -6,6 +6,8 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import { startCase } from 'lodash'
 
+import SearchBar from '../SearchBar'
+
 const propTypes = {
   data: PropTypes.array,
   keyField: PropTypes.string,
@@ -25,6 +27,8 @@ class BaseTable extends React.Component {
     super(props)
 
     this.expandRow = this.expandRow.bind(this)
+    this.toolBar = this.toolBar.bind(this)
+    this.searchPanel = this.searchPanel.bind(this)
   }
 
   getColumns() {
@@ -36,12 +40,7 @@ class BaseTable extends React.Component {
     const row = data[0]
 
     const columns = Object.keys(row).map(name => (
-      <TableHeaderColumn
-        key={name}
-        isKey={name === keyField}
-        dataField={name}
-        dataSort
-      >
+      <TableHeaderColumn key={name} isKey={name === keyField} dataField={name}>
         {startCase(name)}
       </TableHeaderColumn>
     ))
@@ -58,6 +57,18 @@ class BaseTable extends React.Component {
     return <Component route={route} />
   }
 
+  toolBar(props) {
+    return (
+      <div className="col-sm-12">
+        {props.components.searchPanel}
+      </div>
+    )
+  }
+
+  searchPanel(props) {
+    return <SearchBar onSearch={props.search} />
+  }
+
   render() {
     const { data, expandComponent } = this.props
 
@@ -70,6 +81,8 @@ class BaseTable extends React.Component {
     const options = {
       onRowClick: this.props.onRowClick,
       paginationShowsTotal: true,
+      toolBar: this.toolBar,
+      searchPanel: this.searchPanel,
     }
 
     const expandable = expandComponent ? () => true : () => false

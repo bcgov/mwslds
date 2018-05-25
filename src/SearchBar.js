@@ -3,48 +3,38 @@ import PropTypes from 'prop-types'
 
 import './MinesSearch.css'
 
-import MineTable from './MineTable'
 import Input from './input'
 import { selectTransform } from './datatransform'
 
 import { MINES_ROUTE } from './datafetching/Routes'
 
 const propTypes = {
+  onFilter: PropTypes.func,
+  onSearch: PropTypes.func,
   prefix: PropTypes.string,
 }
 
 const defaultProps = {
+  onFilter: undefined,
+  onSearch: undefined,
   prefix: null,
 }
 
-class MinesSearch extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onFilter = this.onFilter.bind(this)
+    this.onSearch = this.onSearch.bind(this)
     this.onShowAdvancedToggle = this.onShowAdvancedToggle.bind(this)
 
     this.queryableParams = [
-      {
-        name: 'mineId',
-        inputGroup: 1,
-        width: 33,
-      },
-      {
-        name: 'mineName',
-        main: true,
-      },
-      {
-        name: 'mineLocationName',
-        inputGroup: 1,
-        width: 33,
-      },
       {
         name: 'permitteeCompanyCode',
         type: 'data-select',
         route: 'companies',
         transform: selectTransform('companies', 'code', 'code'),
-        inputGroup: 2,
+        inputGroup: 1,
         width: 20,
       },
       {
@@ -52,7 +42,7 @@ class MinesSearch extends React.Component {
         type: 'data-select',
         route: 'regions',
         transform: selectTransform('regions', 'code', 'code'),
-        inputGroup: 2,
+        inputGroup: 1,
         width: 20,
       },
       {
@@ -60,7 +50,7 @@ class MinesSearch extends React.Component {
         type: 'data-select',
         route: 'minetypes',
         transform: selectTransform('mineTypes', 'code', 'name'),
-        inputGroup: 2,
+        inputGroup: 1,
         width: 20,
       },
       {
@@ -68,32 +58,28 @@ class MinesSearch extends React.Component {
         type: 'data-select',
         route: 'minestatuses',
         transform: selectTransform('mineStatuses', 'code', 'name'),
-        inputGroup: 2,
+        inputGroup: 1,
         width: 20,
       },
       {
         name: 'underInvestigation',
         type: 'checkbox',
-        inputGroup: 3,
+        inputGroup: 2,
       },
       {
         name: 'major',
         type: 'checkbox',
-        inputGroup: 3,
+        inputGroup: 2,
       },
       {
         name: 'withIssues',
         type: 'checkbox',
-        inputGroup: 3,
-      },
-      {
-        name: 'limit',
-        inputGroup: 4,
-        width: 5,
+        inputGroup: 2,
       },
     ]
 
     const state = {
+      main: '',
       route: MINES_ROUTE,
       showAdvanced: false,
     }
@@ -106,11 +92,14 @@ class MinesSearch extends React.Component {
     return value => this.updateState(param, value)
   }
 
-  onSubmit(evt) {
+  onFilter(evt) {
     evt.preventDefault()
-    this.setState({
-      route: this.getRoute(),
-    })
+    const params = this.getValidParams()
+    this.props.onFilter(params)
+  }
+
+  onSearch() {
+    this.props.onSearch(this.state.main)
   }
 
   onShowAdvancedToggle() {
@@ -130,21 +119,6 @@ class MinesSearch extends React.Component {
     return params
   }
 
-  getRoute() {
-    const params = this.getValidParams()
-    if (params.length === 0) {
-      return null
-    }
-
-    const lastIdx = params.length - 1
-    const query = params.reduce((partialQuery, param, idx) => {
-      const sep = idx === lastIdx ? '' : '&'
-      return `${partialQuery}${param}${sep}`
-    }, '')
-
-    return `${MINES_ROUTE}?${query}`
-  }
-
   updateState(param, value) {
     this.setState({
       [param]: value,
@@ -152,24 +126,15 @@ class MinesSearch extends React.Component {
   }
 
   renderMainInput() {
-    const {
-      name,
-      type,
-      route,
-      transform,
-    } = this.queryableParams.find(param => param.main)
-
     return (
-      <div key={name} className="form-main form-line input-group">
+      <div className="form-group form-main form-line input-group">
         <Input
-          name={name}
-          type={type}
-          value={this.state[name]}
-          onChange={this.onInputChange(name)}
-          route={route}
-          transform={transform}
+          name=""
+          type="text"
+          value={undefined} // dont control this input
+          onChange={this.props.onSearch}
           prefix={this.props.prefix}
-          width="89%"
+          width="88%"
         >
           <span className="form-inline">
             <button className="btn btn-default" type="button" onClick={this.onShowAdvancedToggle}>
@@ -228,34 +193,25 @@ class MinesSearch extends React.Component {
   }
 
   render() {
-    // const disabled = !this.queryableParams.reduce((anyValid, param) => (
-    //   anyValid || !!this.state[param.name]
-    // ), false)
-
     return (
-      <div>
-        <div className="container">
-          {/* <div className="row">
-            <form onSubmit={this.onSubmit}>
-              {this.renderMainInput()}
-              {this.state.showAdvanced && this.renderSubInputs()}
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" disabled={disabled}>
-                  Query
-                </button>
-              </div>
-            </form>
-          </div> */}
-          <div className="row">
-            <MineTable route={this.state.route} />
-          </div>
-        </div>
-      </div>
+      <form onSubmit={this.onFilter}>
+        {this.renderMainInput()}
+        {this.state.showAdvanced && this.renderSubInputs()}
+        {
+          this.state.showAdvanced && (
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary">
+                Filter
+              </button>
+            </div>
+          )
+        }
+      </form>
     )
   }
 }
 
-MinesSearch.propTypes = propTypes
-MinesSearch.defaultProps = defaultProps
+SearchBar.propTypes = propTypes
+SearchBar.defaultProps = defaultProps
 
-export default MinesSearch
+export default SearchBar
