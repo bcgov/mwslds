@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Details from './details'
+import Details from '../details'
 
-import { MINES_ROUTE } from './datafetching/Routes'
+import { MINES_ROUTE } from '../datafetching/Routes'
 
 const propTypes = {
   id: PropTypes.string.isRequired,

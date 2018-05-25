@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import DataTable from './table/DataTable'
+import DataTable from '../table/DataTable'
 import MineTableDetails from './MineTableDetails'
 import MineTableSearchBar from './MineTableSearchBar'
 
-import { minesTableTransform } from './datatransform'
+import { minesTableTransform } from '../datatransform'
 
-import { MINES_ROUTE } from './datafetching/Routes'
+import { MINES_ROUTE } from '../datafetching/Routes'
 
 const propTypes = {
   route: PropTypes.string,

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import SearchBar from './searchbar'
+import SearchBar from '../searchbar'
 
-import { selectTransform } from './datatransform'
+import { selectTransform } from '../datatransform'
 
 const propTypes = {}
 const defaultProps = {}
