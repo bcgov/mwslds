@@ -89,7 +89,20 @@ class SearchBar extends React.Component {
   }
 
   onInputChange(param) {
-    return value => this.updateState(param, value)
+    return (value) => {
+      this.updateState(param, value)
+
+      const params = this.getValidParams()
+      // have to set the new value here as updateState happens async.
+      // also, inputs of 0 work here as we get the string "0"... cheeky!
+      if (!value && value !== false) {
+        delete params[param]
+      } else {
+        params[param] = value
+      }
+
+      this.props.onFilter(params)
+    }
   }
 
   onFilter(evt) {
@@ -194,18 +207,9 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onFilter}>
+      <form>
         {this.renderMainInput()}
         {this.state.showAdvanced && this.renderSubInputs()}
-        {
-          this.state.showAdvanced && (
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Filter
-              </button>
-            </div>
-          )
-        }
       </form>
     )
   }
