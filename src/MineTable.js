@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import DataTable from './table/DataTable'
-import Details from './details'
+import MineTableDetails from './MineTableDetails'
 import MineTableSearchBar from './MineTableSearchBar'
 
 import { minesTableTransform } from './datatransform'
@@ -24,7 +24,7 @@ function MineTable(props) {
     <DataTable
       route={route}
       transform={minesTableTransform}
-      expandComponent={Details}
+      expandComponent={MineTableDetails}
       searchComponent={MineTableSearchBar}
       // ugly... issue is we want to filter after one part of transforming the data,
       // but the transform happens after the filter. These functions happen before

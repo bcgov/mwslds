@@ -62,9 +62,8 @@ class BaseTable extends React.Component {
     if (!Component) {
       return null
     }
-    const { id } = row
-    const route = `mines/${id}`
-    return <Component route={route} />
+
+    return <Component {...row} />
   }
 
   toolBar(props) {
@@ -78,7 +77,7 @@ class BaseTable extends React.Component {
   searchPanel(props) {
     const Component = this.props.searchComponent
     if (!Component) {
-      return undefined
+      return null
     }
 
     return <Component onSearch={props.search} onFilter={this.props.updateFilter} />

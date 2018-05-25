@@ -1,13 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import MineTable from './MineTable'
 
-const propTypes = {
-}
-
-const defaultProps = {
-}
+const propTypes = {}
+const defaultProps = {}
 
 function MinesSearchRoute() {
   return (
