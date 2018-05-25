@@ -147,6 +147,7 @@ class SearchBar extends React.Component {
           value={undefined} // dont control this input
           onChange={this.props.onSearch}
           prefix={this.props.prefix}
+          placeholder="Search"
           width="88%"
         >
           <span className="form-inline">
@@ -207,7 +208,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={evt => evt.preventDefault()}>
         {this.renderMainInput()}
         {this.state.showAdvanced && this.renderSubInputs()}
       </form>
