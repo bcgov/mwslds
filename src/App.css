@@ -1,12 +1,20 @@
 
-.scroll {
-  overflow: scroll;
-}
-
 .shift-left {
   margin-right: 30px;
 }
 
 .App {
   height: inherit;
+}
+
+.form-spacing label {
+  padding-right: 10px;
+}
+
+.form-line {
+  width: 100%;
+}
+
+.form-inline {
+  display: flex;
 }

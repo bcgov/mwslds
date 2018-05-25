@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 import './style'
-import './MinesSearch.css'
 
 import withData from './datafetching/DataLoader'
 import withToken, { invalidTokenMessage } from './datafetching/Token'

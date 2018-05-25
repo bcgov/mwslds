@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { startCase } from 'lodash'
 
 import '../style'
-import '../MinesSearch.css'
 
 import withData from '../datafetching/DataLoader'
 import withToken from '../datafetching/Token'

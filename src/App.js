@@ -7,7 +7,7 @@ import './App.css'
 import Header from './header'
 import Footer from './footer'
 import MinesDashboard from './MinesDashboard'
-import MinesSearch from './MinesSearch'
+import MinesSearchRoute from './MinesSearchRoute'
 import MinesViewRoute from './MinesViewRoute'
 import MessageDisplay from './message'
 
@@ -31,7 +31,7 @@ export default class App extends React.Component {
       <MinesViewRoute {...otherProps} displayMessage={this.updateMessage} />
     )
     this.search = otherProps => (
-      <MinesSearch {...otherProps} displayMessage={this.updateMessage} />
+      <MinesSearchRoute {...otherProps} displayMessage={this.updateMessage} />
     )
     this.notFound = () => (<h2 className="container">There is nothing here!</h2>)
 

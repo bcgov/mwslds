@@ -6,13 +6,12 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import { startCase } from 'lodash'
 
-import SearchBar from '../SearchBar'
-
 const propTypes = {
   data: PropTypes.array,
   keyField: PropTypes.string,
   onRowClick: PropTypes.func,
   expandComponent: PropTypes.func,
+  searchComponent: PropTypes.func,
   updateFilter: PropTypes.func,
 }
 
@@ -21,6 +20,7 @@ const defaultProps = {
   keyField: 'id',
   onRowClick: undefined,
   expandComponent: undefined,
+  searchComponent: undefined,
   updateFilter: null,
 }
 
@@ -76,19 +76,27 @@ class BaseTable extends React.Component {
   }
 
   searchPanel(props) {
-    return <SearchBar onSearch={props.search} onFilter={this.props.updateFilter} />
+    const Component = this.props.searchComponent
+    if (!Component) {
+      return undefined
+    }
+
+    return <Component onSearch={props.search} onFilter={this.props.updateFilter} />
   }
 
   render() {
-    const { data, expandComponent } = this.props
+    const { data, expandComponent, searchComponent } = this.props
 
     const columns = this.getColumns()
 
     const options = {
       onRowClick: this.props.onRowClick,
       paginationShowsTotal: true,
-      toolBar: this.toolBar,
-      searchPanel: this.searchPanel,
+    }
+
+    if (searchComponent) {
+      options.toolBar = this.toolBar
+      options.searchPanel = this.searchPanel
     }
 
     const expandable = expandComponent ? () => true : () => false

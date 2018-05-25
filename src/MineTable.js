@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import DataTable from './table/DataTable'
 import Details from './details'
+import MineTableSearchBar from './MineTableSearchBar'
+
 import { minesTableTransform } from './datatransform'
 
 import { MINES_ROUTE } from './datafetching/Routes'
@@ -23,6 +25,7 @@ function MineTable(props) {
       route={route}
       transform={minesTableTransform}
       expandComponent={Details}
+      searchComponent={MineTableSearchBar}
       // ugly... issue is we want to filter after one part of transforming the data,
       // but the transform happens after the filter. These functions happen before
       // and after the filter and simply grab data.mines, then put the filter fesults
