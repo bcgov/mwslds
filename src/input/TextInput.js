@@ -16,6 +16,7 @@ const propTypes = {
   children: PropTypes.element,
   width: PropTypes.string,
   validationError: PropTypes.string,
+  placeholder: PropTypes.string,
 }
 
 const defaultProps = {
@@ -27,6 +28,7 @@ const defaultProps = {
   children: null,
   width: null,
   validationError: null,
+  placeholder: undefined,
 }
 
 function onChangeWrapper(wrapped) {
@@ -43,6 +45,7 @@ function TextInput(props) {
     readOnly,
     width,
     validationError,
+    placeholder,
   } = props
 
   const title = startCase(name)
@@ -56,6 +59,7 @@ function TextInput(props) {
         id={inputId}
         className="form-control"
         value={value}
+        placeholder={placeholder}
         onChange={onChangeWrapper(onChange)}
         type="text"
         disabled={disabled}
