@@ -13,9 +13,9 @@ import '../style'
 import './Select.css'
 
 const propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
@@ -26,6 +26,8 @@ const propTypes = {
 }
 
 const defaultProps = {
+  name: '',
+  value: undefined,
   data: [],
   prefix: null,
   disabled: null,

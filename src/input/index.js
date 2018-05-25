@@ -7,11 +7,12 @@ import DataSelect from './DataSelect'
 
 const propTypes = {
   type: PropTypes.string,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.any,
 }
 
 const defaultProps = {
   type: 'text',
+  value: undefined,
 }
 
 function Input(props) {

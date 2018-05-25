@@ -7,8 +7,8 @@ import { startCase } from 'lodash'
 import '../style'
 
 const propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.bool.isRequired,
+  name: PropTypes.string,
+  value: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
   disabled: PropTypes.bool,
@@ -18,6 +18,8 @@ const propTypes = {
 }
 
 const defaultProps = {
+  value: undefined,
+  name: '',
   prefix: null,
   disabled: null,
   readOnly: null,
