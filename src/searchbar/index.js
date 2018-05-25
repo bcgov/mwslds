@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Input from './input'
+import Input from '../input'
 
 const propTypes = {
   onFilter: PropTypes.func,
