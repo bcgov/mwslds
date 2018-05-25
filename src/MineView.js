@@ -27,7 +27,7 @@ const defaultProps = {
   displayMessage: () => {},
 }
 
-class MinesView extends React.Component {
+class MineView extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { data } = nextProps
     if (data && data.id && !prevState.isUpdate) {
@@ -240,7 +240,7 @@ class MinesView extends React.Component {
   }
 }
 
-MinesView.propTypes = propTypes
-MinesView.defaultProps = defaultProps
+MineView.propTypes = propTypes
+MineView.defaultProps = defaultProps
 
-export default withToken(withData(MinesView))
+export default withToken(withData(MineView))

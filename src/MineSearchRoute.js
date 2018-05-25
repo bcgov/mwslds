@@ -1,11 +1,11 @@
 import React from 'react'
 
-import MineTable from './MineTable'
+import MineTable from './minetable'
 
 const propTypes = {}
 const defaultProps = {}
 
-function MinesSearchRoute() {
+function MineSearchRoute() {
   return (
     <div>
       <div className="container">
@@ -17,7 +17,7 @@ function MinesSearchRoute() {
   )
 }
 
-MinesSearchRoute.propTypes = propTypes
-MinesSearchRoute.defaultProps = defaultProps
+MineSearchRoute.propTypes = propTypes
+MineSearchRoute.defaultProps = defaultProps
 
-export default MinesSearchRoute
+export default MineSearchRoute
