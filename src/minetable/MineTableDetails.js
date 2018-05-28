@@ -7,8 +7,11 @@ import { MINES_ROUTE } from '../datafetching/Routes'
 
 const propTypes = {
   id: PropTypes.string.isRequired,
+  updateTableData: PropTypes.func,
 }
-const defaultProps = {}
+const defaultProps = {
+  updateTableData: null,
+}
 
 function MineTableDetails(props) {
   const { id, updateTableData } = props
