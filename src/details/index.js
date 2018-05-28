@@ -12,11 +12,12 @@ import { BASE_URL, MINES_ROUTE } from '../datafetching/Routes'
 import Input from '../input'
 import { detailFields } from '../MineDefinition'
 
+import MessageDisplay from '../message'
+
 const propTypes = {
   token: PropTypes.string,
   prefix: PropTypes.string,
   data: PropTypes.object,
-  displayMessage: PropTypes.func,
   updateData: PropTypes.func,
   updateTableData: PropTypes.func,
 }
@@ -25,7 +26,6 @@ const defaultProps = {
   token: null,
   prefix: null,
   data: null,
-  displayMessage: () => {},
   updateData: undefined,
   updateTableData: undefined,
 }
@@ -56,12 +56,15 @@ class DetailDisplay extends React.Component {
     super(props)
 
     this.onSubmit = this.onSubmit.bind(this)
+    this.onMessageDismiss = this.onMessageDismiss.bind(this)
 
     this.inputParams = detailFields
 
     const { data } = this.props
     const state = {
       isUpdate: false,
+      isSaving: false,
+      message: null,
       // errors holds a map of input name -> error string
       errors: {},
     }
@@ -90,10 +93,10 @@ class DetailDisplay extends React.Component {
   onSubmit(evt) {
     evt.preventDefault()
 
-    const { token, displayMessage } = this.props
+    const { token } = this.props
 
     if (!token) {
-      displayMessage(invalidTokenMessage)
+      this.onDisplayMessage(invalidTokenMessage)
       return
     }
 
@@ -115,6 +118,11 @@ class DetailDisplay extends React.Component {
       mode: 'cors',
     }
 
+    this.setState({
+      message: null,
+      isSaving: true,
+    })
+
     fetch(url, options)
       .then((resp) => {
         if (!resp.ok) {
@@ -125,7 +133,7 @@ class DetailDisplay extends React.Component {
       .then((parsed) => {
         if (parsed.code && parsed.code === '0') {
           const { description } = parsed
-          displayMessage({
+          this.onDisplayMessage({
             type: 'success',
             title: 'Success!',
             message: description,
@@ -134,17 +142,32 @@ class DetailDisplay extends React.Component {
           // record when updating
           data.id = this.props.data.id
           this.onUpdate(data)
+
+          this.setState({
+            isSaving: false,
+          })
         } else {
           throw Error(parsed.description)
         }
       })
       .catch((error) => {
-        displayMessage({
+        this.onDisplayMessage({
           type: 'danger',
           title: 'Something went wrong.',
           message: error.message,
         })
+        this.setState({
+          isSaving: false,
+        })
       })
+  }
+
+  onMessageDismiss() {
+    this.onDisplayMessage(null)
+  }
+
+  onDisplayMessage(message) {
+    this.setState({ message })
   }
 
   getData() {
@@ -251,8 +274,15 @@ class DetailDisplay extends React.Component {
         style={{ whiteSpace: 'normal', marginBottom: 0 }}
       >
         {this.renderInputs()}
+        {
+          this.state.message && (
+            <div className="form-group" style={{ marginTop: '10px' }}>
+              <MessageDisplay {...this.state.message} onDismiss={this.onMessageDismiss} />
+            </div>
+          )
+        }
         <div className="form-group">
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '10px' }}>
+          <button type="submit" className="btn btn-primary" disabled={this.state.isSaving} style={{ marginTop: this.state.message ? 0 : '10px' }}>
             {this.state.isUpdate ? 'Update' : 'Create'}
           </button>
         </div>

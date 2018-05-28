@@ -65,7 +65,12 @@ class BaseTable extends React.Component {
       return null
     }
 
-    return <Component {...row} updateTableData={this.props.updateData} />
+    return (
+      <Component
+        {...row}
+        updateTableData={this.props.updateData}
+      />
+    )
   }
 
   toolBar(props) {

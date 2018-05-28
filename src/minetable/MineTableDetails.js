@@ -10,7 +10,7 @@ const propTypes = {
   updateTableData: PropTypes.func,
 }
 const defaultProps = {
-  updateTableData: null,
+  updateTableData: undefined,
 }
 
 function MineTableDetails(props) {
