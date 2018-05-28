@@ -13,6 +13,7 @@ const propTypes = {
   expandComponent: PropTypes.func,
   searchComponent: PropTypes.func,
   updateFilter: PropTypes.func,
+  updateData: PropTypes.func,
 }
 
 const defaultProps = {
@@ -21,7 +22,8 @@ const defaultProps = {
   onRowClick: undefined,
   expandComponent: undefined,
   searchComponent: undefined,
-  updateFilter: null,
+  updateFilter: undefined,
+  updateData: undefined,
 }
 
 class BaseTable extends React.Component {
@@ -63,7 +65,7 @@ class BaseTable extends React.Component {
       return null
     }
 
-    return <Component {...row} />
+    return <Component {...row} updateTableData={this.props.updateData} />
   }
 
   toolBar(props) {

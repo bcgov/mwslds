@@ -11,10 +11,10 @@ const propTypes = {
 const defaultProps = {}
 
 function MineTableDetails(props) {
-  const { id } = props
+  const { id, updateTableData } = props
   const route = `${MINES_ROUTE}/${id}`
   return (
-    <Details route={route} />
+    <Details route={route} updateTableData={updateTableData} />
   )
 }
 

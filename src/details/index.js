@@ -17,6 +17,8 @@ const propTypes = {
   prefix: PropTypes.string,
   data: PropTypes.object,
   displayMessage: PropTypes.func,
+  updateData: PropTypes.func,
+  updateTableData: PropTypes.func,
 }
 
 const defaultProps = {
@@ -24,6 +26,8 @@ const defaultProps = {
   prefix: null,
   data: null,
   displayMessage: () => {},
+  updateData: undefined,
+  updateTableData: undefined,
 }
 
 class DetailDisplay extends React.Component {
@@ -72,6 +76,17 @@ class DetailDisplay extends React.Component {
     return value => this.updateState(param, value)
   }
 
+  onUpdate(data) {
+    const { updateData, updateTableData } = this.props
+
+    if (updateData) {
+      updateData(data)
+    }
+    if (updateTableData) {
+      updateTableData(data)
+    }
+  }
+
   onSubmit(evt) {
     evt.preventDefault()
 
@@ -115,6 +130,10 @@ class DetailDisplay extends React.Component {
             title: 'Success!',
             message: description,
           })
+          // need to place the id back into our data so we can find the correct
+          // record when updating
+          data.id = this.props.data.id
+          this.onUpdate(data)
         } else {
           throw Error(parsed.description)
         }

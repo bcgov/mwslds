@@ -5,7 +5,7 @@ import DataTable from '../table/DataTable'
 import MineTableDetails from './MineTableDetails'
 import MineTableSearchBar from './MineTableSearchBar'
 
-import { minesTableTransform } from '../datatransform'
+import { minesTableTransform, minesUpdateTransform } from '../datatransform'
 
 import { MINES_ROUTE } from '../datafetching/Routes'
 
@@ -24,6 +24,7 @@ function MineTable(props) {
     <DataTable
       route={route}
       transform={minesTableTransform}
+      updateDataTransform={minesUpdateTransform}
       expandComponent={MineTableDetails}
       searchComponent={MineTableSearchBar}
       // ugly... issue is we want to filter after one part of transforming the data,

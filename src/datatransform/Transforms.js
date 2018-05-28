@@ -45,6 +45,17 @@ export function minesTableTransform(data) {
   return transform(data)
 }
 
+export function minesUpdateTransform(data, row) {
+  const { mines } = data
+  const toUpdate = mines.findIndex(mine => (mine.id === row.id))
+
+  mines[toUpdate] = Object.assign(mines[toUpdate], row)
+  // we want to return a new data object
+  return {
+    mines,
+  }
+}
+
 export default {
   payloadTransform,
   reduceObjectTransform,
