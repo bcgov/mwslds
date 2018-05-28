@@ -53,7 +53,7 @@ export default class App extends React.Component {
       <Router>
         <div className="App">
           <Header title="Mine Seeker">
-            <Link to="/">Home</Link>
+            <Link to="/">Dashboard</Link>
             <Link to="/mine">Create</Link>
             <Link to="/search">Search</Link>
           </Header>
