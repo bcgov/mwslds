@@ -43,10 +43,10 @@ const detailFields = [
   },
   {
     name: 'permitteeCompanyCode',
-    type: 'data-select',
-    route: 'companies',
+    // type: 'data-select',
+    // route: 'companies',
     validator: isRequired,
-    transform: selectTransform('companies', 'code', 'code'),
+    // transform: selectTransform('companies', 'code', 'code'),
     inputGroup: 7,
     width: 25,
   },
