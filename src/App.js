@@ -6,9 +6,9 @@ import './App.css'
 
 import Header from './header'
 import Footer from './footer'
-import MinesDashboard from './MinesDashboard'
-import MinesSearch from './MinesSearch'
-import MinesViewRoute from './MinesViewRoute'
+import MineDashboard from './MineDashboard'
+import MineSearchRoute from './MineSearchRoute'
+import MineViewRoute from './MineViewRoute'
 import MessageDisplay from './message'
 
 
@@ -20,18 +20,18 @@ export default class App extends React.Component {
     this.onMessageDismiss = this.onMessageDismiss.bind(this)
 
     this.dashboard = otherProps => (
-      <MinesDashboard {...otherProps} displayMessage={this.updateMessage} />
+      <MineDashboard {...otherProps} displayMessage={this.updateMessage} />
     )
     // specificView and view need to be separate functions. we dont actually
     // want them to be the same component or state gets muddled between them
     this.specificView = otherProps => (
-      <MinesViewRoute {...otherProps} displayMessage={this.updateMessage} />
+      <MineViewRoute {...otherProps} displayMessage={this.updateMessage} />
     )
     this.view = otherProps => (
-      <MinesViewRoute {...otherProps} displayMessage={this.updateMessage} />
+      <MineViewRoute {...otherProps} displayMessage={this.updateMessage} />
     )
     this.search = otherProps => (
-      <MinesSearch {...otherProps} displayMessage={this.updateMessage} />
+      <MineSearchRoute {...otherProps} displayMessage={this.updateMessage} />
     )
     this.notFound = () => (<h2 className="container">There is nothing here!</h2>)
 

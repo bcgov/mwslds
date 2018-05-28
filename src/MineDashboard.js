@@ -7,7 +7,7 @@ import './MinesDashboard.css'
 //import MineStats from './MineStats'
 import NowStats from './NowStats'
 import MineVisitStats from './MineVisitStats'
-import MineTable from './MineTable'
+import MineTable from './mineTable'
 
 const propTypes = {
   tableRoute: PropTypes.string,
@@ -15,10 +15,10 @@ const propTypes = {
 }
 
 const defaultProps = {
-  tableRoute: 'mines?limit=10',
+  tableRoute: `${MINES_ROUTE}?limit=10`,
 }
 
-class MinesDashboard extends React.Component {
+class MineDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.onRowClick = this.onRowClick.bind(this)
@@ -56,7 +56,7 @@ class MinesDashboard extends React.Component {
   }
 }
 
-MinesDashboard.propTypes = propTypes
-MinesDashboard.defaultProps = defaultProps
+MineDashboard.propTypes = propTypes
+MineDashboard.defaultProps = defaultProps
 
-export default MinesDashboard
+export default MineDashboard

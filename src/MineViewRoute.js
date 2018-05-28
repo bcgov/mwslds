@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import MinesView from './MinesView'
+import MineView from './MineView'
 import { MINES_ROUTE } from './datafetching/Routes'
 
 const propTypes = {
@@ -11,16 +11,16 @@ const propTypes = {
 const defaultProps = {
 }
 
-function MinesViewRoute(props) {
+function MineViewRoute(props) {
   const { mineId } = props.match.params
 
   const route = mineId ? `${MINES_ROUTE}/${mineId}` : null
   return (
-    <MinesView route={route} {...props} />
+    <MineView route={route} {...props} />
   )
 }
 
-MinesViewRoute.propTypes = propTypes
-MinesViewRoute.defaultProps = defaultProps
+MineViewRoute.propTypes = propTypes
+MineViewRoute.defaultProps = defaultProps
 
-export default MinesViewRoute
+export default MineViewRoute
