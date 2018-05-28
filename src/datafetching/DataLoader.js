@@ -118,6 +118,7 @@ function withData(Wrapped) {
         } else {
           newData = Object.assign(prevState.data, data)
         }
+        cache.invalidate(this.getUrl().split('?')[0])
         cache.put(this.getUrl(), newData)
         return {
           data: newData,
