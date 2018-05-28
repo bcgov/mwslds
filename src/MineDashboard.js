@@ -7,7 +7,9 @@ import './MinesDashboard.css'
 //import MineStats from './MineStats'
 import NowStats from './NowStats'
 import MineVisitStats from './MineVisitStats'
-import MineTable from './mineTable'
+import MineTable from './minetable'
+
+import { MINES_ROUTE } from './datafetching/Routes'
 
 const propTypes = {
   tableRoute: PropTypes.string,
