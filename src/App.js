@@ -52,14 +52,14 @@ export default class App extends React.Component {
     let user = this.parseToken(hash)
     if (!user) {
       // fallback to using browser storage
-      const { storage } = window.sessionStorage.getItem('token')
+      const storage = window.sessionStorage.getItem('token')
       user = this.parseToken(storage)
     }
     return user
   }
 
   parseToken(data) {
-    if (!data) {
+    if (data) {
       const match = data.match(/access_token=[^&]*/)
       if (match) {
         // there is an annoying jQuery parsing error if we dont remove stuff
