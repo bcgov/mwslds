@@ -16,7 +16,18 @@ function MineViewRoute(props) {
 
   const route = mineId ? `${MINES_ROUTE}/${mineId}` : null
   return (
-    <MineView route={route} {...props} />
+    <div className="container">
+      <div className="row description">
+        <h3>Create Mine</h3>
+        <p>
+          Create a new mine. Required fields are highlighted in red if they are
+          missing upon submission. Entered By and Entered Date are automatically populated.
+        </p>
+      </div>
+      <div className="Row">
+        <MineView route={route} {...props} />
+      </div>
+    </div>
   )
 }
 

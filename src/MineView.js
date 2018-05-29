@@ -131,8 +131,9 @@ class MineView extends React.Component {
   }
 
   getData() {
+    const { isUpdate } = this.state
     const data = {}
-    if (!this.state.isUpdate) {
+    if (!isUpdate) {
       data.enteredBy = 'MWSL'
       const now = new Date()
       data.enteredDate = `${now.getFullYear()}/${now.getMonth()}/${now.getDay()}`
@@ -140,9 +141,11 @@ class MineView extends React.Component {
     this.inputParams.forEach((param) => {
       const { name } = param
       const val = this.state[name]
-      if (val) {
-        data[name] = val
+      if (!val && !isUpdate) {
+        // we have all params default as the empty string, dont pass that along
+        return
       }
+      data[name] = val
     })
     return data
   }
@@ -228,16 +231,14 @@ class MineView extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.onSubmit}>
-          {this.renderInputs()}
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
-              {this.state.isUpdate ? 'Update' : 'Create'}
-            </button>
-          </div>
-        </form>
-      </div>
+      <form onSubmit={this.onSubmit}>
+        {this.renderInputs()}
+        <div className="form-group">
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '10px' }}>
+            {this.state.isUpdate ? 'Update' : 'Create'}
+          </button>
+        </div>
+      </form>
     )
   }
 }
