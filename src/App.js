@@ -47,15 +47,30 @@ export default class App extends React.Component {
   }
 
   getUser() {
+    // try to use the url to see if we are auth
     const { hash } = window.location
-    if (hash) {
-      const match = hash.match(/access_token=[^&]*/)
+    let user = this.parseToken(hash)
+    if (!user) {
+      // fallback to using browser storage
+      const { storage } = window.sessionStorage.getItem('token')
+      user = this.parseToken(storage)
+    }
+    return user
+  }
+
+  parseToken(data) {
+    if (!data) {
+      const match = data.match(/access_token=[^&]*/)
       if (match) {
         // there is an annoying jQuery parsing error if we dont remove stuff
         // after the hash. also it makes the uri easier to read
         window.location.hash = ''
         const token = match[0].split('=')[1]
-        return this.verifyToken(token)
+        const verified = this.verifyToken(token)
+        if (verified) {
+          window.sessionStorage.setItem('token', `access_token=${token}`)
+        }
+        return verified
       }
     }
     return false
