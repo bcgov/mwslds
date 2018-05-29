@@ -8,6 +8,7 @@ import withData from './datafetching/DataLoader'
 import withToken, { invalidTokenMessage } from './datafetching/Token'
 
 import { BASE_URL, MINES_ROUTE } from './datafetching/Routes'
+import cache from './cache'
 
 import Input from './input'
 import { updateFields } from './MineDefinition'
@@ -113,6 +114,7 @@ class MineView extends React.Component {
             title: 'Success!',
             message: description,
           })
+          cache.invalidate(url.split('?')[0])
           const mineId = description.split(' ')[1]
           this.props.history.push(`/mine/${mineId}`)
         } else {

@@ -12,22 +12,22 @@ const detailFields = [
   {
     name: 'alias',
     inputGroup: 1,
-    width: 100,
+    width: 50,
   },
   {
     name: 'mineLocationName',
-    inputGroup: 2,
-    width: 100,
+    inputGroup: 1,
+    width: 50,
   },
   {
     name: 'district',
-    inputGroup: 3,
-    width: 100,
+    inputGroup: 4,
+    width: 50,
   },
   {
     name: 'mineManager',
     inputGroup: 4,
-    width: 100,
+    width: 50,
   },
   {
     name: 'enteredBy',
@@ -100,38 +100,38 @@ const updateFields = [
     name: 'mineName',
     validator: isRequired,
     inputGroup: 0,
-    width: 80,
+    width: 100,
   },
   {
     name: 'alias',
     inputGroup: 1,
-    width: 40,
+    width: 50,
   },
   {
     name: 'mineLocationName',
     inputGroup: 1,
-    width: 40,
+    width: 50,
   },
   {
     name: 'district',
     inputGroup: 2,
-    width: 40,
+    width: 50,
   },
   {
     name: 'mineManager',
     inputGroup: 2,
-    width: 40,
+    width: 50,
   },
   {
     name: 'enteredBy',
     inputGroup: 3,
-    width: 40,
+    width: 50,
     disabled: true,
   },
   {
     name: 'enteredDate',
     inputGroup: 3,
-    width: 40,
+    width: 50,
     disabled: true,
   },
   {
@@ -141,7 +141,7 @@ const updateFields = [
     validator: isRequired,
     transform: selectTransform('companies', 'code', 'code'),
     inputGroup: 4,
-    width: 20,
+    width: 25,
   },
   {
     name: 'regionCode',
@@ -150,7 +150,7 @@ const updateFields = [
     validator: isRequired,
     transform: selectTransform('regions', 'code', 'code'),
     inputGroup: 4,
-    width: 20,
+    width: 25,
   },
   {
     name: 'mineTypeCode',
@@ -159,7 +159,7 @@ const updateFields = [
     validator: isRequired,
     transform: selectTransform('mineTypes', 'code', 'name'),
     inputGroup: 4,
-    width: 20,
+    width: 25,
   },
   {
     name: 'mineStatusCode',
@@ -168,7 +168,7 @@ const updateFields = [
     validator: isRequired,
     transform: selectTransform('mineStatuses', 'code', 'name'),
     inputGroup: 4,
-    width: 20,
+    width: 25,
   },
   {
     name: 'major',

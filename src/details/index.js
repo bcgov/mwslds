@@ -180,10 +180,7 @@ class DetailDisplay extends React.Component {
     }
     this.inputParams.forEach((param) => {
       const { name } = param
-      const val = this.state[name]
-      if (val) {
-        data[name] = val
-      }
+      data[name] = this.state[name]
     })
     return data
   }
