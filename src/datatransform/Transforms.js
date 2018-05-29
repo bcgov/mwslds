@@ -40,14 +40,25 @@ export function minesCountTransform(data) {
   return null
 }
 
+export function govDelaysTransform(data) {
+  const transform = tableTransform('governmentDelays', ['id', 'pauseDate', 'reason', 'notes'])
+  return transform(data)
+}
+
 export function minesTableTransform(data) {
   const transform = tableTransform('mines', ['id', 'mineName', 'alias', 'mineLocationName'])
   return transform(data)
 }
 
-export function govDelaysTransform(data) {
-  const transform = tableTransform('governmentDelays', ['id', 'pauseDate', 'reason', 'notes'])
-  return transform(data)
+export function minesUpdateTransform(data, row) {
+  const { mines } = data
+  const toUpdate = mines.findIndex(mine => (mine.id === row.id))
+
+  mines[toUpdate] = Object.assign(mines[toUpdate], row)
+  // we want to return a new data object
+  return {
+    mines,
+  }
 }
 
 export default {

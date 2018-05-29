@@ -8,17 +8,21 @@ import { BASE_URL } from './Routes'
 const propTypes = {
   token: PropTypes.string,
   route: PropTypes.string,
+  updateDataTransform: PropTypes.func,
 }
 
 const defaultProps = {
   token: null,
   route: null,
+  updateDataTransform: null,
 }
 
 function withData(Wrapped) {
   class WithDataHOC extends React.Component {
     constructor(props) {
       super(props)
+
+      this.updateData = this.updateData.bind(this)
 
       this.state = {
         data: null,
@@ -105,8 +109,25 @@ function withData(Wrapped) {
         })
     }
 
+    updateData(data) {
+      // we want to merge the old and new data here
+      this.setState((prevState) => {
+        let newData
+        if (this.props.updateDataTransform) {
+          newData = this.props.updateDataTransform(prevState.data, data)
+        } else {
+          newData = Object.assign(prevState.data, data)
+        }
+        cache.invalidate(this.getUrl().split('?')[0])
+        cache.put(this.getUrl(), newData)
+        return {
+          data: newData,
+        }
+      })
+    }
+
     render() {
-      return <Wrapped {...this.props} {...this.state} />
+      return <Wrapped {...this.props} {...this.state} updateData={this.updateData} />
     }
   }
 

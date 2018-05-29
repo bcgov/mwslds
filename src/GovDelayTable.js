@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import DataTable from './table/DataTable'
-import Details from './details'
+import NowTableDetails from './NowTableDetails'
 import { govDelaysTransform } from './datatransform'
 
 import { GOVDELAY_ROUTE, NOTICESOFWORK_ROUTE } from './datafetching/Routes'
@@ -13,7 +13,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-  route: GOVDELAY_ROUTE,
+  route: `${GOVDELAY_ROUTE}?activeOnly=true`,
   clickRoute: NOTICESOFWORK_ROUTE,
 }
 
@@ -25,7 +25,7 @@ function GovDelayTable(props) {
     <DataTable
       route={route}
       transform={govDelaysTransform}
-      expandComponent={Details}
+      expandComponent={NowTableDetails}
       onClickRoute={clickRoute}
       // ugly... issue is we want to filter after one part of transforming the data,
       // but the transform happens after the filter. These functions happen before

@@ -1,24 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Details from '../details'
+import Details from './details'
 
-import { MINES_ROUTE } from '../datafetching/Routes'
+import { NOTICESOFWORK_ROUTE } from './datafetching/Routes'
+import { nowDetailField } from './NowDefinition'
 
 const propTypes = {
   id: PropTypes.string.isRequired,
 }
-const defaultProps = {}
+const defaultProps = {
+}
 
-function MineTableDetails(props) {
+function NowTableDetails(props) {
   const { id } = props
-  const route = `${MINES_ROUTE}/${id}`
+  const route = `${NOTICESOFWORK_ROUTE}/${id}`
+
   return (
-    <Details route={route} />
+    <Details
+      route={route}
+      detailFields={nowDetailField}
+    />
   )
 }
 
-MineTableDetails.propTypes = propTypes
-MineTableDetails.defaultProps = defaultProps
+NowTableDetails.propTypes = propTypes
+NowTableDetails.defaultProps = defaultProps
 
-export default MineTableDetails
+export default NowTableDetails

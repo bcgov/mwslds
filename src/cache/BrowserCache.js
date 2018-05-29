@@ -14,6 +14,14 @@ const cache = {
     this.store.removeItem(key)
   },
 
+  invalidate(partialKey) {
+    Object.keys(this.store).forEach((key) => {
+      if (key.startsWith(partialKey)) {
+        this.evict(key)
+      }
+    })
+  },
+
   get(key) {
     const data = this.store.getItem(key)
     if (!data) {
