@@ -264,9 +264,7 @@ class DetailDisplay extends React.Component {
     ))
   }
 
-
-render() {
-
+  render() {
     return (
       <form
         onSubmit={this.onSubmit}
@@ -281,11 +279,15 @@ render() {
             </div>
           )
         }
-        <div className="form-group">
-          <button type="submit" className="btn btn-primary" disabled={this.state.isSaving} style={{ marginTop: this.state.message ? 0 : '10px' }}>
-            {this.state.isUpdate ? 'Update' : 'Create'}
-          </button>
-        </div>
+        {
+          this.state.updateTableData && (
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary" disabled={this.state.isSaving} style={{ marginTop: this.state.message ? 0 : '10px' }}>
+                {this.state.isUpdate ? 'Update' : 'Create'}
+              </button>
+            </div>
+          )
+        }
       </form>
     )
   }
