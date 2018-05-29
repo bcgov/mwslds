@@ -193,6 +193,10 @@ class MineView extends React.Component {
     const { errors } = this.state
 
     this.inputParams.forEach((param) => {
+      if (!this.state.isUpdate && param.disabled) {
+        return
+      }
+
       const {
         name,
         type,
