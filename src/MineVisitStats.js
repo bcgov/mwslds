@@ -51,6 +51,10 @@ class MineVisitStats extends React.Component {
     const { token } = this.props
     const url = 'https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017'
 
+    if (!token) {
+      return
+    }
+
     const options = {
       headers: new Headers({
         Authorization: `Bearer ${token}`,
