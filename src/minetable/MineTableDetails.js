@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Details from '../details'
+import { detailFields } from '../MineDefinition'
 
 import { MINES_ROUTE } from '../datafetching/Routes'
 
@@ -17,7 +18,11 @@ function MineTableDetails(props) {
   const { id, updateTableData } = props
   const route = `${MINES_ROUTE}/${id}`
   return (
-    <Details route={route} updateTableData={updateTableData} />
+    <Details
+      route={route}
+      updateTableData={updateTableData}
+      detailFields={detailFields}
+    />
   )
 }
 

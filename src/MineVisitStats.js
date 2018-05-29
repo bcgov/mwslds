@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { PieChart, Pie} from 'recharts'
+import { PieChart, Pie } from 'recharts'
 
 import withToken from './datafetching/Token'
-//import cache from './cache'
-
-//import { BASE_URL } from './datafetching/Routes'
 
 const propTypes = {
   width: PropTypes.number,
@@ -46,9 +43,13 @@ class MineVisitStats extends React.Component {
     this.mounted = false
   }
 
-  loadData () {
+  setData(newData) {
+    this.setState({ data: newData })
+  }
+
+  loadData() {
     const { token } = this.props
-    const url = `https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017`
+    const url = 'https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017'
 
     const options = {
       headers: new Headers({
@@ -65,28 +66,18 @@ class MineVisitStats extends React.Component {
       })
       .then((parsed) => {
         if (this.mounted) {
-        //  cache.put(url, parsed)
-        //  this.addData({name: 'Region 1', count: 4000})
-          const tempData = [];
+          const tempData = []
           parsed.noticesOfWorkAppTypesStatistics.forEach((nowdata) => {
-             tempData.push({name: nowdata.applicationType,
-               value: nowdata.nowApplicationsYearUpToMonthCount
-             })
-          });
-          this.setData(tempData);
-        }
-      })
-      .catch((error) => {
-        if (this.mounted) {
-          // TODO: display some error in the main app
-          console.log(error)
+            tempData.push({
+              name: nowdata.applicationType,
+              value: nowdata.nowApplicationsYearUpToMonthCount,
+            })
+          })
+          this.setData(tempData)
         }
       })
   }
 
-  setData(newData) {
-      this.setState({data: newData})
-  }
 
   render() {
     const { width, height, fill } = this.props
@@ -94,7 +85,7 @@ class MineVisitStats extends React.Component {
 
     return (
       <PieChart width={width} height={height}>
-        <Pie data={data} dataKey="value" fill={fill} label/>
+        <Pie data={data} dataKey="value" fill={fill} label />
       </PieChart>
     )
   }

@@ -10,7 +10,6 @@ import withToken, { invalidTokenMessage } from '../datafetching/Token'
 import { BASE_URL, MINES_ROUTE } from '../datafetching/Routes'
 
 import Input from '../input'
-import { detailFields } from '../MineDefinition'
 
 import MessageDisplay from '../message'
 
@@ -20,6 +19,7 @@ const propTypes = {
   data: PropTypes.object,
   updateData: PropTypes.func,
   updateTableData: PropTypes.func,
+  detailFields: PropTypes.array,
 }
 
 const defaultProps = {
@@ -28,6 +28,7 @@ const defaultProps = {
   data: null,
   updateData: undefined,
   updateTableData: undefined,
+  detailFields: null,
 }
 
 class DetailDisplay extends React.Component {
@@ -58,7 +59,7 @@ class DetailDisplay extends React.Component {
     this.onSubmit = this.onSubmit.bind(this)
     this.onMessageDismiss = this.onMessageDismiss.bind(this)
 
-    this.inputParams = detailFields
+    this.inputParams = this.props.detailFields
 
     const { data } = this.props
     const state = {
@@ -263,7 +264,9 @@ class DetailDisplay extends React.Component {
     ))
   }
 
-  render() {
+
+render() {
+
     return (
       <form
         onSubmit={this.onSubmit}
