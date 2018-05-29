@@ -18,3 +18,7 @@
 .form-inline {
   display: flex;
 }
+
+.description {
+  margin-bottom: 20px;
+}
