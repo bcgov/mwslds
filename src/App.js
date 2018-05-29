@@ -11,6 +11,7 @@ import MineSearchRoute from './MineSearchRoute'
 import MineViewRoute from './MineViewRoute'
 import MessageDisplay from './message'
 
+import { LOGIN_URL } from './datafetching/Routes'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -48,14 +49,36 @@ export default class App extends React.Component {
     this.setState({ message })
   }
 
+  isLoggedIn() {
+    const { hash } = window.location
+    if (hash) {
+      const match = hash.match(/access_token=[^&]*/)
+      if (match) {
+        window.location.hash = ''
+        // need to actually validate the token to make this do anything useful
+        // right now this just checks if the uri contains any token...
+        return true
+      }
+    }
+    return false
+  }
+
   render() {
+    const isLoggedIn = this.isLoggedIn()
+
+    if (!isLoggedIn) {
+      const currentUrl = window.location.origin
+      const authUrl = `${LOGIN_URL}&redirect_uri=${currentUrl}`
+      window.location = authUrl
+    }
+
     return (
       <Router>
         <div className="App">
           <Header title="Mine Seeker">
-            <Link to="/">Dashboard</Link>
-            <Link to="/mine">Create</Link>
-            <Link to="/search">Search</Link>
+            {isLoggedIn && <Link to="/">Dashboard</Link>}
+            {isLoggedIn && <Link to="/mine">Create</Link>}
+            {isLoggedIn && <Link to="/search">Search</Link>}
           </Header>
           <div id="main" className="template gov-container">
             <div className="container">
@@ -64,13 +87,18 @@ export default class App extends React.Component {
                 <MessageDisplay {...this.state.message} onDismiss={this.onMessageDismiss} />
               }
             </div>
-            <Switch>
-              <Route exact path="/" component={this.dashboard} />
-              <Route path="/mine/:mineId" component={this.specificView} />
-              <Route path="/mine" component={this.view} />
-              <Route path="/search" component={this.search} />
-              <Route component={this.notFound} />
-            </Switch>
+            {
+              isLoggedIn && (
+                <Switch>
+                  <Route exact path="/" component={this.dashboard} />
+                  <Route path="/mine/:mineId" component={this.specificView} />
+                  <Route path="/mine" component={this.view} />
+                  <Route path="/search" component={this.search} />
+                  <Route component={this.notFound} />
+                </Switch>
+              )
+            }
+            {!isLoggedIn && <div className="text-center"><h3>Redirecting to Login</h3></div>}
           </div>
           <Footer />
         </div>
