@@ -4,21 +4,14 @@ import PropTypes from 'prop-types'
 import './style'
 import './MinesDashboard.css'
 
-//import MineStats from './MineStats'
 import NowStats from './NowStats'
 import MineVisitStats from './MineVisitStats'
-import MineTable from './minetable'
-
-import { MINES_ROUTE } from './datafetching/Routes'
+import GovDelayTable from './GovDelayTable'
 
 const propTypes = {
-  tableRoute: PropTypes.string,
   history: PropTypes.object.isRequired,
 }
 
-const defaultProps = {
-  tableRoute: `${MINES_ROUTE}?limit=10`,
-}
 
 class MineDashboard extends React.Component {
   constructor(props) {
@@ -36,22 +29,22 @@ class MineDashboard extends React.Component {
   render() {
     return (
       <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-8 chart">
-                <h2 className="title">Notices of Work Statistics 2017</h2>
-                <NowStats />
-              </div>
-              <div className="col-sm-4 chart">
-                <h2 className="title">Mine Visits Statistics 2017</h2>
-                <MineVisitStats />
-              </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-8 chart">
+              <h2 className="title">Notices of Work Statistics 2017</h2>
+              <NowStats />
             </div>
-            <div className="row"/>
-            <div className="row">
-                <h2>Government Action Required Notices of Work Application</h2>
-                <MineTable />
+            <div className="col-sm-4 chart">
+              <h2 className="title">Mine Visits Statistics 2017</h2>
+              <MineVisitStats />
             </div>
+          </div>
+          <div className="row" />
+          <div className="row">
+            <h2 className="title">Notices of Work Requiring Goverment Action</h2>
+            <GovDelayTable />
+          </div>
         </div>
       </div>
     )
@@ -59,6 +52,5 @@ class MineDashboard extends React.Component {
 }
 
 MineDashboard.propTypes = propTypes
-MineDashboard.defaultProps = defaultProps
 
 export default MineDashboard

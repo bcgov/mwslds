@@ -45,6 +45,11 @@ export function minesTableTransform(data) {
   return transform(data)
 }
 
+export function govDelaysTransform(data) {
+  const transform = tableTransform('governmentDelays', ['id', 'pauseDate', 'reason', 'notes'])
+  return transform(data)
+}
+
 export default {
   payloadTransform,
   reduceObjectTransform,
@@ -53,4 +58,5 @@ export default {
   tableTransform,
   minesCountTransform,
   minesTableTransform,
+  govDelaysTransform,
 }

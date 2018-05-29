@@ -93,6 +93,7 @@ class BaseTable extends React.Component {
       paginationShowsTotal: true,
     }
 
+
     if (searchComponent) {
       options.toolBar = this.toolBar
       options.searchPanel = this.searchPanel
@@ -100,6 +101,7 @@ class BaseTable extends React.Component {
 
     const expandable = expandComponent ? () => true : () => false
     const expand = expandComponent ? this.expandRow : undefined
+    const searchable = !!searchComponent
 
     return (
       <BootstrapTable
@@ -108,7 +110,7 @@ class BaseTable extends React.Component {
         expandableRow={expandable}
         expandComponent={expand}
         pagination
-        search
+        search={searchable}
       >
         {columns}
       </BootstrapTable>
