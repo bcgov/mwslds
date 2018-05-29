@@ -11,9 +11,10 @@ function MineSearchRoute() {
       <div className="row description">
         <h3>Mine Search</h3>
         <p>
-          Search for Mines by Id Name Alias Location using the textbox below.
+          Search for Mines by Id, Name, Alias, and Location using the textbox below.
           Advanced search options allow searching on data not displayed in the table.
-          Clicking on a row shows more detailed information and allows the Mine to be updated.
+          Clicking on a row shows more detailed information which can be updated
+          directly from the table.
         </p>
       </div>
       <div className="row">
