@@ -20,6 +20,7 @@ const propTypes = {
   updateData: PropTypes.func,
   updateTableData: PropTypes.func,
   detailFields: PropTypes.array,
+  showUpdate: PropTypes.bool,
 }
 
 const defaultProps = {
@@ -29,6 +30,7 @@ const defaultProps = {
   updateData: undefined,
   updateTableData: undefined,
   detailFields: null,
+  showUpdate: false,
 }
 
 class DetailDisplay extends React.Component {
@@ -280,7 +282,7 @@ class DetailDisplay extends React.Component {
           )
         }
         {
-          this.state.updateTableData && (
+          this.props.showUpdate && (
             <div className="form-group">
               <button type="submit" className="btn btn-primary" disabled={this.state.isSaving} style={{ marginTop: this.state.message ? 0 : '10px' }}>
                 {this.state.isUpdate ? 'Update' : 'Create'}

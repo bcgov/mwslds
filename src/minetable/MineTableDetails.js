@@ -22,6 +22,7 @@ function MineTableDetails(props) {
       route={route}
       updateTableData={updateTableData}
       detailFields={detailFields}
+      showUpdate
     />
   )
 }
