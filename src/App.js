@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import decode from 'jwt-decode'
 
 import './style'
 import './App.css'
@@ -45,28 +46,43 @@ export default class App extends React.Component {
     this.updateMessage(null)
   }
 
-  updateMessage(message) {
-    this.setState({ message })
-  }
-
-  isLoggedIn() {
+  getUser() {
     const { hash } = window.location
     if (hash) {
       const match = hash.match(/access_token=[^&]*/)
       if (match) {
+        // there is an annoying jQuery parsing error if we dont remove stuff
+        // after the hash. also it makes the uri easier to read
         window.location.hash = ''
-        // need to actually validate the token to make this do anything useful
-        // right now this just checks if the uri contains any token...
-        return true
+        const token = match[0].split('=')[1]
+        return this.verifyToken(token)
       }
     }
     return false
   }
 
-  render() {
-    const isLoggedIn = this.isLoggedIn()
+  verifyToken(token) {
+    const data = decode(token)
+    // dont really know the best way to verify the token
+    const valid = (
+      data.cid === 'DMOD_UI' &&
+      data.client_id === 'DMOD_UI' &&
+      data.sub &&
+      data.user_guid &&
+      data.user_id.startsWith('IDIR')
+    )
 
-    if (!isLoggedIn) {
+    return valid ? data : null
+  }
+
+  updateMessage(message) {
+    this.setState({ message })
+  }
+
+  render() {
+    const loggedIn = this.getUser()
+
+    if (!loggedIn) {
       const currentUrl = window.location.origin
       const authUrl = `${LOGIN_URL}&redirect_uri=${currentUrl}`
       window.location = authUrl
@@ -76,9 +92,9 @@ export default class App extends React.Component {
       <Router>
         <div className="App">
           <Header title="Mine Seeker">
-            {isLoggedIn && <Link to="/">Dashboard</Link>}
-            {isLoggedIn && <Link to="/mine">Create</Link>}
-            {isLoggedIn && <Link to="/search">Search</Link>}
+            {loggedIn && <Link to="/">Dashboard</Link>}
+            {loggedIn && <Link to="/mine">Create</Link>}
+            {loggedIn && <Link to="/search">Search</Link>}
           </Header>
           <div id="main" className="template gov-container">
             <div className="container">
@@ -88,7 +104,7 @@ export default class App extends React.Component {
               }
             </div>
             {
-              isLoggedIn && (
+              loggedIn && (
                 <Switch>
                   <Route exact path="/" component={this.dashboard} />
                   <Route path="/mine/:mineId" component={this.specificView} />
@@ -98,7 +114,7 @@ export default class App extends React.Component {
                 </Switch>
               )
             }
-            {!isLoggedIn && <div className="text-center"><h3>Redirecting to Login</h3></div>}
+            {!loggedIn && <div className="text-center"><h3>Redirecting to Login</h3></div>}
           </div>
           <Footer />
         </div>
