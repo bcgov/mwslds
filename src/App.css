@@ -22,3 +22,8 @@
 .description {
   margin-bottom: 20px;
 }
+
+/* make the pagination drop down display correctly */
+#pageDropDown {
+  display: block;
+}
