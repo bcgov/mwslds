@@ -8,6 +8,7 @@ import '../style'
 
 const propTypes = {
   name: PropTypes.string,
+  title: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
@@ -22,6 +23,7 @@ const propTypes = {
 const defaultProps = {
   value: undefined,
   name: '',
+  title: null,
   prefix: null,
   disabled: null,
   readOnly: null,
@@ -38,6 +40,7 @@ function onChangeWrapper(wrapped) {
 function TextInput(props) {
   const {
     name,
+    title,
     value,
     onChange,
     prefix,
@@ -48,13 +51,12 @@ function TextInput(props) {
     placeholder,
   } = props
 
-  const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
   const labelClasses = classnames('control-label', validationError && 'has-error')
 
   return (
     <label className={labelClasses} htmlFor={inputId} style={{ width }}>
-      {title}
+      {title || startCase(name)}
       <input
         id={inputId}
         className="form-control"
