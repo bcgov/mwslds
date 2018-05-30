@@ -201,7 +201,6 @@ class MineView extends React.Component {
       const {
         name,
         inputGroup,
-        disabled,
         ...otherParams
       } = param
 
