@@ -6,8 +6,9 @@ import 'react-virtualized/styles.css'
 import 'react-virtualized-select/styles.css'
 
 import VirtualSelect from 'react-virtualized-select'
-
 import { startCase } from 'lodash'
+
+import TetheredSelect from './TetheredSelect'
 
 import '../style'
 import './Select.css'
@@ -68,6 +69,7 @@ function Select(props) {
         disabled={disabled || readOnly}
         multiple={multi}
         options={data}
+        selectComponent={TetheredSelect}
       />
     </label>
   )
