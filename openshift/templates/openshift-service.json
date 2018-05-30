@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-
+	"name": "react-mwsl-service-template"
   },
   "objects": [
     {

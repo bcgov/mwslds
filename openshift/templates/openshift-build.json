@@ -31,6 +31,12 @@
         "strategy": {
           "type": "Source",
           "sourceStrategy": {
+             "env": [
+                    {
+                        "name": "MWSL_AUTH_TOKEN",
+                        "value": "${TOKEN}"
+                    }
+                ],
             "from": {
               "kind": "ImageStreamTag",
               "namespace": "openshift",
@@ -90,6 +96,12 @@
       "description": "A secret string used to configure the Generic webhook.",
       "generate": "expression",
       "from": "[a-zA-Z0-9]{40}"
+    },
+    {
+      "name": "TOKEN",
+      "displayName": "Token",
+      "description": "Token used to request the service",
+      "required": true
     }
   ]
 }
