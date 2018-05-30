@@ -75,6 +75,17 @@ class BaseTable extends React.Component {
     )
   }
 
+  expandCol({ isExpandableRow, isExpanded }) {
+    let content = ''
+
+    if (isExpandableRow) {
+      content = isExpanded ? '-' : '+'
+    }
+    return (
+      <div className="text-center">{content}</div>
+    )
+  }
+
   toolBar(props) {
     return (
       <div className="col-sm-12">
@@ -110,6 +121,10 @@ class BaseTable extends React.Component {
 
     const expandable = expandComponent ? () => true : () => false
     const expand = expandComponent ? this.expandRow : undefined
+    const expandOpts = {
+      expandColumnVisible: !!expand,
+      expandColumnComponent: this.expandCol,
+    }
     const searchable = !!searchComponent
 
     return (
@@ -118,6 +133,7 @@ class BaseTable extends React.Component {
         options={options}
         expandableRow={expandable}
         expandComponent={expand}
+        expandColumnOptions={expandOpts}
         pagination
         search={searchable}
       >
