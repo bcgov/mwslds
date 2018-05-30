@@ -12,7 +12,7 @@ import MineSearchRoute from './MineSearchRoute'
 import MineViewRoute from './MineViewRoute'
 import MessageDisplay from './message'
 
-import { LOGIN_URL } from './datafetching/Routes'
+import { LOGIN_URL, LOGOUT_URL } from './datafetching/Routes'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,6 +20,7 @@ export default class App extends React.Component {
 
     this.updateMessage = this.updateMessage.bind(this)
     this.onMessageDismiss = this.onMessageDismiss.bind(this)
+    this.onLogout = this.onLogout.bind(this)
 
     this.dashboard = otherProps => (
       <MineDashboard {...otherProps} displayMessage={this.updateMessage} />
@@ -44,6 +45,13 @@ export default class App extends React.Component {
 
   onMessageDismiss() {
     this.updateMessage(null)
+  }
+
+  onLogout() {
+    const currentUrl = window.location.origin
+    const logoutUrl = `${LOGOUT_URL}?returl=${currentUrl}`
+    window.sessionStorage.removeItem('token')
+    window.location = logoutUrl
   }
 
   getUser() {
@@ -110,6 +118,7 @@ export default class App extends React.Component {
             {loggedIn && <Link to="/">Dashboard</Link>}
             {loggedIn && <Link to="/mine">Create</Link>}
             {loggedIn && <Link to="/search">Search</Link>}
+            {loggedIn && <a href="#" onClick={this.onLogout}>Logout</a>}
           </Header>
           <div id="main" className="template gov-container">
             <div className="container">
