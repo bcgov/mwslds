@@ -5,7 +5,6 @@ import './style'
 import './MinesDashboard.css'
 
 import NowStats from './NowStats'
-import MineVisitStats from './MineVisitStats'
 import GovDelayTable from './GovDelayTable'
 
 const propTypes = {
@@ -31,16 +30,12 @@ class MineDashboard extends React.Component {
       <div>
         <div className="container">
           <div className="row">
-            <div className="col-sm-8 chart">
-              <h2 className="title">Notices of Work Statistics 2017</h2>
+            <div className="chart">
+              <h2 className="title_chart">Notices of Work Statistics</h2>
               <NowStats />
             </div>
-            <div className="col-sm-4 chart">
-              <h2 className="title">Mine Visits Statistics 2017</h2>
-              <MineVisitStats />
-            </div>
+
           </div>
-          <div className="row" />
           <div className="row">
             <h2 className="title">Notices of Work Requiring Government Action</h2>
             <GovDelayTable />

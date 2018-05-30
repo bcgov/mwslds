@@ -49,7 +49,7 @@ class MineVisitStats extends React.Component {
 
   loadData() {
     const { token } = this.props
-    const url = 'https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017'
+    const url = 'https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/minevisitsstatistics?dateFrom=2017-01-01T00:00:00&dateTo=2018-01-01T00:00:00'
 
     if (!token) {
       return
@@ -71,11 +71,13 @@ class MineVisitStats extends React.Component {
       .then((parsed) => {
         if (this.mounted) {
           const tempData = []
-          parsed.noticesOfWorkAppTypesStatistics.forEach((nowdata) => {
-            tempData.push({
-              name: nowdata.applicationType,
-              value: nowdata.nowApplicationsYearUpToMonthCount,
-            })
+          parsed.mineTypeVisitsStatistics.forEach((minevisitdata) => {
+            if (minevisitdata.dangerousOccurrenceCount > 100) {
+              tempData.push({
+                name: minevisitdata.mineTypeName,
+                value: minevisitdata.dangerousOccurrenceCount,
+              })
+            }
           })
           this.setData(tempData)
         }

@@ -18,7 +18,7 @@ function MineViewRoute(props) {
   return (
     <div className="container">
       <div className="row description">
-        <h3>Create Mine</h3>
+        <h2 className="title">Create Mine</h2>
         <p>
           Create a new mine. Required fields are highlighted in red if they are
           missing upon submission. Entered By and Entered Date are automatically populated.
