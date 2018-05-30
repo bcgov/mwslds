@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import { BarChart, Bar, XAxis, YAxis, Legend, Tooltip } from 'recharts'
 
 import withToken from './datafetching/Token'
-//import cache from './cache'
-
-//import { BASE_URL } from './datafetching/Routes'
 
 const propTypes = {
   width: PropTypes.number,
@@ -14,7 +11,7 @@ const propTypes = {
   token: PropTypes.string,
 }
 const defaultProps = {
-  width: 680,
+  width: 900,
   height: 400,
   fill: '#337ab7',
   token: null,
@@ -46,9 +43,13 @@ class NowStats extends React.Component {
     this.mounted = false
   }
 
-  loadData () {
+  setData(newData) {
+    this.setState({ data: newData })
+  }
+
+  loadData() {
     const { token } = this.props
-    const url = `https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017`
+    const url = 'https://i1api.nrs.gov.bc.ca/mwsl-reports-api/v1/noticesofworkstatistics?year=2017'
 
     if (!token) {
       return
@@ -71,29 +72,21 @@ class NowStats extends React.Component {
         if (this.mounted) {
         //  cache.put(url, parsed)
         //  this.addData({name: 'Region 1', count: 4000})
-          const tempData = [];
+          const tempData = []
           parsed.noticesOfWorkAppTypesStatistics.forEach((nowdata) => {
-             tempData.push({name: nowdata.applicationType,
-               applications: nowdata.nowApplicationsYearUpToMonthCount,
-               permitsApproved: nowdata.permitsYearUpToMonthCount,
-               UnprocessRejected: nowdata.rejectedUnProcessYearUpToMonthCount,
-               processedRejected: nowdata.rejectedProcessYearUpToMonthCount
-             })
-          });
-          this.setData(tempData);
-        }
-      })
-      .catch((error) => {
-        if (this.mounted) {
-          // TODO: display some error in the main app
-          console.log(error)
+            tempData.push({
+              name: nowdata.applicationType,
+              applications: nowdata.nowApplicationsYearUpToMonthCount,
+              permitsApproved: nowdata.permitsYearUpToMonthCount,
+              unprocessRejected: nowdata.rejectedUnProcessYearUpToMonthCount,
+              processedRejected: nowdata.rejectedProcessYearUpToMonthCount,
+            })
+          })
+          this.setData(tempData)
         }
       })
   }
 
-  setData(newData) {
-      this.setState({data: newData})
-  }
 
   render() {
     const { width, height, fill } = this.props
@@ -103,7 +96,7 @@ class NowStats extends React.Component {
       <BarChart width={width} height={height} data={data} style={{ margin: 'auto' }}>
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip/>
+        <Tooltip />
         <Legend />
         <Bar dataKey="applications" fill={fill} />
         <Bar dataKey="permitsApproved" fill="#8884d8" />

@@ -9,7 +9,7 @@ function MineSearchRoute() {
   return (
     <div className="container">
       <div className="row description">
-        <h3>Mine Search</h3>
+        <h2 className="title">Mine Search</h2>
         <p>
           Search for Mines by Id, Name, Alias, and Location using the textbox below.
           Advanced search options allow searching on data not displayed in the table.
