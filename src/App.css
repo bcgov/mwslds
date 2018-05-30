@@ -27,3 +27,8 @@
 #pageDropDown {
   display: block;
 }
+
+/* make elements that tether top render above other things */
+.tether-element.tether-abutted.tether-abutted-top {
+  z-index: 100;
+}
