@@ -16,6 +16,7 @@ const detailFields = [
   },
   {
     name: 'mineLocationName',
+    title: 'Location',
     inputGroup: 1,
     width: '50%',
   },
@@ -113,6 +114,7 @@ const updateFields = [
   },
   {
     name: 'mineLocationName',
+    title: 'Location',
     inputGroup: 1,
     width: '50%',
   },
@@ -144,7 +146,7 @@ const updateFields = [
     type: 'data-select',
     route: 'companies',
     validator: isRequired,
-    transform: selectTransform('companies', 'code', 'code'),
+    transform: selectTransform('companies', 'code', 'name'),
     inputGroup: 4,
     width: '25%',
   },
@@ -154,7 +156,7 @@ const updateFields = [
     type: 'data-select',
     route: 'regions',
     validator: isRequired,
-    transform: selectTransform('regions', 'code', 'code'),
+    transform: selectTransform('regions', 'code', 'name'),
     inputGroup: 4,
     width: '25%',
   },

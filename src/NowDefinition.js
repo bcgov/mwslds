@@ -2,6 +2,7 @@
 const nowDetailField = [
   {
     name: 'mineId',
+    title: 'Mine No',
     inputGroup: 0,
     width: '100%',
     disabled: true,
