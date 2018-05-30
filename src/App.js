@@ -118,7 +118,7 @@ export default class App extends React.Component {
             {loggedIn && <Link to="/">Dashboard</Link>}
             {loggedIn && <Link to="/mine">Create</Link>}
             {loggedIn && <Link to="/search">Search</Link>}
-            {loggedIn && <a href="#" onClick={this.onLogout}>Logout</a>}
+            {loggedIn && <a href="#" className="logout-header" onClick={this.onLogout}>Logout</a>}
           </Header>
           <div id="main" className="template gov-container">
             <div className="container">

@@ -33,3 +33,10 @@
   z-index: 100;
   font-size: 14px;
 }
+
+.logout-header {
+  margin-top: -38px;
+  margin-right: 40px;
+  float: right;
+  position: inherit !important;
+}
