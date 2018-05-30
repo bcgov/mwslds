@@ -82,7 +82,7 @@ class BaseTable extends React.Component {
       content = isExpanded ? '-' : '+'
     }
     return (
-      <div className="text-center">{content}</div>
+      <div className="text-center text-clickable">{content}</div>
     )
   }
 

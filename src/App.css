@@ -40,3 +40,11 @@
   float: right;
   position: inherit !important;
 }
+
+.text-clickable {
+  color: rgba(0, 51, 102, .8);
+}
+
+.text-clickable:hover {
+  cursor: pointer;
+}
