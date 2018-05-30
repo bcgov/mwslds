@@ -8,6 +8,7 @@ import '../style'
 
 const propTypes = {
   name: PropTypes.string,
+  title: PropTypes.string,
   value: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
@@ -20,6 +21,7 @@ const propTypes = {
 const defaultProps = {
   value: undefined,
   name: '',
+  title: null,
   prefix: null,
   disabled: null,
   readOnly: null,
@@ -34,6 +36,7 @@ function onChangeWrapper(wrapped) {
 function CheckboxInput(props) {
   const {
     name,
+    title,
     value,
     onChange,
     prefix,
@@ -43,7 +46,6 @@ function CheckboxInput(props) {
     readOnly,
   } = props
 
-  const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
   const labelClasses = classnames('control-label', validationError && 'has-error')
 
@@ -57,7 +59,7 @@ function CheckboxInput(props) {
         disabled={disabled || readOnly}
         style={{ marginRight: '3px' }}
       />
-      {title}
+      {title || startCase(name)}
     </label>
   )
 }

@@ -228,32 +228,26 @@ class DetailDisplay extends React.Component {
   renderInputs() {
     const inputGroups = []
     const { errors } = this.state
+    const { prefix } = this.props
 
     this.inputParams.forEach((param) => {
       const {
         name,
-        type,
-        route,
-        transform,
         inputGroup,
-        width,
-        disabled,
+        ...otherParams
       } = param
       const error = errors[name]
       const inputs = inputGroups[inputGroup] || []
+
       inputs.push((
         <Input
           key={name}
           name={name}
-          type={type}
-          route={route}
-          transform={transform}
           value={this.state[name]}
           onChange={this.onInputChange(name)}
-          prefix={this.props.prefix}
-          width={width && `${width}%`}
-          disabled={disabled}
+          prefix={prefix}
           validationError={error}
+          {...otherParams}
         />
       ))
       inputGroups[inputGroup] = inputs

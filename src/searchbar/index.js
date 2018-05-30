@@ -108,16 +108,14 @@ class SearchBar extends React.Component {
 
   renderSubInputs() {
     const inputs = []
+    const { prefix } = this.props
 
     this.props.filters.forEach((param) => {
       const {
         name,
-        type,
         inputGroup,
         main,
-        route,
-        transform,
-        width,
+        ...otherParams
       } = param
 
       if (main) {
@@ -132,13 +130,10 @@ class SearchBar extends React.Component {
         <Input
           key={name}
           name={name}
-          type={type}
           value={this.state[name]}
           onChange={this.onInputChange(name)}
-          route={route}
-          transform={transform}
-          prefix={this.props.prefix}
-          width={width && `${width}%`}
+          prefix={prefix}
+          {...otherParams}
         />
       )
 

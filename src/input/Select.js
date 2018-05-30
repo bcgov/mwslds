@@ -15,6 +15,7 @@ import './Select.css'
 
 const propTypes = {
   name: PropTypes.string,
+  title: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ const propTypes = {
 
 const defaultProps = {
   name: '',
+  title: null,
   value: undefined,
   data: [],
   prefix: null,
@@ -45,6 +47,7 @@ function onChangeWrapper(wrapped) {
 function Select(props) {
   const {
     name,
+    title,
     data,
     value,
     onChange,
@@ -56,12 +59,11 @@ function Select(props) {
     readOnly,
   } = props
 
-  const title = startCase(name)
   const inputId = `${prefix || ''}${name}`
 
   return (
     <label className="control-label" htmlFor={inputId} style={{ width }}>
-      {title}
+      {title || startCase(name)}
       <VirtualSelect
         value={value}
         className={validationError && 'has-error'}

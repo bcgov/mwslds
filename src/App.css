@@ -28,7 +28,8 @@
   display: block;
 }
 
-/* make elements that tether top render above other things */
-.tether-element.tether-abutted.tether-abutted-top {
+/* make elements that tether render above other things */
+.tether-element {
   z-index: 100;
+  font-size: 14px;
 }
