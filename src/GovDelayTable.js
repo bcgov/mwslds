@@ -17,6 +17,10 @@ const defaultProps = {
   clickRoute: NOTICESOFWORK_ROUTE,
 }
 
+const columnLabels = {
+  id: 'Notice of Work Id',
+}
+
 function GovDelayTable(props) {
   const { route } = props
   const { clickRoute } = props
@@ -24,6 +28,7 @@ function GovDelayTable(props) {
   return (
     <DataTable
       route={route}
+      columnLabels={columnLabels}
       transform={govDelaysTransform}
       expandComponent={NowTableDetails}
       onClickRoute={clickRoute}
