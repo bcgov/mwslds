@@ -42,7 +42,7 @@ class MineDashboard extends React.Component {
           </div>
           <div className="row" />
           <div className="row">
-            <h2 className="title">Notices of Work Requiring Goverment Action</h2>
+            <h2 className="title">Notices of Work Requiring Government Action</h2>
             <GovDelayTable />
           </div>
         </div>
