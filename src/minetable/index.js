@@ -17,11 +17,18 @@ const defaultProps = {
   route: MINES_ROUTE,
 }
 
+const columnLabels = {
+  id: 'Mine No',
+  mineName: 'Name',
+  mineLocationName: 'Location',
+}
+
 function MineTable(props) {
   const { route } = props
 
   return (
     <DataTable
+      columnLabels={columnLabels}
       route={route}
       transform={minesTableTransform}
       updateDataTransform={minesUpdateTransform}

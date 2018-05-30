@@ -9,6 +9,7 @@ import { startCase } from 'lodash'
 const propTypes = {
   data: PropTypes.array,
   keyField: PropTypes.string,
+  columnLabels: PropTypes.object,
   onRowClick: PropTypes.func,
   expandComponent: PropTypes.func,
   searchComponent: PropTypes.func,
@@ -19,6 +20,7 @@ const propTypes = {
 const defaultProps = {
   data: null,
   keyField: 'id',
+  columnLabels: {},
   onRowClick: undefined,
   expandComponent: undefined,
   searchComponent: undefined,
@@ -36,7 +38,7 @@ class BaseTable extends React.Component {
   }
 
   getColumns() {
-    const { data, keyField } = this.props
+    const { data, keyField, columnLabels } = this.props
 
     if (!data || !data.length) {
       // return the last set of columns we had or a single column
@@ -48,7 +50,7 @@ class BaseTable extends React.Component {
 
     const columns = Object.keys(row).map(name => (
       <TableHeaderColumn key={name} isKey={name === keyField} dataField={name}>
-        {startCase(name)}
+        {columnLabels[name] || startCase(name)}
       </TableHeaderColumn>
     ))
 
