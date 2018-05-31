@@ -28,6 +28,20 @@
                     "containerPort": "3000",
                     "protocol": "TCP"
                   }
+                ],
+                "env": [
+                  {
+                    "name": "MWSL_USER",
+                    "value": "${MWSL_USER}"
+                  },
+                  {
+                    "name": "MWSL_PASS",
+                    "value": "${MWSL_PASS}"
+                  },
+                  {
+                    "name": "PORT",
+                    "value": "3000"
+                  }
                 ]
               }
             ]
@@ -59,6 +73,20 @@
           "type": "Rolling"
         }
       }
+    }
+  ],
+  "parameters": [
+    {
+      "name": "MWSL_USER",
+      "displayName": "MWSL Username",
+      "description": "User to connect to the MWSL API with",
+      "required": true
+    },
+    {
+      "name": "MWSL_PASS",
+      "displayName": "MWSL Password",
+      "description": "Password to connect to the MWSL API",
+      "required": true
     }
   ]
 }
