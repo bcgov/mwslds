@@ -61,8 +61,8 @@ const TokenSingleton = {
     return Promise.resolve(this.token)
   },
 }
-TokenSingleton.getToken()
 
+// HOC provide a token to the wrapped component
 export default function withToken(Wrapped) {
   return class WithTokenHOC extends React.Component {
     constructor(props) {
