@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "$npm_execpath run server",
+    "dev": "concurrently -k \"$npm_execpath run server\" \"$npm_execpath run client\"",
     "server": "nodemon server.js",
     "client": "react-scripts start",
     "build": "react-scripts build",
