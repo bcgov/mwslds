@@ -1,12 +1,12 @@
 import React from 'react'
 import base64 from 'base-64'
 
-import currToken from './Secret'
+// import currToken from './Secret'
 
-import TOKEN_ROUTE from './Routes'
+import { TOKEN_ROUTE } from './Routes'
 
 const TokenSingleton = {
-  token: currToken,
+  token: null,
 
   pendingPromises: [],
 
@@ -28,7 +28,7 @@ const TokenSingleton = {
         return resp.json()
       })
       .then((parsed) => {
-        this.token = parsed.access_token
+        this.token = parsed.token
         this.resolvePending(this.token)
         return this.token
       })
