@@ -1,8 +1,6 @@
 import React from 'react'
 import base64 from 'base-64'
 
-// import currToken from './Secret'
-
 import { TOKEN_ROUTE } from './Routes'
 
 const TokenSingleton = {

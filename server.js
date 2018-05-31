@@ -12,9 +12,9 @@ const pass = process.env.MWSL_PASS
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.get('/app/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+// app.get('/app/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
+// })
 
 app.get('/token', (req, res) => {
   request.get(TOKEN_URL).auth(username, pass)

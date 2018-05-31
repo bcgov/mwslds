@@ -26,7 +26,7 @@
     "request-promise": "^4.2.2"
   },
   "scripts": {
-    "start": "$npm_execpath run server &",
+    "start": "$npm_execpath run server",
     "server": "nodemon server.js",
     "client": "react-scripts start",
     "build": "react-scripts build",
