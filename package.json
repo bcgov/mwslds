@@ -29,7 +29,7 @@
     "start": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
     "server": "nodemon server.js",
     "client": "react-scripts start",
-    "build": "perl -p -e \"s:'.*':'$MWSL_AUTH_TOKEN':\" src/datafetching/Secret.js.template > src/datafetching/Secret.js && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "secret": "perl -pi -e \"s:'.*':'`./token.sh | cut -d '\"' -f4`':\" src/datafetching/Secret.js"
