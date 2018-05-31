@@ -45,12 +45,12 @@ const filters = [
     width: '25%',
   },
   {
-    name: 'underInvestigation',
+    name: 'major',
     type: 'checkbox',
     inputGroup: 2,
   },
   {
-    name: 'major',
+    name: 'underInvestigation',
     type: 'checkbox',
     inputGroup: 2,
   },
