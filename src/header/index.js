@@ -14,7 +14,7 @@ function focusMenu() {
 
 const propTypes = {
   title: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.arrayOf(PropTypes.any),
 }
 
 const defaultProps = {
