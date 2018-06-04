@@ -1,21 +1,25 @@
 import React from 'react'
-import base64 from 'base-64'
 
 import { TOKEN_ROUTE } from './Routes'
 
 const TokenSingleton = {
   token: null,
-
+  auth: null,
   pendingPromises: [],
 
-  loadToken(username, password) {
-    const auth = base64.encode(`${username}:${password}`)
+  loadToken() {
+    if (!this.auth) {
+      return Promise.reject(Error('No Auth Provided'))
+    }
 
     const options = {
-      headers: new Headers({
-        Authorization: `Basic ${auth}`,
+      method: 'POST',
+      body: JSON.stringify({
+        auth: this.auth,
       }),
-      mode: 'cors',
+      headers: new Headers({
+        'content-type': 'application/json',
+      }),
     }
 
     return fetch(TOKEN_ROUTE, options)
@@ -51,16 +55,21 @@ const TokenSingleton = {
   getToken() {
     if (!this.token) {
       const promise = (resolve, reject) => {
+        // keep track of promises for when loading happens
         this.pendingPromises.push({ resolve, reject })
-        if (this.pendingPromises.length === 1) {
-          this.loadToken()
-        }
       }
       return new Promise(promise)
     }
     return Promise.resolve(this.token)
   },
 }
+
+function setAuth(auth) {
+  TokenSingleton.auth = auth
+  TokenSingleton.loadToken()
+}
+
+export { setAuth }
 
 // HOC provide a token to the wrapped component
 export default function withToken(Wrapped) {
@@ -69,6 +78,7 @@ export default function withToken(Wrapped) {
       super(props)
 
       this.setToken()
+      this.state = {}
     }
 
     setToken() {
@@ -76,6 +86,11 @@ export default function withToken(Wrapped) {
         .then((token) => {
           this.setState({
             token,
+          })
+        })
+        .catch((err) => {
+          this.setState({
+            error: err,
           })
         })
     }

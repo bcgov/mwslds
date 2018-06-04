@@ -13,6 +13,7 @@ import MineViewRoute from './MineViewRoute'
 import MessageDisplay from './message'
 
 import { LOGIN_URL, LOGOUT_URL } from './datafetching/Routes'
+import { setAuth } from './datafetching/Token'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -81,6 +82,7 @@ export default class App extends React.Component {
         const token = match[0].split('=')[1]
         const verified = this.verifyToken(token)
         if (verified) {
+          setAuth(token)
           window.sessionStorage.setItem('token', `access_token=${token}`)
         }
         return verified
