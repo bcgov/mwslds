@@ -31,7 +31,7 @@
     "server": "nodemon server.js",
     "client": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "secret": "perl -pi -e \"s:'.*':'`./token.sh | cut -d '\"' -f4`':\" src/datafetching/Secret.js"
   },
