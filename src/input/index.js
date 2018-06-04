@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import CheckboxInput from './CheckboxInput'
+import Checkbox from './Checkbox'
 import TextInput from './TextInput'
 import DataSelect from './DataSelect'
+import Select from './Select'
 
 const propTypes = {
   type: PropTypes.string,
@@ -21,7 +22,7 @@ function Input(props) {
   switch (type) {
     case 'checkbox':
       return (
-        <CheckboxInput
+        <Checkbox
           value={!!value}
           {...otherProps}
         />
@@ -29,6 +30,13 @@ function Input(props) {
     case 'data-select':
       return (
         <DataSelect
+          value={value}
+          {...otherProps}
+        />
+      )
+    case 'select':
+      return (
+        <Select
           value={value}
           {...otherProps}
         />

@@ -37,7 +37,7 @@ function withDataFilter(Component) {
     filterData(data) {
       const { filter } = this.state
 
-      if (!filter) {
+      if (!filter || !data) {
         return data
       }
 

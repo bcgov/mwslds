@@ -7,7 +7,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { startCase } from 'lodash'
 
 const propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.object),
   keyField: PropTypes.string,
   columnLabels: PropTypes.object,
   onRowClick: PropTypes.func,

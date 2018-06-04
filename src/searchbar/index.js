@@ -37,10 +37,11 @@ class SearchBar extends React.Component {
   onInputChange(param) {
     return (value) => {
       this.updateState(param, value)
-
+      // have to set the new value in params here as updateState happens async,
+      // so we dont get the updated value.
       const params = this.getValidParams()
-      // have to set the new value here as updateState happens async.
-      // also, inputs of 0 work here as we get the string "0"... cheeky!
+
+      // inputs of 0 work here as we get the string "0"... cheeky!
       if (!value) {
         delete params[param]
       } else {
