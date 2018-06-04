@@ -30,8 +30,6 @@ app.post('/token', (req, res) => {
     // failed to decode, invalid token caught below
   }
 
-  console.log(jwt)
-
   const valid = (
     jwt.cid === 'DMOD_UI' &&
     jwt.client_id === 'DMOD_UI' &&
