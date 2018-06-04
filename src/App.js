@@ -49,24 +49,24 @@ export default class App extends React.Component {
   }
 
   onLogout() {
-    window.sessionStorage.removeItem('token')
+    global.sessionStorage.removeItem('token')
   }
 
   getLogoutUrl() {
-    return `${LOGOUT_URL}?returl=${window.location.origin}`
+    return `${LOGOUT_URL}?returl=${global.location.origin}`
   }
 
   getLoginUrl() {
-    return `${LOGIN_URL}&redirect_uri=${window.location.origin}`
+    return `${LOGIN_URL}&redirect_uri=${global.location.origin}`
   }
 
   getUser() {
     // try to use the url to see if we are auth
-    const { hash } = window.location
+    const { hash } = global.location
     let user = this.parseToken(hash)
     if (!user) {
       // fallback to using browser storage
-      const storage = window.sessionStorage.getItem('token')
+      const storage = global.sessionStorage.getItem('token')
       user = this.parseToken(storage)
     }
     return user
@@ -78,12 +78,12 @@ export default class App extends React.Component {
       if (match) {
         // there is an annoying jQuery parsing error if we dont remove stuff
         // after the hash. also it makes the uri easier to read
-        window.location.hash = ''
+        global.location.hash = ''
         const token = match[0].split('=')[1]
         const verified = this.verifyToken(token)
         if (verified) {
           setAuth(token)
-          window.sessionStorage.setItem('token', `access_token=${token}`)
+          global.sessionStorage.setItem('token', `access_token=${token}`)
         }
         return verified
       }
@@ -113,7 +113,7 @@ export default class App extends React.Component {
     const loggedIn = this.getUser()
 
     if (!loggedIn) {
-      window.location = this.getLoginUrl()
+      global.location = this.getLoginUrl()
     }
 
     return (

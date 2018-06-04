@@ -11,5 +11,9 @@
     },
     "env": {
       "browser": true
+    },
+    "globals": {
+      "it": true,
+      "describe": true
     }
 }
