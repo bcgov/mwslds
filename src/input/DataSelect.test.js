@@ -3,7 +3,7 @@ import { configure, shallow, mount } from 'enzyme'
 import { createSerializer } from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
-import { UnwrappedDataSelect } from './DataSelect'
+import DataSelect, { UnwrappedDataSelect } from './DataSelect'
 
 configure({ adapter: new Adapter() })
 expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }))
@@ -56,6 +56,13 @@ describe('DataSelect', () => {
       const newProps = Object.assign({}, props, { data: newData })
       // new data, should always update
       expect(select.instance().shouldComponentUpdate(newProps)).toBe(true)
+    })
+  })
+
+  describe('WrappedDataSelect', () => {
+    it('renders', () => {
+      const select = mount(<DataSelect onChange={() => {}} />)
+      expect(select).toMatchSnapshot()
     })
   })
 })
