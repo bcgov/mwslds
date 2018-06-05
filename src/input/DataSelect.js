@@ -11,7 +11,6 @@ const propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.object,
   value: PropTypes.string,
-  route: PropTypes.string,
   validationError: PropTypes.string,
 }
 
@@ -20,7 +19,6 @@ const defaultProps = {
   loading: null,
   error: null,
   value: null,
-  route: null,
   validationError: null,
 }
 
