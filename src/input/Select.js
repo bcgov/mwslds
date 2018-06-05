@@ -5,7 +5,7 @@ import 'react-select/dist/react-select.css'
 import 'react-virtualized/styles.css'
 import 'react-virtualized-select/styles.css'
 
-import VirtualSelect from 'react-virtualized-select'
+import VirtualizedSelect from 'react-virtualized-select'
 import { startCase } from 'lodash'
 
 import TetheredSelect from './TetheredSelect'
@@ -16,7 +16,10 @@ import './Select.css'
 const propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.any,
+    label: PropTypes.string,
+  })),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   prefix: PropTypes.string,
@@ -64,8 +67,9 @@ function Select(props) {
   return (
     <label className="control-label" htmlFor={inputId} style={{ width }}>
       {title || startCase(name)}
-      <VirtualSelect
+      <VirtualizedSelect
         value={value}
+        id={inputId}
         className={validationError && 'has-error'}
         onChange={onChangeWrapper(onChange)}
         disabled={disabled || readOnly}
