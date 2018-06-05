@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataSelect UnwrappedDataSelect appends empty data 1`] = `
+<label
+  className="control-label"
+  htmlFor=""
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <div
+    className="Select is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-5--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-5--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`DataSelect UnwrappedDataSelect is disabled on error 1`] = `
+<label
+  className="control-label"
+  htmlFor=""
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <div
+    className="Select is-clearable is-disabled is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-4--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          aria-activedescendant="react-select-4--value"
+          aria-disabled="true"
+          aria-expanded={false}
+          aria-owns=""
+          className="Select-input"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="combobox"
+          style={
+            Object {
+              "border": 0,
+              "display": "inline-block",
+              "width": 1,
+            }
+          }
+          tabIndex={0}
+        />
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`DataSelect UnwrappedDataSelect is disabled when loading 1`] = `
+<label
+  className="control-label"
+  htmlFor=""
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <div
+    className="Select is-clearable is-disabled is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-3--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          aria-activedescendant="react-select-3--value"
+          aria-disabled="true"
+          aria-expanded={false}
+          aria-owns=""
+          className="Select-input"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="combobox"
+          style={
+            Object {
+              "border": 0,
+              "display": "inline-block",
+              "width": 1,
+            }
+          }
+          tabIndex={0}
+        />
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`DataSelect UnwrappedDataSelect renders 1`] = `
+<label
+  className="control-label"
+  htmlFor=""
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <div
+    className="Select is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-2--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-2--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;

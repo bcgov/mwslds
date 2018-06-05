@@ -35,7 +35,6 @@ class DataSelect extends React.Component {
       this.props.validationError === nextProps.validationError) {
       return false
     }
-
     return true
   }
 
@@ -61,5 +60,7 @@ class DataSelect extends React.Component {
 
 DataSelect.propTypes = propTypes
 DataSelect.defaultProps = defaultProps
+
+export { DataSelect as UnwrappedDataSelect }
 
 export default withToken(withData(withDataTransform(DataSelect)))
