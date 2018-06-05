@@ -23,7 +23,7 @@ app.use(express.urlencoded())
 app.use(express.static(path.join(__dirname, 'build')))
 
 app.post('/token', (req, res) => {
-  let jwt = {}
+  let jwt = null
   try {
     jwt = decode(req.body.auth)
   } catch (err) {
@@ -31,6 +31,7 @@ app.post('/token', (req, res) => {
   }
 
   const valid = (
+    jwt &&
     jwt.cid === 'DMOD_UI' &&
     jwt.client_id === 'DMOD_UI' &&
     jwt.sub &&
