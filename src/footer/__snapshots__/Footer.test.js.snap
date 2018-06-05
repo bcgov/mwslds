@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders 1`] = `
+<div
+  id="footer"
+>
+  <img
+    alt="Back to top"
+    className="back-to-top footer-overlap"
+    src="back-to-top.png"
+  />
+  <div
+    id="footerWrapper"
+  >
+    <div
+      id="footerAdminSection"
+    >
+      <div
+        className="container"
+        id="footerAdminLinksContainer"
+      >
+        <div
+          className="row"
+          id="footerAdminLinks"
+        >
+          <ul
+            className="inline"
+          >
+            <li
+              key="Home"
+            >
+              <a
+                className="nav-item nav-link"
+                href="#"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              key="About"
+            >
+              <a
+                className="nav-item nav-link"
+                href="#"
+              >
+                About
+              </a>
+            </li>
+            <li
+              key="Disclaimer"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
+              >
+                Disclaimer
+              </a>
+            </li>
+            <li
+              key="Privacy"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/privacy"
+              >
+                Privacy
+              </a>
+            </li>
+            <li
+              key="Accessibility"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/accessibility"
+              >
+                Accessibility
+              </a>
+            </li>
+            <li
+              key="Copyright"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/copyright"
+              >
+                Copyright
+              </a>
+            </li>
+            <li
+              key="Contact Us"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/contact-us"
+              >
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer renders additional items correctly 1`] = `
+<div
+  id="footer"
+>
+  <img
+    alt="Back to top"
+    className="back-to-top footer-overlap"
+    src="back-to-top.png"
+  />
+  <div
+    id="footerWrapper"
+  >
+    <div
+      id="footerAdminSection"
+    >
+      <div
+        className="container"
+        id="footerAdminLinksContainer"
+      >
+        <div
+          className="row"
+          id="footerAdminLinks"
+        >
+          <ul
+            className="inline"
+          >
+            <li
+              key="Home"
+            >
+              <a
+                className="nav-item nav-link"
+                href="#"
+              >
+                Home
+              </a>
+            </li>
+            <li
+              key="About"
+            >
+              <a
+                className="nav-item nav-link"
+                href="#"
+              >
+                About
+              </a>
+            </li>
+            <li
+              key="Disclaimer"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/disclaimer"
+              >
+                Disclaimer
+              </a>
+            </li>
+            <li
+              key="Privacy"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/privacy"
+              >
+                Privacy
+              </a>
+            </li>
+            <li
+              key="Accessibility"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/accessibility"
+              >
+                Accessibility
+              </a>
+            </li>
+            <li
+              key="Copyright"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/copyright"
+              >
+                Copyright
+              </a>
+            </li>
+            <li
+              key="Contact Us"
+            >
+              <a
+                className="nav-item nav-link"
+                href="https://www2.gov.bc.ca/gov/content/home/contact-us"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li
+              key="far away"
+            >
+              <a
+                className="nav-item nav-link"
+                href="/away"
+              >
+                far away
+              </a>
+            </li>
+            <li
+              key="close to home"
+            >
+              <a
+                className="nav-item nav-link"
+                href="/close"
+              >
+                close to home
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
