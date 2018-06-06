@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cache from '../cache'
+import { BrowserCache } from '../cache'
 
 import { BASE_URL } from './Routes'
 
@@ -17,7 +17,9 @@ const defaultProps = {
   updateDataTransform: null,
 }
 
-function withData(Wrapped) {
+function withData(Wrapped, cache = BrowserCache) {
+  const useCache = !!cache
+
   class WithDataHOC extends React.Component {
     constructor(props) {
       super(props)
@@ -55,7 +57,7 @@ function withData(Wrapped) {
       const { token, route } = this.props
 
       if (!token || !route) {
-        return
+        return Promise.resolve(null)
       }
 
       this.setState(() => ({
@@ -72,18 +74,20 @@ function withData(Wrapped) {
 
       const url = this.getUrl()
 
-      const cached = cache.get(url)
-      if (cached) {
-        if (this.mounted) {
-          this.setState({
-            data: cached,
-            loading: false,
-          })
+      if (useCache) {
+        const cached = cache.get(url)
+        if (cached) {
+          if (this.mounted) {
+            this.setState({
+              data: cached,
+              loading: false,
+            })
+          }
+          return Promise.resolve(cached)
         }
-        return
       }
 
-      fetch(url, options)
+      return fetch(url, options)
         .then((resp) => {
           if (!resp.ok) {
             throw Error(resp.statusText)
@@ -91,13 +95,17 @@ function withData(Wrapped) {
           return resp.json()
         })
         .then((parsed) => {
-          cache.put(url, parsed)
+          if (useCache) {
+            cache.put(url, parsed)
+          }
           if (this.mounted) {
             this.setState({
               data: parsed,
               loading: false,
             })
+            return parsed
           }
+          return null
         })
         .catch((error) => {
           if (this.mounted) {
@@ -106,6 +114,7 @@ function withData(Wrapped) {
               loading: false,
             })
           }
+          return error
         })
     }
 
@@ -116,10 +125,12 @@ function withData(Wrapped) {
         if (this.props.updateDataTransform) {
           newData = this.props.updateDataTransform(prevState.data, data)
         } else {
-          newData = Object.assign(prevState.data, data)
+          newData = Object.assign(prevState.data || {}, data)
         }
-        cache.invalidate(this.getUrl().split('?')[0])
-        cache.put(this.getUrl(), newData)
+        if (useCache) {
+          cache.invalidate(this.getUrl().split('?')[0])
+          cache.put(this.getUrl(), newData)
+        }
         return {
           data: newData,
         }
