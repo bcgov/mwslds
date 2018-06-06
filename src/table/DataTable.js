@@ -36,8 +36,9 @@ function DataTable(props) {
   return <BaseTable data={data} {...otherProps} />
 }
 
-
 DataTable.propTypes = propTypes
 DataTable.defaultProps = defaultProps
+
+export { DataTable as UnwrappedDataTable }
 
 export default withToken(withData(withDataFilter(withDataTransform(DataTable))))
