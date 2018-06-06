@@ -2,7 +2,7 @@
 import { pick } from 'lodash'
 
 export function payloadTransform(param) {
-  return data => (data && data[param])
+  return data => data && data[param]
 }
 
 export function reduceObjectTransform(obj, fields) {
@@ -70,4 +70,5 @@ export default {
   minesCountTransform,
   minesTableTransform,
   govDelaysTransform,
+  minesUpdateTransform,
 }
