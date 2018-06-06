@@ -9,7 +9,9 @@ const TokenSingleton = {
 
   loadToken() {
     if (!this.auth) {
-      return Promise.reject(Error('No Auth Provided'))
+      const noAuthError = Error('No Auth Provided')
+      this.rejectPending(noAuthError)
+      return Promise.reject(noAuthError)
     }
 
     const options = {
@@ -70,6 +72,7 @@ function setAuth(auth) {
 }
 
 export { setAuth }
+export { TokenSingleton }
 
 // HOC provide a token to the wrapped component
 export default function withToken(Wrapped) {
