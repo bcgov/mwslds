@@ -1,5 +1,5 @@
-# MWSLOD Readme
-Mines Web Service Layer Onboarding Demo
+# MWSLDS Readme
+Mines Web Service Layer Data Services
 
 ## Usage
 This readme should contain references that lead to all information about the various aspects of MWSLOD, but it is generally high level and should not change often.
