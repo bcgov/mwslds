@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox has the correct title 1`] = `
+<label
+  className="control-label"
+  htmlFor="checkers"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <input
+    disabled={null}
+    id="checkers"
+    onChange={[Function]}
+    style={
+      Object {
+        "marginRight": "3px",
+      }
+    }
+    type="checkbox"
+  />
+  not checkers
+</label>
+`;
+
+exports[`Checkbox has the correct width 1`] = `
+<label
+  className="control-label"
+  htmlFor="checkers"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <input
+    disabled={null}
+    id="checkers"
+    onChange={[Function]}
+    style={
+      Object {
+        "marginRight": "3px",
+      }
+    }
+    type="checkbox"
+  />
+  Checkers
+</label>
+`;
+
+exports[`Checkbox renders 1`] = `
+<label
+  className="control-label"
+  htmlFor="checkers"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  <input
+    disabled={null}
+    id="checkers"
+    onChange={[Function]}
+    style={
+      Object {
+        "marginRight": "3px",
+      }
+    }
+    type="checkbox"
+  />
+  Checkers
+</label>
+`;

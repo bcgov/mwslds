@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput displays the correct value 1`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+    value="hello"
+  />
+</label>
+`;
+
+exports[`TextInput has the correct title 1`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  not texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;
+
+exports[`TextInput has the correct width 1`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;
+
+exports[`TextInput has the correct width 2`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;
+
+exports[`TextInput renders 1`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;
+
+exports[`TextInput shows errors properly 1`] = `
+<label
+  className="control-label has-error"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;
+
+exports[`TextInput shows placeholder properly 1`] = `
+<label
+  className="control-label"
+  htmlFor="texty"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Texty
+  <input
+    className="form-control"
+    disabled={null}
+    id="texty"
+    onChange={[Function]}
+    placeholder="nice"
+    readOnly={null}
+    type="text"
+  />
+</label>
+`;

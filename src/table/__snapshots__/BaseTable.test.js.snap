@@ -1,0 +1,1741 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseTable renders 1`] = `
+<div
+  className="react-bs-table-container"
+>
+  <div
+    className="react-bs-table react-bs-table-bordered"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "maxHeight": undefined,
+      }
+    }
+  >
+    <div
+      className="react-bs-container-header table-header-wrapper"
+    >
+      <table
+        className="table table-hover table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <thead>
+          <tr
+            key="0"
+          >
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="No Data"
+            >
+              No Data
+              <div
+                onClick={[Function]}
+              />
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="react-bs-container-body"
+      style={
+        Object {
+          "height": "100%",
+          "maxHeight": undefined,
+        }
+      }
+    >
+      <table
+        className="table table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <tbody>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className="react-bs-table-no-data"
+              colSpan={1}
+              data-toggle="collapse"
+            >
+              There is no data to display
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="react-bs-table-pagination"
+  >
+    <div
+      className="row"
+      style={
+        Object {
+          "marginTop": 15,
+        }
+      }
+    >
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-left"
+      >
+        <span>
+          Showing rows 
+          0
+           to 
+          0
+           of 
+          0
+        </span>
+        <span
+          className="dropdown   react-bs-table-sizePerPage-dropdown"
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="btn btn-default btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            id="pageDropDown"
+            onBlur={[Function]}
+            onClick={[Function]}
+          >
+            10
+            <span>
+               
+              <span
+                className="caret"
+              />
+            </span>
+          </button>
+          <ul
+            aria-labelledby="pageDropDown"
+            className="dropdown-menu "
+            role="menu"
+          >
+            <li
+              className="dropdown-item"
+              key="10"
+              role="presentation"
+            >
+              <a
+                data-page={10}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                10
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="25"
+              role="presentation"
+            >
+              <a
+                data-page={25}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                25
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="30"
+              role="presentation"
+            >
+              <a
+                data-page={30}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                30
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="50"
+              role="presentation"
+            >
+              <a
+                data-page={50}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                50
+              </a>
+            </li>
+          </ul>
+        </span>
+      </div>
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-right"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <ul
+          className="react-bootstrap-table-page-btns-ul pagination"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="s-alert-wrapper"
+  />
+</div>
+`;
+
+exports[`BaseTable renders column labels 1`] = `
+<div
+  className="react-bs-table-container"
+>
+  <div
+    className="react-bs-table react-bs-table-bordered"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "maxHeight": undefined,
+      }
+    }
+  >
+    <div
+      className="react-bs-container-header table-header-wrapper"
+    >
+      <table
+        className="table table-hover table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <thead>
+          <tr
+            key="0"
+          >
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="first"
+            >
+              first
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="second"
+            >
+              second
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="third"
+            >
+              third
+              <div
+                onClick={[Function]}
+              />
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="react-bs-container-body"
+      style={
+        Object {
+          "height": "100%",
+          "maxHeight": undefined,
+        }
+      }
+    >
+      <table
+        className="table table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <tbody>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="1"
+              title={null}
+            >
+              aa
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="2"
+              title={null}
+            >
+              ab
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="3"
+              title={null}
+            >
+              ac
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="4"
+              title={null}
+            >
+              ba
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="5"
+              title={null}
+            >
+              bb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="6"
+              title={null}
+            >
+              bc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="7"
+              title={null}
+            >
+              ca
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="8"
+              title={null}
+            >
+              cb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="9"
+              title={null}
+            >
+              cc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="10"
+              title={null}
+            >
+              da
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="11"
+              title={null}
+            >
+              db
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="12"
+              title={null}
+            >
+              dc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="13"
+              title={null}
+            >
+              ea
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="14"
+              title={null}
+            >
+              eb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="15"
+              title={null}
+            >
+              ec
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="react-bs-table-pagination"
+  >
+    <div
+      className="row"
+      style={
+        Object {
+          "marginTop": 15,
+        }
+      }
+    >
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-left"
+      >
+        <span>
+          Showing rows 
+          1
+           to 
+          5
+           of 
+          5
+        </span>
+        <span
+          className="dropdown   react-bs-table-sizePerPage-dropdown"
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="btn btn-default btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            id="pageDropDown"
+            onBlur={[Function]}
+            onClick={[Function]}
+          >
+            10
+            <span>
+               
+              <span
+                className="caret"
+              />
+            </span>
+          </button>
+          <ul
+            aria-labelledby="pageDropDown"
+            className="dropdown-menu "
+            role="menu"
+          >
+            <li
+              className="dropdown-item"
+              key="10"
+              role="presentation"
+            >
+              <a
+                data-page={10}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                10
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="25"
+              role="presentation"
+            >
+              <a
+                data-page={25}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                25
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="30"
+              role="presentation"
+            >
+              <a
+                data-page={30}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                30
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="50"
+              role="presentation"
+            >
+              <a
+                data-page={50}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                50
+              </a>
+            </li>
+          </ul>
+        </span>
+      </div>
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-right"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <ul
+          className="react-bootstrap-table-page-btns-ul pagination"
+        >
+          <li
+            className="active page-item"
+            title="1"
+          >
+            <a
+              className="page-link"
+              href="#"
+              onClick={[Function]}
+            >
+              1
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="s-alert-wrapper"
+  />
+</div>
+`;
+
+exports[`BaseTable renders expand indicator column 1`] = `
+<div
+  className="react-bs-table-container"
+>
+  <div
+    className="react-bs-table react-bs-table-bordered"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "maxHeight": undefined,
+      }
+    }
+  >
+    <div
+      className="react-bs-container-header table-header-wrapper"
+    >
+      <table
+        className="table table-hover table-bordered"
+      >
+        <colgroup>
+          <col
+            key="expand-col"
+            style={
+              Object {
+                "minWidth": "30px",
+                "width": "30px",
+              }
+            }
+          />
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <thead>
+          <tr
+            key="0"
+          >
+            <th
+              className="react-bs-table-expand-cell"
+              data-is-only-head={false}
+              rowSpan={1}
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            />
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 1"
+            >
+              Col 1
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 2"
+            >
+              Col 2
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 3"
+            >
+              Col 3
+              <div
+                onClick={[Function]}
+              />
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="react-bs-container-body"
+      style={
+        Object {
+          "height": "100%",
+          "maxHeight": undefined,
+        }
+      }
+    >
+      <table
+        className="table table-bordered"
+      >
+        <colgroup>
+          <col
+            key="expand-col"
+            style={
+              Object {
+                "minWidth": "30px",
+                "width": "30px",
+              }
+            }
+          />
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <tbody>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className="react-bs-table-expand-cell"
+              onClick={[Function]}
+            >
+              <div
+                className="text-center text-clickable"
+              >
+                +
+              </div>
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="1"
+              title={null}
+            >
+              aa
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="2"
+              title={null}
+            >
+              ab
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="3"
+              title={null}
+            >
+              ac
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={true}
+            style={
+              Object {
+                "backgroundColor": undefined,
+              }
+            }
+            width="100%"
+          >
+            <td
+              colSpan={4}
+            >
+              <div />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="react-bs-table-pagination"
+  >
+    <div
+      className="row"
+      style={
+        Object {
+          "marginTop": 15,
+        }
+      }
+    >
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-left"
+      >
+        <span>
+          Showing rows 
+          1
+           to 
+          1
+           of 
+          1
+        </span>
+        <span
+          className="dropdown   react-bs-table-sizePerPage-dropdown"
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="btn btn-default btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            id="pageDropDown"
+            onBlur={[Function]}
+            onClick={[Function]}
+          >
+            10
+            <span>
+               
+              <span
+                className="caret"
+              />
+            </span>
+          </button>
+          <ul
+            aria-labelledby="pageDropDown"
+            className="dropdown-menu "
+            role="menu"
+          >
+            <li
+              className="dropdown-item"
+              key="10"
+              role="presentation"
+            >
+              <a
+                data-page={10}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                10
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="25"
+              role="presentation"
+            >
+              <a
+                data-page={25}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                25
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="30"
+              role="presentation"
+            >
+              <a
+                data-page={30}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                30
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="50"
+              role="presentation"
+            >
+              <a
+                data-page={50}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                50
+              </a>
+            </li>
+          </ul>
+        </span>
+      </div>
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-right"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <ul
+          className="react-bootstrap-table-page-btns-ul pagination"
+        >
+          <li
+            className="active page-item"
+            title="1"
+          >
+            <a
+              className="page-link"
+              href="#"
+              onClick={[Function]}
+            >
+              1
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="s-alert-wrapper"
+  />
+</div>
+`;
+
+exports[`BaseTable renders with data 1`] = `
+<div
+  className="react-bs-table-container"
+>
+  <div
+    className="react-bs-table react-bs-table-bordered"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "maxHeight": undefined,
+      }
+    }
+  >
+    <div
+      className="react-bs-container-header table-header-wrapper"
+    >
+      <table
+        className="table table-hover table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <thead>
+          <tr
+            key="0"
+          >
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 1"
+            >
+              Col 1
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 2"
+            >
+              Col 2
+              <div
+                onClick={[Function]}
+              />
+            </th>
+            <th
+              className=""
+              data-is-only-head={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              title="Col 3"
+            >
+              Col 3
+              <div
+                onClick={[Function]}
+              />
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      className="react-bs-container-body"
+      style={
+        Object {
+          "height": "100%",
+          "maxHeight": undefined,
+        }
+      }
+    >
+      <table
+        className="table table-bordered"
+      >
+        <colgroup>
+          <col
+            key="0"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="1"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+          <col
+            key="2"
+            style={
+              Object {
+                "display": null,
+              }
+            }
+          />
+        </colgroup>
+        <tbody>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="1"
+              title={null}
+            >
+              aa
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="2"
+              title={null}
+            >
+              ab
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="3"
+              title={null}
+            >
+              ac
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="4"
+              title={null}
+            >
+              ba
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="5"
+              title={null}
+            >
+              bb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="6"
+              title={null}
+            >
+              bc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="7"
+              title={null}
+            >
+              ca
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="8"
+              title={null}
+            >
+              cb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="9"
+              title={null}
+            >
+              cc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="10"
+              title={null}
+            >
+              da
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="11"
+              title={null}
+            >
+              db
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="12"
+              title={null}
+            >
+              dc
+            </td>
+          </tr>
+          <tr
+            className=""
+            hidden={false}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            style={Object {}}
+          >
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="13"
+              title={null}
+            >
+              ea
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="14"
+              title={null}
+            >
+              eb
+            </td>
+            <td
+              className=""
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": null,
+                  "textAlign": "left",
+                }
+              }
+              tabIndex="15"
+              title={null}
+            >
+              ec
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="react-bs-table-pagination"
+  >
+    <div
+      className="row"
+      style={
+        Object {
+          "marginTop": 15,
+        }
+      }
+    >
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-left"
+      >
+        <span>
+          Showing rows 
+          1
+           to 
+          5
+           of 
+          5
+        </span>
+        <span
+          className="dropdown   react-bs-table-sizePerPage-dropdown"
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="btn btn-default btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            id="pageDropDown"
+            onBlur={[Function]}
+            onClick={[Function]}
+          >
+            10
+            <span>
+               
+              <span
+                className="caret"
+              />
+            </span>
+          </button>
+          <ul
+            aria-labelledby="pageDropDown"
+            className="dropdown-menu "
+            role="menu"
+          >
+            <li
+              className="dropdown-item"
+              key="10"
+              role="presentation"
+            >
+              <a
+                data-page={10}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                10
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="25"
+              role="presentation"
+            >
+              <a
+                data-page={25}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                25
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="30"
+              role="presentation"
+            >
+              <a
+                data-page={30}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                30
+              </a>
+            </li>
+            <li
+              className="dropdown-item"
+              key="50"
+              role="presentation"
+            >
+              <a
+                data-page={50}
+                href="#"
+                onMouseDown={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                50
+              </a>
+            </li>
+          </ul>
+        </span>
+      </div>
+      <div
+        className="col-md-6 col-xs-6 col-sm-6 col-lg-6"
+        key="paging-right"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <ul
+          className="react-bootstrap-table-page-btns-ul pagination"
+        >
+          <li
+            className="active page-item"
+            title="1"
+          >
+            <a
+              className="page-link"
+              href="#"
+              onClick={[Function]}
+            >
+              1
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="s-alert-wrapper"
+  />
+</div>
+`;

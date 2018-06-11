@@ -1,0 +1,22 @@
+.main {
+  background-color: #f1f1f1;
+}
+
+.title_chart {
+  text-align: center;
+  width:100%;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.title {
+  text-align: left;
+  width:100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.chart {
+  border:10px solid #f1f1f1;
+  margin-bottom:20px
+}
