@@ -3,7 +3,7 @@ Mines Web Service Layer Data Services
 
 ## Usage
 This readme should contain references that lead to all information about the various aspects of MWSLOD, but it is generally high level and should not change often.
-- [MWSLDS Project Documentation](https://github.com/bcgov/mwslds/wiki) is focused on presenting information from more of a business perspective. 
+- [MWSLDS Project Documentation](https://github.com/bcgov/mwslds/wiki) is focused on presenting information from more of a business perspective.
 - [MWSLDS Developer Documentation](/docs/) provides all the details require for a development team member to contribute to the project. This documentation can also run on gitbook if you want to view it nicely formatted.
 
 **Running the documentation on gitbook**
@@ -18,13 +18,13 @@ $ gitbook serve
 
 ## How to Contribute
 
-If you would like to contribute, please see our [contributing](https://github.com/bcgov/mwslod/blob/master/contributing.md) guidelines.
+If you would like to contribute, please see our [contributing](https://github.com/bcgov/mwslds/blob/master/contributing.md) guidelines.
 
-Please note that this project is released with a [Contributor Code of Conduct](https://github.com/bcgov/mwslod/blob/master/code_of_conduct.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/bcgov/mwslds/blob/master/code_of_conduct.md). By participating in this project you agree to abide by its terms.
 
 ## License
 
-included in our repo: https://github.com/bcgov/mwslod/blob/master/LICENSE
+included in our repo: https://github.com/bcgov/mwslds/blob/master/LICENSE
 ```
 Copyright 2017 Province of British Columbia
 

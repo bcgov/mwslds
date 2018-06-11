@@ -1,0 +1,50 @@
+
+.shift-left {
+  margin-right: 30px;
+}
+
+.App {
+  height: inherit;
+}
+
+.form-spacing label {
+  padding-right: 10px;
+}
+
+.form-line {
+  width: 100%;
+}
+
+.form-inline {
+  display: flex;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+/* make the pagination drop down display correctly */
+#pageDropDown {
+  display: block;
+}
+
+/* make elements that tether render above other things */
+.tether-element {
+  z-index: 100;
+  font-size: 14px;
+}
+
+.logout-header {
+  margin-top: -38px;
+  margin-right: 40px;
+  float: right;
+  position: inherit !important;
+}
+
+.text-clickable {
+  color: rgba(0, 51, 102, .8);
+}
+
+.text-clickable:hover {
+  cursor: pointer;
+}

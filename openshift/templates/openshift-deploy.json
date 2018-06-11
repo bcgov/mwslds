@@ -1,0 +1,92 @@
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "react-mwsl-deploy-template"
+  },
+  "objects": [
+    {
+      "kind": "DeploymentConfig",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "react-mwsl-deploy"
+      },
+      "spec": {
+        "template": {
+          "metadata": {
+            "labels": {
+              "name": "react-mwsl-deploy"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "react-mwsl-demo",
+                "image": "react-mwsl-demo:latest",
+                "ports": [
+                  {
+                    "containerPort": "3000",
+                    "protocol": "TCP"
+                  }
+                ],
+                "env": [
+                  {
+                    "name": "MWSL_USER",
+                    "value": "${MWSL_USER}"
+                  },
+                  {
+                    "name": "MWSL_PASS",
+                    "value": "${MWSL_PASS}"
+                  },
+                  {
+                    "name": "PORT",
+                    "value": "3000"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "replicas": 1,
+        "selector": {
+          "name": "react-mwsl-deploy"
+        },
+        "triggers": [
+          {
+            "type": "ConfigChange"
+          },
+          {
+            "type": "ImageChange",
+            "imageChangeParams": {
+              "automatic": true,
+              "containerNames": [
+                "react-mwsl-demo"
+              ],
+              "from": {
+                "kind": "ImageStreamTag",
+                "name": "react-mwsl-demo:latest"
+              }
+            }
+          }
+        ],
+        "strategy": {
+          "type": "Rolling"
+        }
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "name": "MWSL_USER",
+      "displayName": "MWSL Username",
+      "description": "User to connect to the MWSL API with",
+      "required": true
+    },
+    {
+      "name": "MWSL_PASS",
+      "displayName": "MWSL Password",
+      "description": "Password to connect to the MWSL API",
+      "required": true
+    }
+  ]
+}

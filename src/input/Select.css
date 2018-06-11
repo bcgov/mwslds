@@ -1,0 +1,20 @@
+
+/* remove the rounded edges */
+.Select-control {
+  border-radius: 0;
+}
+
+.has-error .Select-control {
+  border-color: #a94442;
+}
+
+/* nasty, get the select values to be the same as the default font colour */
+.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+  color: #555;
+}
+
+/* select option hover highlighting */
+.VirtualizedSelectFocusedOption {
+  background-color: #337ab7;
+  color: #fff;
+}

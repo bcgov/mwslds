@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders 1`] = `
+<div
+  id="header"
+>
+  <div
+    className="navbar navbar-default navbar-fixed-top"
+    id="header-main"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+        id="header-main-row"
+      >
+        <div
+          className="col-sm-3 col-md-2 col-lg-2 header-main-left"
+        >
+          <div
+            id="logo"
+          >
+            <a
+              href="https://www2.gov.bc.ca"
+            >
+              <img
+                alt="B.C. Government Logo"
+                src="gov3_bc_logo.png"
+              />
+            </a>
+          </div>
+          <div
+            id="access"
+          >
+            <ul>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Skip to main content"
+                  href="#main-content-anchor"
+                >
+                  Skip to main content
+                </a>
+              </li>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Skip to navigation"
+                  href="#main-content-anchor"
+                  onClick={[Function]}
+                >
+                  Skip to navigation
+                </a>
+              </li>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Accessibility Statement"
+                  href="http://gov.bc.ca/webaccessibility/"
+                >
+                  Accessibility Statement
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button
+            aria-expanded="true"
+            aria-label="Burger Navigation"
+            className="navbar-toggle gov-button-custom collapsed"
+            data-target="#navbar"
+            data-toggle="collapse"
+            type="button"
+          >
+            <img
+              alt="Open Menu"
+              src="menu-open-mobile.png"
+            />
+          </button>
+        </div>
+        <div
+          className="col-sm-8 col-md-8 col-lg-6 hidden-xs"
+        >
+          <div
+            className="bcgov-title"
+          >
+            <h1>
+              headerless horseman
+            </h1>
+          </div>
+        </div>
+        <div
+          className="collapse navbar-collapse"
+          id="navbar"
+        >
+          <ul
+            className="nav navbar-nav"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="navigationRibbon"
+    >
+      <div
+        className="level2Navigation"
+      >
+        <div
+          className="container"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header renders links correctly 1`] = `
+<div
+  id="header"
+>
+  <div
+    className="navbar navbar-default navbar-fixed-top"
+    id="header-main"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+        id="header-main-row"
+      >
+        <div
+          className="col-sm-3 col-md-2 col-lg-2 header-main-left"
+        >
+          <div
+            id="logo"
+          >
+            <a
+              href="https://www2.gov.bc.ca"
+            >
+              <img
+                alt="B.C. Government Logo"
+                src="gov3_bc_logo.png"
+              />
+            </a>
+          </div>
+          <div
+            id="access"
+          >
+            <ul>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Skip to main content"
+                  href="#main-content-anchor"
+                >
+                  Skip to main content
+                </a>
+              </li>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Skip to navigation"
+                  href="#main-content-anchor"
+                  onClick={[Function]}
+                >
+                  Skip to navigation
+                </a>
+              </li>
+              <li
+                aria-label="Keyboard Tab Skip"
+              >
+                <a
+                  aria-label="Accessibility Statement"
+                  href="http://gov.bc.ca/webaccessibility/"
+                >
+                  Accessibility Statement
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button
+            aria-expanded="true"
+            aria-label="Burger Navigation"
+            className="navbar-toggle gov-button-custom collapsed"
+            data-target="#navbar"
+            data-toggle="collapse"
+            type="button"
+          >
+            <img
+              alt="Open Menu"
+              src="menu-open-mobile.png"
+            />
+          </button>
+        </div>
+        <div
+          className="col-sm-8 col-md-8 col-lg-6 hidden-xs"
+        >
+          <div
+            className="bcgov-title"
+          >
+            <h1 />
+          </div>
+        </div>
+        <div
+          className="collapse navbar-collapse"
+          id="navbar"
+        >
+          <ul
+            className="nav navbar-nav"
+          >
+            <li
+              key="0"
+            >
+              <a
+                href=""
+              >
+                earth
+              </a>
+            </li>
+            <li
+              key="1"
+            >
+              <a
+                href=""
+              >
+                sun
+              </a>
+            </li>
+            <li
+              key="2"
+            >
+              <a
+                href=""
+              >
+                moon
+              </a>
+            </li>
+            <li
+              key="3"
+            >
+              <a
+                href=""
+              >
+                mars
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      className="navigationRibbon"
+    >
+      <div
+        className="level2Navigation"
+      >
+        <div
+          className="container"
+        >
+          <a
+            href=""
+          >
+            earth
+          </a>
+          <a
+            href=""
+          >
+            sun
+          </a>
+          <a
+            href=""
+          >
+            moon
+          </a>
+          <a
+            href=""
+          >
+            mars
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

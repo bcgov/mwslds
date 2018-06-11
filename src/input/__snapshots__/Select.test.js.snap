@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select displays the correct values 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Selectceptional
+  <div
+    className="Select has-value is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-4--value"
+      >
+        <div
+          className="Select-value"
+        >
+          <span
+            aria-selected="true"
+            className="Select-value-label"
+            id="react-select-4--value-item"
+            role="option"
+          >
+            A
+          </span>
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-4--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            id="selectceptional"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        aria-label="Clear value"
+        className="Select-clear-zone"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        title="Clear value"
+      >
+        <span
+          className="Select-clear"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "&times;",
+            }
+          }
+        />
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`Select has the correct title 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  not selectceptional
+  <VirtualizedSelect
+    async={false}
+    className={null}
+    disabled={null}
+    id="selectceptional"
+    maxHeight={200}
+    multiple={null}
+    onChange={[Function]}
+    optionHeight={35}
+    options={Array []}
+    selectComponent={[Function]}
+  />
+</label>
+`;
+
+exports[`Select has the correct width 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  Selectceptional
+  <VirtualizedSelect
+    async={false}
+    className={null}
+    disabled={null}
+    id="selectceptional"
+    maxHeight={200}
+    multiple={null}
+    onChange={[Function]}
+    optionHeight={35}
+    options={Array []}
+    selectComponent={[Function]}
+  />
+</label>
+`;
+
+exports[`Select has the correct width 2`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  Selectceptional
+  <VirtualizedSelect
+    async={false}
+    className={null}
+    disabled={null}
+    id="selectceptional"
+    maxHeight={200}
+    multiple={null}
+    onChange={[Function]}
+    optionHeight={35}
+    options={Array []}
+    selectComponent={[Function]}
+  />
+</label>
+`;
+
+exports[`Select renders 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Selectceptional
+  <div
+    className="Select is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-2--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-2--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            id="selectceptional"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`Select renders options 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Selectceptional
+  <div
+    className="Select is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-3--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-3--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            id="selectceptional"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
+
+exports[`Select shows errors properly 1`] = `
+<label
+  className="control-label"
+  htmlFor="selectceptional"
+  style={
+    Object {
+      "width": null,
+    }
+  }
+>
+  Selectceptional
+  <div
+    className="Select has-error is-clearable is-searchable Select--single"
+  >
+    <div
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <span
+        className="Select-multi-value-wrapper"
+        id="react-select-5--value"
+      >
+        <div
+          className="Select-placeholder"
+        >
+          Select...
+        </div>
+        <div
+          className="Select-input"
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <input
+            aria-activedescendant="react-select-5--value"
+            aria-expanded="false"
+            aria-haspopup="false"
+            aria-owns=""
+            id="selectceptional"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            role="combobox"
+            style={
+              Object {
+                "boxSizing": "content-box",
+                "width": "5px",
+              }
+            }
+            value=""
+          />
+          <div
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "scroll",
+                "position": "absolute",
+                "top": 0,
+                "visibility": "hidden",
+                "whiteSpace": "pre",
+              }
+            }
+          />
+        </div>
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="Select-arrow"
+          onMouseDown={[Function]}
+        />
+      </span>
+    </div>
+  </div>
+</label>
+`;
