@@ -2,14 +2,14 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-	"name": "react-mwsl-service-template"
+	"name": "mwslds-service-template"
   },
   "objects": [
     {
       "kind": "Service",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-mwsl-service",
+        "name": "mwslds-service",
         "annotations": {
           "description": "Exposes and load balances the application pods"
         }
@@ -23,7 +23,7 @@
           }
         ],
         "selector": {
-          "name": "react-mwsl-deploy"
+          "name": "mwslds-deploy"
         }
       }
     },
@@ -31,12 +31,12 @@
       "kind": "Route",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-mwsl-route"
+        "name": "mwslds-route"
       },
       "spec": {
         "to": {
           "kind": "Service",
-          "name": "react-mwsl-service"
+          "name": "mwslds-service"
         }
       }
     }
