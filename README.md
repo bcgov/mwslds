@@ -2,7 +2,7 @@
 Mines Web Service Layer Data Services
 
 ## Usage
-This readme should contain references that lead to all information about the various aspects of MWSLOD, but it is generally high level and should not change often.
+This readme should contain references that lead to all information about the various aspects of MWSLDS, but it is generally high level and should not change often.
 - [MWSLDS Project Documentation](https://github.com/bcgov/mwslds/wiki) is focused on presenting information from more of a business perspective.
 - [MWSLDS Developer Documentation](/docs/) provides all the details require for a development team member to contribute to the project. This documentation can also run on gitbook if you want to view it nicely formatted.
 

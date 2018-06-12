@@ -2,27 +2,27 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "react-mwsl-deploy-template"
+    "name": "mwslds-deploy-template"
   },
   "objects": [
     {
       "kind": "DeploymentConfig",
       "apiVersion": "v1",
       "metadata": {
-        "name": "react-mwsl-deploy"
+        "name": "mwslds-deploy"
       },
       "spec": {
         "template": {
           "metadata": {
             "labels": {
-              "name": "react-mwsl-deploy"
+              "name": "mwslds-deploy"
             }
           },
           "spec": {
             "containers": [
               {
-                "name": "react-mwsl-demo",
-                "image": "react-mwsl-demo:latest",
+                "name": "mwslds",
+                "image": "mwslds:latest",
                 "ports": [
                   {
                     "containerPort": "3000",
@@ -49,7 +49,7 @@
         },
         "replicas": 1,
         "selector": {
-          "name": "react-mwsl-deploy"
+          "name": "mwslds-deploy"
         },
         "triggers": [
           {
@@ -60,11 +60,12 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "react-mwsl-demo"
+                "mwslds"
               ],
               "from": {
                 "kind": "ImageStreamTag",
-                "name": "react-mwsl-demo:latest"
+		"namespace": "empr-mwslds-tools",
+                "name": "mwslds:latest"
               }
             }
           }
