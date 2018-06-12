@@ -9,7 +9,7 @@
       "kind": "DeploymentConfig",
       "apiVersion": "v1",
       "metadata": {
-        "name": "mwsls-deploy"
+        "name": "mwslds-deploy"
       },
       "spec": {
         "template": {
