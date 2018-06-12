@@ -1,13 +1,5 @@
-node('maven') {
 
-    stage('checkout') {
-       echo "checking out source"
-       echo "Build: ${BUILD_ID}"
-       checkout scm
-    }
-}
-
-node('master') {
+node {
 	
     stage ('build')
     {
