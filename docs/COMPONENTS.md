@@ -1,6 +1,12 @@
 <a name="top"/>
 # Components
 
+* [Introduction](README.md#top)
+  * [How It Works](README.md#intro)
+  * [Development](README.md#development)
+  * [Building for Production](README.md#build)
+  * [Running Tests](README.md#test)
+  * [Additional Commands](README.md#more)
 * [Components](COMPONENTS.md#top)
   * [Higher Order Components](COMPONENTS.md#hocs)
     * [withToken](COMPONENTS.md#withtoken)
@@ -118,7 +124,6 @@ Expects data to be an array of objects object to filter against which can be dyn
 
 <a name="basecomponents"/>
 ## Base Components
-a
 
 <a name="header"/>
 #### Header
