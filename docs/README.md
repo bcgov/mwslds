@@ -44,12 +44,18 @@ To start developing you need node.js >= 8.4, an npm client, and a git client.
 All the commands shown below use [yarn](https://yarnpkg.com/en/) but [npm](https://www.npmjs.com/) works as well using `npm run <command>`
 
 1. Checkout the code from github (you will want to create a fork if you plan on submitting a pull request).
-> `git clone <repo>``
+> `git clone <repo>`
 
 2. Install dependencies
 > `yarn`
 
-3. Run the development server
+3. Export an MWSL user and pass. Required for the server to fetch an authorization token.
+
+  > `export MWSL_USER=<your-mwsl-user>`
+
+  > `export MWSL_PASS=<your-mwsl-pass>`
+
+4. Run the development server
 > `yarn dev`
 
 This starts an express server on port 5000 and the webpack dev server on port 3000. Local requests from the webpack server are proxied to the express server so there is no need to send requests to port 5000. This mimics the production setup where we only use one server to serve all the resources.
@@ -65,6 +71,14 @@ To make a production ready build
 This creates a [bundle](https://github.com/facebook/create-react-app#npm-run-build-or-yarn-build)* with trimmed down dependencies and production versions of the libraries we use.
 
 To start the app in production mode
+
+1. Export an MWSL user and pass. Required for the server to fetch an authorization token.
+
+  > `export MWSL_USER=<your-mwsl-user>`
+
+  > `export MWSL_PASS=<your-mwsl-pass>`
+
+2. Start the server
 > `yarn start`
 
 \* without the service worker
