@@ -46,24 +46,59 @@
           }
         },
         "triggers": [
-          {
-            "type": "ImageChange"
-          },
-          {
-            "type": "ConfigChange"
-          }
         ],
         "postCommit": {
         }
       }
+    },
+{
+    "kind": "BuildConfig",
+     "apiVersion": "v1",
+    "metadata": {
+        "name": "mwslds-pipeline"
+    },
+    "spec": {
+        "nodeSelector": {},
+        "output": {},
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Parallel",
+        "source": {
+            "git": {
+                "uri": "${SOURCE_REPOSITORY_URL}"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "jenkinsPipelineStrategy": {
+                "jenkinsfilePath": "Jenkinsfile"
+            },
+            "type": "JenkinsPipeline"
+        },
+        "triggers": [
+            {
+                "github": {
+                    "secret": "${GITHUB_SECRET}"
+                },
+                "type": "GitHub"
+            }
+        ]
     }
+   }
   ],
   "parameters": [
     {
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/bcgov/mwslds.git"
+      "value": "https://github.com/bcgov/mwslds.git",
+      "required": true
+    },
+    {
+      "name": "GITHUB_SECRET",
+      "displayName": "Github Secret",
+      "description": "Github secret that is used in the URL of the Github Webhook",
+      "required": true
     }
   ]
 }
