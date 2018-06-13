@@ -1,37 +1,34 @@
-<a name="top"/>
 # Components
 
-* [Introduction](README.md#top)
-  * [How It Works](README.md#intro)
+* [Introduction](README.md#introduction)
+  * [How It Works](README.md#how-it-works)
   * [Development](README.md#development)
-  * [Building for Production](README.md#build)
-  * [Running Tests](README.md#test)
-  * [Additional Commands](README.md#more)
-* [Components](COMPONENTS.md#top)
-  * [Higher Order Components](COMPONENTS.md#hocs)
+  * [Building for Production](README.md#building-for-production)
+  * [Running Tests](README.md#running-tests)
+  * [Additional Commands](README.md#additional-commands)
+* [Components](COMPONENTS.md#components)
+  * [Higher Order Components](COMPONENTS.md#higher-order-components)
     * [withToken](COMPONENTS.md#withtoken)
     * [withData](COMPONENTS.md#withdata)
     * [withDataTransform](COMPONENTS.md#withdatatransform)
     * [withDataFilter](COMPONENTS.md#withdatafilter)
-  * [Base Components](COMPONENTS.md#basecomponents)
+  * [Base Components](COMPONENTS.md#base-components)
     * [Header](COMPONENTS.md#header)
     * [Footer](COMPONENTS.md#footer)
     * [BaseTable](COMPONENTS.md#basetable)
     * [DataTable](COMPONENTS.md#datatable)
-      * [route](COMPONENTS.md#datatable-route)
-      * [transform](COMPONENTS.md#datatable-transform)
-      * [filter](COMPONENTS.md#datatable-filter)
+      * [route](COMPONENTS.md#route)
+      * [transform](COMPONENTS.md#transform)
+      * [filter](COMPONENTS.md#filter)
     * [Input](COMPONENTS.md#input)
-      * [Text](COMPONENTS.md#input-text)
-      * [Checkbox](COMPONENTS.md#input-checkbox)
-      * [Select](COMPONENTS.md#input-select)
-      * [DataSelect](COMPONENTS.md#input-dataselect)
+      * [Text](COMPONENTS.md#text)
+      * [Checkbox](COMPONENTS.md#checkbox)
+      * [Select](COMPONENTS.md#select)
+      * [DataSelect](COMPONENTS.md#dataselect)
     * [SearchBar](COMPONENTS.md#searchbar)
 
-<a name="hocs"/>
-## Higher Order Components (HOC's)
+## Higher Order Components
 
-<a name="withtoken"/>
 #### withToken
 Provides the wrapped component with an access token for use in web requests requiring authentication.
 
@@ -54,7 +51,6 @@ The HOC requests a token from a TokenSingleton in the Token module. The TokenSin
 
 On initial load it is highly likely the token will be null (as rendering is most likely quicker than a fetch to the express server) so components must check for null tokens.
 
-<a name="withdata"/>
 #### withData
 
 Loads data from the server, requires a token for authentication as well as a route to load data from
@@ -97,7 +93,6 @@ export default MyOuterComponent
 ```
 
 
-<a name="withdatatransform"/>
 #### withDataTransform
 
 Simple component that takes transform and data argument and applies the transform to the data
@@ -116,16 +111,13 @@ Useful for transforming the results of the withData component and passing it thr
 Eg. A table expects an array of data, but hitting the endpoint `/mines` returns the object `{ mines: [...] }`. Using withDataTransform we can pass a function `{ data => return data.mines }` as the transform to convert the input to something the table can understand.
 
 
-<a name="withdatafilter"/>
 #### withDataFilter
 
 Expects data to be an array of objects object to filter against which can be dynamically updated. Each object in the data array is compared against the filter object. The resulting data array contains only objects who match the filter objects values. Useful for reducing data (ie. searching a table) with a filter that can dynamically update.
 
 
-<a name="basecomponents"/>
 ## Base Components
 
-<a name="header"/>
 #### Header
 
 Renders a bcgov header component
@@ -159,7 +151,6 @@ export default MyPage
 ```
 ![Header Image](./imgs/Header.png)
 
-<a name="footer"/>
 #### Footer
 
 Bcgov footer component. Contains a set of default footer links. Can be passed and optional items prop to append items to those displayed by default.
@@ -184,7 +175,6 @@ export default MyPage
 ```
 ![Footer Image](./imgs/Footer.png)
 
-<a name="basetable"/>
 #### BaseTable
 
 Renders a table based on a data array prop. Uses react-bootstrap-table (http://allenfang.github.io/react-bootstrap-table/) under the hoods
@@ -234,7 +224,6 @@ export default MyTable
 ```
 ![BaseTable Image](./imgs/BaseTable.png)
 
-<a name="datatable"/>
 #### DataTable
 
 BaseTable wrapped for loading data from an API endpoint, transforming data, and filtering, data
@@ -266,7 +255,6 @@ function DataTable(props) {
 export default withToken(withData(withDataFilter(withDataTransform(DataTable))))
 ```
 
-<a name="datatable-route"/>
 ##### route
 
 If we had an API endpoint like localhost:3000/simpsons we could construct a DataTable as follows
@@ -297,7 +285,6 @@ export default MyDataTable
 ```
 ![DataTable_route Image](./imgs/DataTable_route.png)
 
-<a name="datatable-transform"/>
 ##### transform
 
 transform
@@ -333,7 +320,6 @@ export default MyDataTable
 ```
 ![DataTable_transform Image](./imgs/DataTable_transform.png)
 
-<a name="datatable-filter"/>
 ##### filter
 
 ```javascript
@@ -356,7 +342,6 @@ export default MyDataTable
 
 ![DataTable_filter Image](./imgs/DataTable_filtered.png)
 
-<a name="input"/>
 ## Input
 
 Factory like component, takes a type and instantiates an input based on the type passing any props along. Defaults to a 'text' input
@@ -378,7 +363,6 @@ Valid types are
 ```
 any other type will default to a 'text' type input
 
-<a name="input-text"/>
 #### Text
 
 ```javascript
@@ -435,7 +419,6 @@ class MyPage extends React.Component {
 }
 ```
 
-<a name="input-checkbox"/>
 #### Checkbox
 
 Similar to the text input, however the value passed must be a boolean. true = checked, false = unchecked
@@ -489,7 +472,6 @@ class MyPage extends React.Component {
 }
 ```
 
-<a name="input-select"/>
 #### Select
 
 Similar to the TextInput except it takes a data prop, an array of { value, label } objects to display as options in the dropdown
@@ -558,7 +540,6 @@ class MyPage extends React.Component {
 export default MyPage
 ```
 
-<a name="input-dataselect"/>
 #### DataSelect
 
 Wrapper for the select Component to be used with the HOC's described above. The default export looks like
@@ -621,7 +602,6 @@ export default MyPage
 
 ![Input_dataselect Image](./imgs/Input_dataselect.png)
 
-<a name="searchbar"/>
 ## SearchBar
 
 Input container with a single search input, and a list of advanced filters
