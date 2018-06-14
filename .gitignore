@@ -23,3 +23,4 @@ yarn-error.log*
 
 token.sh
 creds.sh
+docs/_book
