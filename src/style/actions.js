@@ -1,6 +1,10 @@
 /* eslint import/first: 0 */
 
+// make query globally available first
 import './jquery_wrapper'
 
-// this guy requires jQuery to be globally avaliable so we import the wrapper before
-import 'Gov-2.0-Bootstrap-Skeleton/dist/js/bcgov-bootstrap'
+import 'bootstrap/dist/js/bootstrap'
+
+import './js/ie10-viewport-bug-workaround'
+import './js/misc'
+import './js/navMenu'
