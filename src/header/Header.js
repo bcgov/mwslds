@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import bclogo from 'Gov-2.0-Bootstrap-Skeleton/dist/images/gov3_bc_logo.png'
-import mobileOpen from 'Gov-2.0-Bootstrap-Skeleton/dist/images/menu-open-mobile.png'
+import bclogo from '../style/images/gov3_bc_logo.png'
+import mobileOpen from '../style/images/menu-open-mobile.png'
 
 import '../style'
 

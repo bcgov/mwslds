@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "Gov-2.0-Bootstrap-Skeleton": "https://github.com/stredger/Gov-2.0-Bootstrap-Skeleton.git",
     "base-64": "^0.1.0",
+    "bootstrap": "3.3.7",
     "classnames": "^2.2.5",
     "express": "^4.16.3",
     "jquery": "3",
