@@ -48,3 +48,7 @@
 .text-clickable:hover {
   cursor: pointer;
 }
+
+.react-bs-table-container {
+  height: 100%;
+}
